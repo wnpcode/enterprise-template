@@ -1,10 +1,18 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- 40784cd: FormField, Alert, EmptyState, Avatar, Breadcrumb, Sheet, DataTable, LocaleProvider, prop `breadcrumb` di PageHeader. Detail di CHANGELOG bagian Unreleased.
+- e2deade: `DropdownMenuSub`, `DropdownMenuSubTrigger`, `DropdownMenuSubContent`: submenu bertingkat di `DropdownMenu`. Detail di CHANGELOG bagian Unreleased.
+
 Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), versi mengikuti [SemVer](https://semver.org/lang/id/). Setiap PR yang mengubah API publik, styling, atau token menambah satu baris di bagian **Unreleased**.
 
 ## [Unreleased]
 
 ### Added
+
 - `DropdownMenuSub`, `DropdownMenuSubTrigger`, `DropdownMenuSubContent`: submenu bertingkat di `DropdownMenu` (Radix), dengan story `Submenu`.
 - `LocaleProvider` + `useLocale` + `defaultLocale`: teks bawaan komponen (tutup, memuat, tidak ada data/hasil, placeholder Combobox, label Pagination, label DataTable) bisa diganti sekali di root untuk i18n; default tetap bahasa Indonesia, prop per komponen tetap mengalahkan.
 - `Alert` (info/success/warning/danger, `live` untuk `role="alert"`), `EmptyState`, `Avatar` (Radix, fallback inisial, `initials()`), `Breadcrumb` (komposisi, `BreadcrumbLink asChild`), `Sheet` (Radix Dialog, `side` right/left/bottom), `DataTable` (TanStack Table v8: sorting klien/server, seleksi baris, loading, kosong, Pagination; re-export `createColumnHelper` dan tipe). `PageHeader` dapat prop `breadcrumb`. Ikon internal `ChevronRightIcon`.
@@ -14,6 +22,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), versi
 - Token `surface-elevated` (permukaan melayang) dan `overlay` (backdrop Dialog); nilai default sama dengan sebelumnya.
 
 ### Changed
+
 - `DropdownMenuContent` dan `DropdownMenuSubContent` dibatasi setinggi ruang yang tersedia di layar (`overflow-y-auto`), agar menu panjang bisa di-scroll.
 - Popover, DropdownMenu, SelectContent, daftar Combobox, dan Toast default memakai `bg-surface-elevated`; backdrop Dialog memakai `bg-overlay`. Tampilan default dan skin neo tidak berubah.
 - Pagination: daftar tombol membungkus baris (`flex-wrap`) dan target sentuh minimal 44px, agar tidak overflow di layar sempit.
@@ -24,6 +33,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), versi
 Rilis awal, belum dipublikasikan ke registry.
 
 ### Added
+
 - Token tiga lapis (`--ds-*` primitif dan semantik, dipetakan ke Tailwind v4 lewat `@theme inline`), tema `light`/`dark`/`system`, brand override lewat `data-brand`.
 - `ThemeProvider`, `useTheme`, `themeInitScript`, `THEME_STORAGE_KEY`, util `cn`.
 - Komponen inti: Button, Input, Textarea, Label, Badge, Checkbox, Radio, Switch, Spinner, Skeleton, Card.
@@ -32,6 +42,7 @@ Rilis awal, belum dipublikasikan ke registry.
 - Entry CSS `@wnpcode/design-system/styles.css`, output ESM + deklarasi tipe.
 
 ### Known limitations
+
 - Hanya ESM, tanpa CJS.
 - `data-brand` di subtree tidak menjangkau konten yang di-portal; pakai `ThemeProvider brand`.
 - Kontras border/input terhadap background di bawah 3:1 (dicatat di `DESIGN-SYSTEM.md`).
