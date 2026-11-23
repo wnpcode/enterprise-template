@@ -49,4 +49,8 @@ describe("visited tabs", () => {
     expect(tabLabel("/app/reporting/siswa")).toEqual({ key: "nav.reportingSiswa", suffix: "" });
     expect(tabLabel("/app/tidak-ada")).toBeNull();
   });
+
+  it("segmen dengan escape tidak valid tidak melempar", () => {
+    expect(tabLabel("/app/komponen/%E0%A4%A")).toEqual({ key: "nav.komponen", suffix: "%E0%A4%A" });
+  });
 });

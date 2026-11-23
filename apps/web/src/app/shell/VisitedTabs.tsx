@@ -5,6 +5,15 @@ import { cn } from "@wnp_code/design-system";
 import { flattenNav, navItems } from "./nav";
 import { useVisitedTabs } from "./useVisitedTabs";
 
+// segmen dari URL yang bisa tidak valid (%E0%A4%A): tampilkan mentah daripada melempar dan mengosongkan shell
+function decodeSegment(s: string) {
+  try {
+    return decodeURIComponent(s);
+  } catch {
+    return s;
+  }
+}
+
 const labelSources = [...flattenNav(navItems), { to: "/app/profil", label: "account.profile" }];
 
 /** Kunci terjemahan + sisa segmen (mis. slug komponen), atau null bila path tidak dikenal. */
@@ -12,7 +21,7 @@ export function tabLabel(path: string): { key: string; suffix: string } | null {
   const match = labelSources
     .filter((s) => (s.to === "/app" ? path === "/app" : path === s.to || path.startsWith(`${s.to}/`)))
     .sort((a, b) => b.to.length - a.to.length)[0];
-  return match ? { key: match.label, suffix: decodeURIComponent(path.slice(match.to.length + 1)) } : null;
+  return match ? { key: match.label, suffix: decodeSegment(path.slice(match.to.length + 1)) } : null;
 }
 
 export function VisitedTabs() {

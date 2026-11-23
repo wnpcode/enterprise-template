@@ -24,6 +24,8 @@ import { StatusBadge } from "./StatusBadge";
 
 const PAGE_SIZE = 5;
 const col = createColumnHelper<Siswa>();
+// kolom yang bisa diurutkan; nilai lain dari URL diabaikan
+const SORTABLE: ReadonlySet<string> = new Set<keyof Siswa>(["nama", "kelas", "terdaftar"]);
 
 export function SiswaPage() {
   const { t, i18n } = useTranslation();
@@ -31,7 +33,7 @@ export function SiswaPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("q") ?? "";
   const page = Math.max(1, Number.parseInt(searchParams.get("page") ?? "", 10) || 1);
-  const sortId = searchParams.get("sort");
+  const sortId = SORTABLE.has(searchParams.get("sort") ?? "") ? searchParams.get("sort") : null;
   const sorting: SortingState = sortId ? [{ id: sortId, desc: searchParams.get("order") === "desc" }] : [];
   const setFilter = (patch: Record<string, string | undefined>) =>
     setSearchParams(

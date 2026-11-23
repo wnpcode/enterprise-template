@@ -5,6 +5,14 @@ name: Pages
 on:
   push:
     branches: [main]
+    # hanya bila isi situs berubah (brand/ dipakai Storybook lewat staticDirs)
+    paths:
+      - packages/design-system/**
+      - apps/playground/**
+      - brand/**
+      - package.json
+      - pnpm-lock.yaml
+      - .github/workflows/pages.yml
   workflow_dispatch:
 
 permissions:
