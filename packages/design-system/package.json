@@ -1,6 +1,17 @@
 {
   "name": "@wnp_code/design-system",
   "version": "0.2.0",
+  "description": "Komponen React 19 untuk aplikasi admin: Tailwind CSS v4, Radix UI, tema terang/gelap, dan teks bawaan yang bisa diganti bahasanya.",
+  "keywords": [
+    "design-system",
+    "react",
+    "react-19",
+    "tailwindcss",
+    "tailwind-v4",
+    "radix-ui",
+    "components",
+    "admin"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wnpcode/enterprise-template.git",
