@@ -39,13 +39,13 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm build-storybook
 cd packages/design-system && pnpm pack --dry-run   # harus hanya berisi dist/** dan package.json
 ```
 
-Rilis berjalan otomatis lewat `.github/workflows/release.yml` ke GitHub Packages (`@wnpcode/design-system`, private):
+Rilis berjalan otomatis lewat `.github/workflows/release.yml` ke npmjs.com (`@wnpcode/design-system`, publik, dengan provenance):
 
 1. Merge perubahan beserta file changeset ke `main`. Workflow membuka (atau memperbarui) PR "release: versi baru @wnpcode/design-system" yang menjalankan `pnpm release:version` (naik versi + CHANGELOG).
 2. Merge PR itu: workflow menjalankan `pnpm release:publish` (build lalu `changeset publish`) dan membuat tag git.
-3. Prasyarat sekali jalan: di repo GitHub aktifkan Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests". Token yang dipakai adalah `GITHUB_TOKEN` bawaan (permission `packages: write` sudah diatur di workflow).
+3. Prasyarat sekali jalan: di repo GitHub aktifkan Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests". Publish memakai secret repo `NPM_TOKEN` (npm granular token dengan izin publish untuk `@wnpcode/*`, organisasi `wnpcode` harus ada di npmjs.com); PR memakai `GITHUB_TOKEN` bawaan.
 
-Rilis manual dari mesin lokal (darurat): `pnpm release:version`, commit, lalu `NODE_AUTH_TOKEN=<PAT dengan write:packages> pnpm release:publish`.
+Rilis manual dari mesin lokal (darurat): `pnpm release:version`, commit, lalu `NODE_AUTH_TOKEN=<npm token> pnpm release:publish`.
 
 `changeset status` butuh branch dasar (`baseBranch` di `.changeset/config.json`, default `main`) yang sudah ada di git.
 

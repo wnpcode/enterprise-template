@@ -7,8 +7,8 @@
     "directory": "packages/design-system"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
+    "access": "public",
+    "provenance": true
   },
   "type": "module",
   "sideEffects": [

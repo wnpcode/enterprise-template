@@ -31,14 +31,7 @@ apps/playground/          consumer fixture, import hanya dari export publik
 
 ## Memakai package di app lain (Tailwind CSS v4)
 
-1. Install dari GitHub Packages (private). Di app consumer, buat `.npmrc` (token classic dengan scope `read:packages`, simpan di env `NODE_AUTH_TOKEN`, jangan di-commit):
-
-```ini
-@wnpcode:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
-```
-
-   lalu `pnpm add @wnpcode/design-system` (peer: `react@^19`, `react-dom@^19`, `tailwindcss@^4` di app). Di GitHub Actions app consumer, `setup-node` dengan `registry-url: https://npm.pkg.github.com` dan `scope: "@wnpcode"`, `NODE_AUTH_TOKEN` dari secret yang punya akses baca ke package.
+1. Install dari npmjs.com (publik, tanpa token atau `.npmrc`): `pnpm add @wnpcode/design-system` (peer: `react@^19`, `react-dom@^19`, `tailwindcss@^4` di app).
 2. CSS entry app:
 
 ```css
@@ -180,4 +173,4 @@ Prettier, ESLint (+ `eslint-config-prettier`), husky + lint-staged (pre-commit l
 
 ## Status
 
-Phase 0–7 dari plan selesai dalam versi minimal, ditambah roadmap boilerplate fase 1–6 (data + form, auth + RBAC, komponen admin, i18n, landing + SEO, tooling). Belum: output CJS. Publish ke GitHub Packages sudah disiapkan (`publishConfig`, `.github/workflows/release.yml`) tetapi package belum pernah dirilis. Detail dan deviasi di `docs/design-system/implementation-assessment.md`, laporan akhir di `docs/design-system/final-report.md`.
+Phase 0–7 dari plan selesai dalam versi minimal, ditambah roadmap boilerplate fase 1–6 (data + form, auth + RBAC, komponen admin, i18n, landing + SEO, tooling). Belum: output CJS. Publish ke npmjs.com disiapkan lewat `publishConfig` dan `.github/workflows/release.yml` (0.2.0 sempat terbit di GitHub Packages; rilis npmjs.com menunggu secret `NPM_TOKEN`). Detail dan deviasi di `docs/design-system/implementation-assessment.md`, laporan akhir di `docs/design-system/final-report.md`.
