@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+### Patch Changes
+
+- 98c0e5d: Lisensi MIT dan provenance npm.
+
 ## 0.2.1
 
 ### Patch Changes
