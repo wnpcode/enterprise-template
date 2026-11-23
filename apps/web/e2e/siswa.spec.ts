@@ -12,7 +12,8 @@ test("cari, pindah halaman, urutkan, dan tambah siswa lewat Sheet", async ({ pag
   await page.getByRole("searchbox").fill("");
 
   await page.getByRole("button", { name: "Halaman 2" }).click();
-  await expect(page.locator("tbody tr").first()).toContainText("Fajar Nugroho");
+  // guru ada di company 1: siswa berid kelipatan 4 milik company 2 sehingga tidak tampil
+  await expect(page.locator("tbody tr").first()).toContainText("Gita Permata");
 
   await page.getByRole("button", { name: "Urutkan menurut Nama" }).click();
   await page.getByRole("button", { name: "Urutkan menurut Nama" }).click();
