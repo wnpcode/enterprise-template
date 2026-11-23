@@ -9,7 +9,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 import type { NavItem } from "./nav";
 import { activeClass, rowClass } from "./navStyles";
 import { NavMenuItems } from "./NavMenuItems";

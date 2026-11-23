@@ -1,6 +1,6 @@
 import { PanelLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { cn } from "@enterprise/design-system";
+import { cn } from "@wnpcode/design-system";
 import { version } from "../../../package.json";
 import { useAuth } from "../../features/auth";
 import { BrandMark } from "../../shared/BrandMark";

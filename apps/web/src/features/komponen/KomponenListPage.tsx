@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { PageHeader } from "@enterprise/design-system";
+import { PageHeader } from "@wnpcode/design-system";
 import { demoGroups, demos } from "./demos";
 
 export function KomponenListPage() {

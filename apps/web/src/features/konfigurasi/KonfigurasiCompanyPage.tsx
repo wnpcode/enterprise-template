@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { PageHeader } from "@enterprise/design-system";
+import { PageHeader } from "@wnpcode/design-system";
 import { useAuth } from "../auth";
 
 // shortcut: hanya menampilkan company terpilih; form pengaturan company menunggu kontrak backend

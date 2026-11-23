@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Button, Container, Stack } from "@enterprise/design-system";
+import { Button, Container, Stack } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 const SIZES = [

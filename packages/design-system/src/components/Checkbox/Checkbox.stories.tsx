@@ -12,7 +12,7 @@ const meta: Meta<typeof Checkbox> = {
 
 **Import**
 \`\`\`tsx
-import { Checkbox } from "@enterprise/design-system";
+import { Checkbox } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

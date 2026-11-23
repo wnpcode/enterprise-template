@@ -33,7 +33,7 @@ import {
   TooltipContent,
   TooltipTrigger,
   useToast,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 import { Demo, Section } from "../../Section";
 
 export function DialogSection() {

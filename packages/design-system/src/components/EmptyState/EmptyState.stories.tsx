@@ -13,7 +13,7 @@ const meta: Meta<typeof EmptyState> = {
 
 **Import**
 \`\`\`tsx
-import { EmptyState } from "@enterprise/design-system";
+import { EmptyState } from "@wnpcode/design-system";
 \`\`\`
 
 **Aksesibilitas**

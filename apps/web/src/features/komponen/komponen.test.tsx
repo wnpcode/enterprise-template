@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router";
-import { ToastProvider, TooltipProvider } from "@enterprise/design-system";
+import { ToastProvider, TooltipProvider } from "@wnpcode/design-system";
 import { KomponenDetailPage } from "./KomponenDetailPage";
 import { demos } from "./demos";
 

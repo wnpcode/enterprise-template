@@ -1,6 +1,15 @@
 {
-  "name": "@enterprise/design-system",
+  "name": "@wnpcode/design-system",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wnpcode/enterprise-template.git",
+    "directory": "packages/design-system"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "type": "module",
   "sideEffects": [
     "*.css"

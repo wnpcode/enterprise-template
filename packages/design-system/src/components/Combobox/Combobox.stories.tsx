@@ -29,7 +29,7 @@ const meta: Meta<typeof Combobox> = {
 
 **Import**
 \`\`\`tsx
-import { Combobox } from "@enterprise/design-system";
+import { Combobox } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

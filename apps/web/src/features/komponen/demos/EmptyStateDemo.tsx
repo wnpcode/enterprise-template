@@ -1,4 +1,4 @@
-import { Button, EmptyState } from "@enterprise/design-system";
+import { Button, EmptyState } from "@wnpcode/design-system";
 import { Users } from "lucide-react";
 import { DemoSection } from "../DemoSection";
 

@@ -2,7 +2,7 @@ import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ToastProvider, TooltipProvider } from "@enterprise/design-system";
+import { ToastProvider, TooltipProvider } from "@wnpcode/design-system";
 import { http, HttpResponse } from "msw";
 import { apiUrl } from "../../mocks/handlers";
 import { server } from "../../mocks/server";

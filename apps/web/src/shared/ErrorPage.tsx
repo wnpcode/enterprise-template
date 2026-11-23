@@ -1,4 +1,4 @@
-import { Button } from "@enterprise/design-system";
+import { Button } from "@wnpcode/design-system";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { linkButton } from "./linkButton";

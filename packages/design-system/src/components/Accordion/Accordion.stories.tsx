@@ -12,7 +12,7 @@ const meta: Meta<typeof Accordion> = {
 
 **Import**
 \`\`\`tsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@enterprise/design-system";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

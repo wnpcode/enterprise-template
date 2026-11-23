@@ -13,7 +13,7 @@ const meta: Meta<typeof Textarea> = {
 
 **Import**
 \`\`\`tsx
-import { Textarea } from "@enterprise/design-system";
+import { Textarea } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

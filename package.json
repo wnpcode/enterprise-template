@@ -7,8 +7,8 @@
     "lint": "pnpm -r lint",
     "test": "pnpm -r test",
     "build": "pnpm -r build",
-    "storybook": "pnpm --filter @enterprise/design-system storybook",
-    "build-storybook": "pnpm --filter @enterprise/design-system build-storybook",
+    "storybook": "pnpm --filter @wnpcode/design-system storybook",
+    "build-storybook": "pnpm --filter @wnpcode/design-system build-storybook",
     "dev": "pnpm --filter playground dev",
     "dev:web": "pnpm --filter web dev",
     "format": "prettier --write .",
@@ -16,7 +16,8 @@
     "e2e": "pnpm --filter web e2e",
     "prepare": "husky",
     "changeset": "changeset",
-    "release:version": "changeset version"
+    "release:version": "changeset version",
+    "release:publish": "pnpm --filter @wnpcode/design-system build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.1",

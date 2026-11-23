@@ -1,4 +1,4 @@
-import { Checkbox, Input, Label } from "@enterprise/design-system";
+import { Checkbox, Input, Label } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function LabelDemo() {

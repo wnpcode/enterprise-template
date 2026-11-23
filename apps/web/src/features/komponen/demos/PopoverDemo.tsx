@@ -10,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 const KELAS = ["X IPA 1", "X IPA 2", "X IPS 1", "XI IPA 1", "XI IPS 2", "XII IPA 1"];

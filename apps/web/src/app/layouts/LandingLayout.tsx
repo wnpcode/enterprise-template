@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Container, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, useTheme, type Theme } from "@enterprise/design-system";
+import { Container, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, useTheme, type Theme } from "@wnpcode/design-system";
 import { Link, Outlet } from "react-router";
 import { LANGUAGE_NAMES, LANGUAGES, type Language } from "../i18n";
 import { LANDING_SECTIONS } from "../../features/landing/content";

@@ -30,12 +30,12 @@ pnpm install
 3. Kenali tiga workspace:
 
 ```text
-packages/design-system/   paket @enterprise/design-system: token, tema, komponen, Storybook
+packages/design-system/   paket @wnpcode/design-system: token, tema, komponen, Storybook
 apps/web/                 boilerplate aplikasi "Portal Sekolah" yang memakai paket itu
 apps/playground/          fixture kecil untuk mencoba paket dari export publiknya
 ```
 
-Aturan yang berlaku di seluruh repo: `apps/*` hanya mengimpor dari `@enterprise/design-system`, tidak pernah dari path dalam `packages/design-system/src`.
+Aturan yang berlaku di seluruh repo: `apps/*` hanya mengimpor dari `@wnpcode/design-system`, tidak pernah dari path dalam `packages/design-system/src`.
 
 ## 1. Menjalankan template
 
@@ -84,16 +84,16 @@ SkinProvider        pilihan skin milik app, disimpan di localStorage["web-skin"]
 
 ```css
 @import "tailwindcss";
-@import "@enterprise/design-system/styles.css";
+@import "@wnpcode/design-system/styles.css";
 @source "../../../../packages/design-system/dist";
 ```
 
-`@source` membuat Tailwind di app ikut menghasilkan kelas utilitas yang dipakai komponen paket. Paket tidak mengirim CSS Tailwind yang sudah dikompilasi. Karena `@source` menunjuk ke `dist`, setiap perubahan CSS atau komponen di paket baru terlihat di app setelah `pnpm --filter @enterprise/design-system build`.
+`@source` membuat Tailwind di app ikut menghasilkan kelas utilitas yang dipakai komponen paket. Paket tidak mengirim CSS Tailwind yang sudah dikompilasi. Karena `@source` menunjuk ke `dist`, setiap perubahan CSS atau komponen di paket baru terlihat di app setelah `pnpm --filter @wnpcode/design-system build`.
 
 3. Pakai komponen. Contoh kartu dengan tombol yang menampilkan toast:
 
 ```tsx
-import { Button, Card, CardContent, CardHeader, CardTitle, useToast } from "@enterprise/design-system";
+import { Button, Card, CardContent, CardHeader, CardTitle, useToast } from "@wnpcode/design-system";
 
 export function KartuContoh() {
   const { toast } = useToast();
@@ -264,7 +264,7 @@ const meta: Meta<typeof Alert> = {
 
 **Import**
 \`\`\`tsx
-import { Alert } from "@enterprise/design-system";
+import { Alert } from "@wnpcode/design-system";
 \`\`\`
 
 **Aksesibilitas**
@@ -316,9 +316,9 @@ export { Alert, type AlertProps } from "./components/Alert";
 4. Jalankan cek paket:
 
 ```bash
-pnpm --filter @enterprise/design-system typecheck
-pnpm --filter @enterprise/design-system lint
-pnpm --filter @enterprise/design-system test
+pnpm --filter @wnpcode/design-system typecheck
+pnpm --filter @wnpcode/design-system lint
+pnpm --filter @wnpcode/design-system test
 ```
 
 5. Lihat di Storybook (`pnpm storybook`): entri Components, Alert muncul. Ganti Theme ke dark dan Skin ke glass; warna harus tetap terbaca. Buka panel Accessibility pada story AllVariants; harus tanpa pelanggaran.
@@ -326,10 +326,10 @@ pnpm --filter @enterprise/design-system test
 6. Agar `apps/web` bisa memakainya, build paket:
 
 ```bash
-pnpm --filter @enterprise/design-system build
+pnpm --filter @wnpcode/design-system build
 ```
 
-Lalu di halaman mana pun: `import { Alert } from "@enterprise/design-system"`.
+Lalu di halaman mana pun: `import { Alert } from "@wnpcode/design-system"`.
 
 7. Sebelum membuka PR, ikuti checklist di `CONTRIBUTING.md` bagian "Menambah atau mengubah komponen". Perubahan nama export, prop, atau nilai variant adalah perubahan API publik dan punya aturan sendiri di dokumen itu.
 
@@ -375,7 +375,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 import { fetchGuru, type Guru } from "./api";
 
 const PAGE_SIZE = 5;
@@ -493,7 +493,7 @@ Tujuan: tahu apa yang diubah di mana saat identitas visual harus berbeda.
 1. Tema. Komponen tidak perlu tahu tema; cukup pakai token semantik. Untuk membaca atau mengubah tema dari kode:
 
 ```tsx
-import { useTheme } from "@enterprise/design-system";
+import { useTheme } from "@wnpcode/design-system";
 
 const { theme, setTheme } = useTheme(); // "light" | "dark" | "system"
 ```

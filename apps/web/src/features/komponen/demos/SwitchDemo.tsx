@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Label, Switch } from "@enterprise/design-system";
+import { Label, Switch } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function SwitchDemo() {

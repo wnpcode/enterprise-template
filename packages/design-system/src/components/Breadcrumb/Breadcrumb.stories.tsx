@@ -12,7 +12,7 @@ const meta: Meta<typeof Breadcrumb> = {
 
 **Import**
 \`\`\`tsx
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@enterprise/design-system";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@wnpcode/design-system";
 
 <BreadcrumbLink asChild><Link to="/app">Dashboard</Link></BreadcrumbLink>
 \`\`\`

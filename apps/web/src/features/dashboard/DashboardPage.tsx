@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
-import { Button, PageHeader, Skeleton } from "@enterprise/design-system";
+import { Button, PageHeader, Skeleton } from "@wnpcode/design-system";
 import { fetchSiswa, siswaKeys } from "../siswa";
 import { Charts } from "./Charts";
 import { KomponenPreview } from "./KomponenPreview";

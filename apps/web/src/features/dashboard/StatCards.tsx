@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Card } from "@enterprise/design-system";
+import { Card } from "@wnpcode/design-system";
 import type { Siswa, SiswaStatus } from "../siswa";
 
 export function StatCards({ siswa }: { siswa: Siswa[] }) {

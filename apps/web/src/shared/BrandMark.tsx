@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { cn } from "@enterprise/design-system";
+import { cn } from "@wnpcode/design-system";
 import { env } from "../app/env";
 import { LogoMark } from "./LogoMark";
 

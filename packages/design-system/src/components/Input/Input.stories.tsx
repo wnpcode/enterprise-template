@@ -13,7 +13,7 @@ const meta: Meta<typeof Input> = {
 
 **Import**
 \`\`\`tsx
-import { Input } from "@enterprise/design-system";
+import { Input } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

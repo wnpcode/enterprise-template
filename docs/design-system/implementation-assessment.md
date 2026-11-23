@@ -80,7 +80,7 @@ Hasil gate (2026-11-02), semua exit 0: typecheck, lint, test (24 file, 204 test)
 
 ## Phase 5 dan 7 (2026-11-02)
 - Phase 5: setiap `*.stories.tsx` (23 komponen) mendapat `parameters.docs.description.component` berisi tujuan, import, keyboard/fokus, Do/Don't; props dari autodocs. Foundations (colors, typography, spacing, radius, shadows) sudah ada di `stories/Foundations.stories.tsx`; tema light/dark lewat toolbar. Tidak ada halaman MDX terpisah (opsi lebih kecil).
-- Phase 7: `packages/design-system/CHANGELOG.md` (Keep a Changelog, 0.1.0), `CONTRIBUTING.md` di root (checklist komponen, review API, SemVer manual tanpa changesets, deprecation = JSDoc `@deprecated` + minimal satu rilis minor, langkah rilis). `pnpm pack --dry-run` menghasilkan hanya `dist/**` + `package.json`. Konsumsi lewat workspace diverifikasi oleh `apps/playground` (import dari `@enterprise/design-system` dan `/styles.css`); konsumsi dari tarball/registry belum dicoba.
+- Phase 7: `packages/design-system/CHANGELOG.md` (Keep a Changelog, 0.1.0), `CONTRIBUTING.md` di root (checklist komponen, review API, SemVer manual tanpa changesets, deprecation = JSDoc `@deprecated` + minimal satu rilis minor, langkah rilis). `pnpm pack --dry-run` menghasilkan hanya `dist/**` + `package.json`. Konsumsi lewat workspace diverifikasi oleh `apps/playground` (import dari `@wnpcode/design-system` dan `/styles.css`); konsumsi dari tarball/registry belum dicoba.
 - Deviasi: package belum pernah dipublikasikan, tidak ada field `license`/`repository` di package.json (template, diisi saat adopsi).
 
 ## Verifikasi tambahan (2026-11-02)

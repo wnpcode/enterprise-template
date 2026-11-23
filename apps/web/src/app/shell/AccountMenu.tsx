@@ -10,7 +10,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 import { version } from "../../../package.json";
 import { useAuth } from "../../features/auth";
 

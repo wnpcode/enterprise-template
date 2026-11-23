@@ -1,4 +1,4 @@
-import { Button, useToast } from "@enterprise/design-system";
+import { Button, useToast } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function ToastDemo() {

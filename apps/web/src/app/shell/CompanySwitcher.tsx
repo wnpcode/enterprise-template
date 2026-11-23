@@ -1,7 +1,7 @@
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
 import { useQueryClient } from "@tanstack/react-query";
-import { Combobox, cn } from "@enterprise/design-system";
+import { Combobox, cn } from "@wnpcode/design-system";
 import { useAuth } from "../../features/auth";
 
 /** Pemilih company untuk superadmin; tidak tampil bila hanya ada satu company. */

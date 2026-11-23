@@ -1,4 +1,4 @@
-import { Button } from "@enterprise/design-system";
+import { Button } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 const variants = ["primary", "secondary", "outline", "ghost", "danger"] as const;

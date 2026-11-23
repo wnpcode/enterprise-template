@@ -14,7 +14,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 
 // shortcut: isi cuplikan tertulis tetap (Indonesia) seperti halaman demo; slug harus sama dengan registry demos
 const PREVIEWS: { slug: string; title: string; preview: ReactNode }[] = [

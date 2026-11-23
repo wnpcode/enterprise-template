@@ -1,4 +1,4 @@
-import { Badge } from "@enterprise/design-system";
+import { Badge } from "@wnpcode/design-system";
 import { useTranslation } from "react-i18next";
 import type { SiswaStatus } from "./api";
 

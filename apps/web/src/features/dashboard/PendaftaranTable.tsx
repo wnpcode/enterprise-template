@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
   useToast,
   type SortingState,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 import { formatTanggal } from "../../shared/format";
 import { linkButton } from "../../shared/linkButton";
 import { siswaKeys, StatusBadge, SiswaFormSheet, updateSiswaStatus, type Siswa } from "../siswa";

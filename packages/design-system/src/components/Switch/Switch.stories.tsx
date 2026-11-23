@@ -13,7 +13,7 @@ const meta: Meta<typeof Switch> = {
 
 **Import**
 \`\`\`tsx
-import { Switch } from "@enterprise/design-system";
+import { Switch } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

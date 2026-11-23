@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Avatar, Badge, Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@enterprise/design-system";
+import { Avatar, Badge, Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@wnpcode/design-system";
 import { Section } from "../../Section";
 import { useShell } from "../../shell/config";
 import { icons } from "../../shell/icons";

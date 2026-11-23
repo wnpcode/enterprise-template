@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pagination } from "@enterprise/design-system";
+import { Pagination } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function PaginationDemo() {

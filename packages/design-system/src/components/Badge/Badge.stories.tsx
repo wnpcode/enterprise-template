@@ -11,7 +11,7 @@ const meta: Meta<typeof Badge> = {
 
 **Import**
 \`\`\`tsx
-import { Badge } from "@enterprise/design-system";
+import { Badge } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

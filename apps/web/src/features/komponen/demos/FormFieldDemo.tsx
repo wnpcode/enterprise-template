@@ -1,4 +1,4 @@
-import { FormField, Input, Textarea } from "@enterprise/design-system";
+import { FormField, Input, Textarea } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function FormFieldDemo() {

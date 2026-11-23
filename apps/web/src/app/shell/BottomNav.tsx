@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link, matchPath, useLocation } from "react-router";
-import { cn, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@enterprise/design-system";
+import { cn, DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@wnpcode/design-system";
 import { useAuth } from "../../features/auth";
 import { MobileMenu } from "./MobileMenu";
 import { visibleNavItems } from "./nav";

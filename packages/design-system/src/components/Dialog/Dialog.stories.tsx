@@ -13,7 +13,7 @@ const meta: Meta<typeof Dialog> = {
 
 **Import**
 \`\`\`tsx
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@enterprise/design-system";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

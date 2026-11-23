@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Input, Label } from "@enterprise/design-system";
+import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Input, Label } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function CardDemo() {

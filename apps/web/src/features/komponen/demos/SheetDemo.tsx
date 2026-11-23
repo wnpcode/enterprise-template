@@ -10,7 +10,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 function Isi() {

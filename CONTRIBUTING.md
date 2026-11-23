@@ -1,4 +1,4 @@
-# Kontribusi ke `@enterprise/design-system`
+# Kontribusi ke `@wnpcode/design-system`
 
 ## Prasyarat
 
@@ -16,7 +16,7 @@ Checklist sebelum PR:
 - [ ] Test perilaku (keyboard, disabled/invalid/loading, asosiasi label) + `expectNoA11yViolations`. Axe adalah cek otomatis, bukan bukti kepatuhan WCAG.
 - [ ] Story untuk semua variant dan state publik, plus `parameters.docs.description.component` (tujuan, import, keyboard, Do/Don't).
 - [ ] Tidak ada logika bisnis atau data fetching di package.
-- [ ] Baris di `CHANGELOG.md` bagian Unreleased dan satu file changeset (`pnpm changeset`, pilih `@enterprise/design-system`, minor untuk fitur, patch untuk perbaikan).
+- [ ] Baris di `CHANGELOG.md` bagian Unreleased dan satu file changeset (`pnpm changeset`, pilih `@wnpcode/design-system`, minor untuk fitur, patch untuk perbaikan).
 - [ ] `pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm build-storybook` lolos dari root.
 
 ## Review API publik
@@ -36,11 +36,16 @@ SemVer: major untuk breaking change, minor untuk fitur kompatibel, patch untuk p
 ```bash
 pnpm changeset                 # saat mengerjakan perubahan: tulis file changeset
 pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm build-storybook
-pnpm release:version           # saat rilis: naikkan versi + tulis CHANGELOG dari semua changeset
 cd packages/design-system && pnpm pack --dry-run   # harus hanya berisi dist/** dan package.json
-git commit -am "release: @enterprise/design-system vX.Y.Z" && git tag design-system-vX.Y.Z
-pnpm publish --access restricted   # atau consume lewat workspace / tarball hasil pnpm pack
 ```
+
+Rilis berjalan otomatis lewat `.github/workflows/release.yml` ke GitHub Packages (`@wnpcode/design-system`, private):
+
+1. Merge perubahan beserta file changeset ke `main`. Workflow membuka (atau memperbarui) PR "release: versi baru @wnpcode/design-system" yang menjalankan `pnpm release:version` (naik versi + CHANGELOG).
+2. Merge PR itu: workflow menjalankan `pnpm release:publish` (build lalu `changeset publish`) dan membuat tag git.
+3. Prasyarat sekali jalan: di repo GitHub aktifkan Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests". Token yang dipakai adalah `GITHUB_TOKEN` bawaan (permission `packages: write` sudah diatur di workflow).
+
+Rilis manual dari mesin lokal (darurat): `pnpm release:version`, commit, lalu `NODE_AUTH_TOKEN=<PAT dengan write:packages> pnpm release:publish`.
 
 `changeset status` butuh branch dasar (`baseBranch` di `.changeset/config.json`, default `main`) yang sudah ada di git.
 

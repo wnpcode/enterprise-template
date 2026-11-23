@@ -1,4 +1,4 @@
-import { Skeleton } from "@enterprise/design-system";
+import { Skeleton } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function SkeletonDemo() {

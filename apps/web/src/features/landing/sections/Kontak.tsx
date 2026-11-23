@@ -1,4 +1,4 @@
-import { Alert, Button, FormField, Input, Textarea } from "@enterprise/design-system";
+import { Alert, Button, FormField, Input, Textarea } from "@wnpcode/design-system";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

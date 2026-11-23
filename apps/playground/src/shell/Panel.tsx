@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Label, Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, Switch } from "@enterprise/design-system";
+import { Label, Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, Switch } from "@wnpcode/design-system";
 import { Segmented, type Option, type PlaygroundSkin } from "../ConfigBar";
 import type { ChromeStyle, HeaderConfig, ShellConfig, SidebarConfig, Tone } from "./config";
 import { matchPreset, PRESETS, type PresetId } from "./presets";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Badge, Button, useToast } from "@enterprise/design-system";
+import { Badge, Button, useToast } from "@wnpcode/design-system";
 import { Demo, Section } from "../../Section";
 
 export function ButtonSection() {

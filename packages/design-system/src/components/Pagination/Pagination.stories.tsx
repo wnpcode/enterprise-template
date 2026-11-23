@@ -13,7 +13,7 @@ const meta: Meta<typeof Pagination> = {
 
 **Import**
 \`\`\`tsx
-import { Pagination, getPaginationRange } from "@enterprise/design-system";
+import { Pagination, getPaginationRange } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

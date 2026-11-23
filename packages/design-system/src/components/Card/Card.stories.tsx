@@ -12,7 +12,7 @@ const meta: Meta<typeof Card> = {
 
 **Import**
 \`\`\`tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@enterprise/design-system";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@wnpcode/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Input, Spinner } from "@enterprise/design-system";
+import { Button, Input, Spinner } from "@wnpcode/design-system";
 import { Demo, Section } from "../Section";
 
 /* Baca nilai terhitung custom property di <html>; dibaca ulang saat theme/brand/skin berganti. */

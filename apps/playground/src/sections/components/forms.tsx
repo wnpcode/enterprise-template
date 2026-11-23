@@ -13,7 +13,7 @@ import {
   SelectValue,
   Switch,
   Textarea,
-} from "@enterprise/design-system";
+} from "@wnpcode/design-system";
 import { Demo, Section } from "../../Section";
 
 const kelas = ["7A", "7B", "7C", "8A", "8B", "9A"].map((k) => ({ value: k.toLowerCase(), label: `Kelas ${k}` }));

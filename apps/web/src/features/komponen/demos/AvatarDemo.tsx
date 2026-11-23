@@ -1,4 +1,4 @@
-import { Avatar } from "@enterprise/design-system";
+import { Avatar } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function AvatarDemo() {

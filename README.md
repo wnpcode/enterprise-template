@@ -20,7 +20,7 @@ pnpm dev              # playground, http://localhost:5173
 ## Struktur
 
 ```text
-packages/design-system/   @enterprise/design-system (ESM + .d.ts + styles.css)
+packages/design-system/   @wnpcode/design-system (ESM + .d.ts + styles.css)
   src/styles/index.css    token --ds-*, tema light/dark, brand, @theme inline
   src/themes/             ThemeProvider, useTheme, themeInitScript
   src/components/<Name>/  <Name>.tsx, .test.tsx, .stories.tsx, index.ts
@@ -31,13 +31,20 @@ apps/playground/          consumer fixture, import hanya dari export publik
 
 ## Memakai package di app lain (Tailwind CSS v4)
 
-1. Install: `pnpm add @enterprise/design-system` (peer: `react@^19`, `react-dom@^19`, `tailwindcss@^4` di app).
+1. Install dari GitHub Packages (private). Di app consumer, buat `.npmrc` (token classic dengan scope `read:packages`, simpan di env `NODE_AUTH_TOKEN`, jangan di-commit):
+
+```ini
+@wnpcode:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```
+
+   lalu `pnpm add @wnpcode/design-system` (peer: `react@^19`, `react-dom@^19`, `tailwindcss@^4` di app). Di GitHub Actions app consumer, `setup-node` dengan `registry-url: https://npm.pkg.github.com` dan `scope: "@wnpcode"`, `NODE_AUTH_TOKEN` dari secret yang punya akses baca ke package.
 2. CSS entry app:
 
 ```css
 @import "tailwindcss";
-@import "@enterprise/design-system/styles.css";
-@source "../node_modules/@enterprise/design-system/dist";
+@import "@wnpcode/design-system/styles.css";
+@source "../node_modules/@wnpcode/design-system/dist";
 ```
 
 `@source` wajib agar utilitas Tailwind yang dipakai komponen ikut di-generate oleh app. Package tidak mengirim CSS Tailwind yang sudah dikompilasi.
@@ -45,7 +52,7 @@ apps/playground/          consumer fixture, import hanya dari export publik
 3. Bungkus app dengan `ThemeProvider`, `TooltipProvider`, dan `ToastProvider`; pasang `themeInitScript` di `<head>` agar tidak ada flash tema:
 
 ```tsx
-import { ThemeProvider, TooltipProvider, ToastProvider, Button } from "@enterprise/design-system";
+import { ThemeProvider, TooltipProvider, ToastProvider, Button } from "@wnpcode/design-system";
 
 <ThemeProvider>
   <TooltipProvider>
@@ -173,4 +180,4 @@ Prettier, ESLint (+ `eslint-config-prettier`), husky + lint-staged (pre-commit l
 
 ## Status
 
-Phase 0–7 dari plan selesai dalam versi minimal, ditambah roadmap boilerplate fase 1–6 (data + form, auth + RBAC, komponen admin, i18n, landing + SEO, tooling). Belum: output CJS, publish ke registry (package belum pernah dipublikasikan). Detail dan deviasi di `docs/design-system/implementation-assessment.md`, laporan akhir di `docs/design-system/final-report.md`.
+Phase 0–7 dari plan selesai dalam versi minimal, ditambah roadmap boilerplate fase 1–6 (data + form, auth + RBAC, komponen admin, i18n, landing + SEO, tooling). Belum: output CJS. Publish ke GitHub Packages sudah disiapkan (`publishConfig`, `.github/workflows/release.yml`) tetapi package belum pernah dirilis. Detail dan deviasi di `docs/design-system/implementation-assessment.md`, laporan akhir di `docs/design-system/final-report.md`.

@@ -1,4 +1,4 @@
-import { Label, Textarea } from "@enterprise/design-system";
+import { Label, Textarea } from "@wnpcode/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function TextareaDemo() {
