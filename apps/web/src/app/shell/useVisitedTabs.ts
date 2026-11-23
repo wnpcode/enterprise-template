@@ -13,7 +13,10 @@ export function readTabs(key: string): VisitedTab[] {
   try {
     const p: unknown = JSON.parse(sessionStorage.getItem(key) ?? "[]");
     if (!Array.isArray(p)) return [];
-    return p.filter((t): t is VisitedTab => typeof t?.path === "string" && typeof t?.url === "string" && t.path.startsWith("/app"));
+    return p.filter(
+      (t): t is VisitedTab =>
+        typeof t?.path === "string" && typeof t?.url === "string" && t.path.startsWith("/app") && t.url.startsWith("/app"),
+    );
   } catch {
     return [];
   }

@@ -167,7 +167,7 @@
       "submit": "Sign in",
       "forgot": "Forgot password?",
       "register": "Create account",
-      "demo": "Demo accounts: admin@sekolah.id / admin123, guru@sekolah.id / guru123.",
+      "demo": "Demo accounts: {{akun}}.",
       "failed": "Sign in failed. Try again.",
       "apiMissing": "API server not found. Dev mode: reload the page normally (not a hard reload) so the sample data is active. Production: check VITE_API_URL."
     },

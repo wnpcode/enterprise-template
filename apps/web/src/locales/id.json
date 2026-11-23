@@ -167,7 +167,7 @@
       "submit": "Masuk",
       "forgot": "Lupa kata sandi?",
       "register": "Buat akun",
-      "demo": "Akun contoh: admin@sekolah.id / admin123, guru@sekolah.id / guru123.",
+      "demo": "Akun contoh: {{akun}}.",
       "failed": "Gagal masuk. Coba lagi.",
       "apiMissing": "Server API tidak ditemukan. Mode dev: muat ulang halaman seperti biasa (bukan hard reload) agar data contoh aktif. Produksi: periksa VITE_API_URL."
     },

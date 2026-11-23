@@ -51,6 +51,8 @@ function writeSession(session: Session | null) {
 let accessToken: string | null = null;
 let currentCompanyId: number | null = null;
 let refreshInflight: Promise<boolean> | null = null;
+// 4xx berarti sesi ditolak, kecuali 408/429 yang hanya sementara (rate limit tidak boleh mengeluarkan pengguna)
+const sessionRejected = (e: unknown): e is ApiError => e instanceof ApiError && e.status < 500 && e.status !== 408 && e.status !== 429;
 // naik setiap logout: hasil request lama (refresh/fetchMe) tidak boleh menghidupkan lagi sesi yang sudah ditutup
 let sessionEpoch = 0;
 
@@ -71,7 +73,7 @@ function refreshAccessToken(): Promise<boolean> {
     })
     // hanya jawaban 4xx yang berarti sesi tidak valid; galat jaringan dilempar agar sesi tidak dihapus
     .catch((e: unknown) => {
-      if (e instanceof ApiError && e.status < 500) return false;
+      if (sessionRejected(e)) return false;
       throw e;
     })
     .finally(() => {
@@ -161,7 +163,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         else logout();
       })
       .catch((e: unknown) => {
-        if (!stale() && e instanceof ApiError && e.status < 500) logout();
+        if (!stale() && sessionRejected(e)) logout();
       });
     return () => {
       active = false;

@@ -57,7 +57,7 @@ export default defineConfig(({ mode }) => {
             { src: "pwa-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
           ],
         },
-        workbox: { navigateFallback: "/index.html" },
+        workbox: { navigateFallback: "/index.html", navigateFallbackDenylist: [/^\/api\//] },
       }),
     ],
     // testTimeout dinaikkan: test yang merender halaman penuh melewati 5 detik saat semua worker jalan paralel

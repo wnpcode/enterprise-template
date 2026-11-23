@@ -14,9 +14,9 @@ function Dashboard() {
   return <p>Dashboard {user?.name}</p>;
 }
 
-function renderAt(path: string) {
+function renderAt(entry: string | { pathname: string; state: unknown }) {
   return render(
-    <MemoryRouter initialEntries={[path]}>
+    <MemoryRouter initialEntries={[entry]}>
       <AuthProvider>
         <Routes>
           <Route element={<RedirectIfAuth />}>
@@ -220,6 +220,23 @@ describe("autentikasi", () => {
     });
     expect(localStorage.getItem(AUTH_STORAGE_KEY)).toBeNull();
     expect(screen.getByText("pengguna: kosong")).toBeInTheDocument();
+  });
+
+  it("setelah login tujuan hanya /app atau /app/…, bukan sekadar berawalan /app", async () => {
+    renderAt({ pathname: "/login", state: { from: "/apple" } });
+    await masuk();
+    expect(await screen.findByText("Dashboard Budi Guru")).toBeInTheDocument();
+  });
+
+  it("refresh yang dibatasi laju (429) tidak mengeluarkan pengguna", async () => {
+    seedSession(2, "Budi Guru", ["guru"]);
+    server.use(http.post(apiUrl("/auth/refresh"), () => new HttpResponse(null, { status: 429 })));
+    renderAt("/app");
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 50));
+    });
+    expect(screen.getByText("Dashboard Budi Guru")).toBeInTheDocument();
+    expect(localStorage.getItem(AUTH_STORAGE_KEY)).not.toBeNull();
   });
 
   it("RequireRole menolak role lain dan meloloskan admin", async () => {

@@ -30,6 +30,18 @@ describe("visited tabs", () => {
     expect(readTabs("k")).toEqual([]);
   });
 
+  it("membuang tab yang url-nya keluar dari /app (tidak boleh jadi tujuan navigasi)", () => {
+    sessionStorage.setItem(
+      "k",
+      JSON.stringify([
+        { path: "/app/siswa", url: "//jahat.example/x" },
+        { path: "/app/siswa", url: "https://jahat.example" },
+        { path: "/app/siswa", url: "/app/siswa?q=budi" },
+      ]),
+    );
+    expect(readTabs("k")).toEqual([{ path: "/app/siswa", url: "/app/siswa?q=budi" }]);
+  });
+
   it("label diambil dari nav dengan sisa segmen sebagai suffix", () => {
     expect(tabLabel("/app")).toEqual({ key: "nav.dashboard", suffix: "" });
     expect(tabLabel("/app/komponen/button")).toEqual({ key: "nav.komponen", suffix: "button" });

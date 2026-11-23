@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router";
 import { z } from "zod";
 import { env } from "../../app/env";
+import { demoAkun } from "../../mocks/demoAkun";
 import { ApiError } from "../../shared/api/client";
 import { useFieldError } from "../../shared/form";
 import { Seo } from "../../shared/Seo";
@@ -18,7 +19,7 @@ type Values = z.infer<typeof schema>;
 
 function destinasiAman(state: unknown): string {
   const from = typeof state === "object" && state !== null ? (state as { from?: unknown }).from : undefined;
-  return typeof from === "string" && from.startsWith("/app") ? from : "/app";
+  return typeof from === "string" && (from === "/app" || from.startsWith("/app/")) ? from : "/app";
 }
 
 export function LoginPage() {
@@ -80,7 +81,9 @@ export function LoginPage() {
           {t("auth.login.register")}
         </Link>
       </div>
-      {env.VITE_API_MOCK === "1" && <p className="mt-6 text-sm text-muted-foreground">{t("auth.login.demo")}</p>}
+      {import.meta.env.DEV && env.VITE_API_MOCK === "1" && (
+        <p className="mt-6 text-sm text-muted-foreground">{t("auth.login.demo", { akun: demoAkun })}</p>
+      )}
     </>
   );
 }
