@@ -10,11 +10,23 @@
     "dashboard": "Dashboard",
     "siswa": "Students",
     "komponen": "Components",
+    "reporting": "Reporting",
+    "reportingSiswa": "Student Report",
+    "reportingPendaftaran": "Registration Report",
+    "konfigurasiCompany": "Company Settings",
+    "konfigurasiShort": "Company",
     "pengaturan": "Settings",
+    "more": "More",
+    "menu": "Menu",
+    "menuTitle": "All menus",
+    "menuDescription": "List of all application menus.",
     "expand": "Expand navigation",
     "collapse": "Collapse navigation"
   },
   "account": {
+    "switchCompany": "Switch company",
+    "searchCompany": "Search company",
+    "companyNotFound": "No company found.",
     "profile": "Profile",
     "settings": "Settings",
     "logout": "Sign out"
@@ -275,6 +287,18 @@
       "added": "Student added",
       "addedText": "{{nama}} is now in the pending list."
     }
+  },
+  "konfigurasi": {
+    "title": "Company Settings",
+    "description": "Settings for the selected company.",
+    "name": "Company name",
+    "id": "Company ID"
+  },
+  "reporting": {
+    "siswa": { "title": "Student Report", "description": "Student data summary per company." },
+    "pendaftaran": { "title": "Registration Report", "description": "Summary of new student registrations and verification." },
+    "emptyTitle": "No reports yet",
+    "emptyText": "Reports for {{company}} will appear here once the backend provides the data."
   },
   "settings": {
     "title": "Settings",

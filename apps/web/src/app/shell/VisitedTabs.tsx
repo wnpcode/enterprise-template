@@ -2,10 +2,10 @@ import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { cn } from "@enterprise/design-system";
-import { navItems } from "./nav";
+import { flattenNav, navItems } from "./nav";
 import { useVisitedTabs } from "./useVisitedTabs";
 
-const labelSources = [...navItems, { to: "/app/profil", label: "account.profile" }];
+const labelSources = [...flattenNav(navItems), { to: "/app/profil", label: "account.profile" }];
 
 /** Kunci terjemahan + sisa segmen (mis. slug komponen), atau null bila path tidak dikenal. */
 export function tabLabel(path: string): { key: string; suffix: string } | null {

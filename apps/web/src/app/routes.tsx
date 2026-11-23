@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { RedirectIfAuth, RequireAuth, RequireRole } from "../features/auth";
 import { LandingPage } from "../features/landing";
 import { NotFoundPage } from "../shared/NotFoundPage";
@@ -17,6 +17,8 @@ const ProfilPage = lazy(() => import("../features/auth").then((m) => ({ default:
 const DashboardPage = lazy(() => import("../features/dashboard").then((m) => ({ default: m.DashboardPage })));
 const SiswaPage = lazy(() => import("../features/siswa").then((m) => ({ default: m.SiswaPage })));
 const PengaturanPage = lazy(() => import("../features/pengaturan").then((m) => ({ default: m.PengaturanPage })));
+const KonfigurasiCompanyPage = lazy(() => import("../features/konfigurasi").then((m) => ({ default: m.KonfigurasiCompanyPage })));
+const ReportingPage = lazy(() => import("../features/reporting").then((m) => ({ default: m.ReportingPage })));
 const KomponenListPage = lazy(() => import("../features/komponen").then((m) => ({ default: m.KomponenListPage })));
 const KomponenDetailPage = lazy(() => import("../features/komponen").then((m) => ({ default: m.KomponenDetailPage })));
 
@@ -44,9 +46,15 @@ export function AppRoutes() {
           <Route element={<RouteErrorBoundary />}>
             <Route index element={<DashboardPage />} />
             <Route path="siswa" element={<SiswaPage />} />
+            <Route path="reporting" element={<Navigate to="siswa" replace />} />
+            <Route path="reporting/siswa" element={<ReportingPage jenis="siswa" />} />
+            <Route path="reporting/pendaftaran" element={<ReportingPage jenis="pendaftaran" />} />
+            <Route element={<RequireRole roles={["admin", "superadmin"]} />}>
+              <Route path="konfigurasi-company" element={<KonfigurasiCompanyPage />} />
+            </Route>
             <Route path="pengaturan" element={<PengaturanPage />} />
             <Route path="profil" element={<ProfilPage />} />
-            <Route element={<RequireRole roles={["admin"]} />}>
+            <Route element={<RequireRole roles={["admin", "superadmin"]} />}>
               <Route path="komponen" element={<KomponenListPage />} />
               <Route path="komponen/:slug" element={<KomponenDetailPage />} />
             </Route>

@@ -10,11 +10,23 @@
     "dashboard": "Dashboard",
     "siswa": "Siswa",
     "komponen": "Komponen",
+    "reporting": "Reporting",
+    "reportingSiswa": "Laporan Siswa",
+    "reportingPendaftaran": "Laporan Pendaftaran",
+    "konfigurasiCompany": "Konfigurasi Company",
+    "konfigurasiShort": "Konfigurasi",
     "pengaturan": "Pengaturan",
+    "more": "Lainnya",
+    "menu": "Menu",
+    "menuTitle": "Semua menu",
+    "menuDescription": "Daftar seluruh menu aplikasi.",
     "expand": "Perluas navigasi",
     "collapse": "Ciutkan navigasi"
   },
   "account": {
+    "switchCompany": "Ganti perusahaan",
+    "searchCompany": "Cari perusahaan",
+    "companyNotFound": "Perusahaan tidak ditemukan.",
     "profile": "Profil",
     "settings": "Pengaturan",
     "logout": "Keluar"
@@ -275,6 +287,18 @@
       "added": "Siswa ditambahkan",
       "addedText": "{{nama}} masuk daftar menunggu verifikasi."
     }
+  },
+  "konfigurasi": {
+    "title": "Konfigurasi Company",
+    "description": "Pengaturan untuk company yang sedang dipilih.",
+    "name": "Nama company",
+    "id": "ID company"
+  },
+  "reporting": {
+    "siswa": { "title": "Laporan Siswa", "description": "Rekap data siswa per company." },
+    "pendaftaran": { "title": "Laporan Pendaftaran", "description": "Rekap pendaftaran dan verifikasi siswa baru." },
+    "emptyTitle": "Belum ada laporan",
+    "emptyText": "Laporan untuk {{company}} akan tampil di sini setelah backend menyediakan datanya."
   },
   "settings": {
     "title": "Pengaturan",

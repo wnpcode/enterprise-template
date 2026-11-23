@@ -5,6 +5,7 @@ import { version } from "../../../package.json";
 import { useAuth } from "../../features/auth";
 import { BrandMark } from "../../shared/BrandMark";
 import { AccountMenu } from "./AccountMenu";
+import { CompanySwitcher } from "./CompanySwitcher";
 import { chromeClass, toneAttr, type ChromeStyle, type Tone } from "./chrome";
 import { visibleNavItems } from "./nav";
 import { NavItemLink } from "./NavItemLink";
@@ -68,7 +69,13 @@ export function Sidebar({
             <BrandMark collapsed={collapsed} />
           </div>
         )}
-        <nav className={cn("gap-1 flex flex-col", collapsed ? "p-1" : "p-2")}>
+        {/* menu yang banyak di-scroll di sini; brand dan footer tetap terlihat */}
+        <nav
+          className={cn(
+            "gap-1 min-h-0 flex flex-1 flex-col overflow-y-auto overscroll-contain",
+            collapsed ? "p-1 [scrollbar-width:none]" : "p-2 [scrollbar-width:thin]",
+          )}
+        >
           {visibleNavItems(user).map((item) => (
             <NavItemLink key={item.to} item={item} collapsed={collapsed} tooltipSide={tooltipSide} />
           ))}
@@ -86,6 +93,8 @@ export function Sidebar({
                 <PanelLeft aria-hidden="true" className="size-5" />
               </button>
             )}
+            {/* tidak muat di sidebar yang diciutkan (w-14); buka sidebar untuk mengganti company */}
+            {!collapsed && <CompanySwitcher />}
             <AccountMenu compact={collapsed} side={tooltipSide} />
           </div>
         )}

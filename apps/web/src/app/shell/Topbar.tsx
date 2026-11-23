@@ -5,9 +5,13 @@ import { version } from "../../../package.json";
 import { useAuth } from "../../features/auth";
 import { BrandMark } from "../../shared/BrandMark";
 import { AccountMenu } from "./AccountMenu";
+import { CompanySwitcher } from "./CompanySwitcher";
 import { chromeClass, toneAttr, type ChromeStyle, type Tone } from "./chrome";
 import { visibleNavItems } from "./nav";
 import { NavItemLink } from "./NavItemLink";
+import { NavMore } from "./NavMore";
+
+const INLINE_MAX = 6;
 
 type TopbarProps = {
   collapsed: boolean;
@@ -36,6 +40,12 @@ export function Topbar({
   const { t } = useTranslation();
   const { user } = useAuth();
   const floating = type === "floating";
+  const all = visibleNavItems(user);
+  // lebih dari INLINE_MAX item tidak muat satu baris: sisanya ke popup "Lainnya"
+  const overflow = all.length > INLINE_MAX;
+  const items = overflow ? all.slice(0, INLINE_MAX - 1) : all;
+  const rest = overflow ? all.slice(INLINE_MAX - 1) : [];
+  const slots = items.length + (overflow ? 1 : 0);
 
   return (
     <header
@@ -63,18 +73,27 @@ export function Topbar({
       )}
       <BrandMark className={hideTitleOnDesktop ? "md:hidden" : undefined} />
       {inlineNav && (
-        // di bawah lg menu turun ke baris kedua di dalam header agar label tidak terpotong
+        // menu turun ke baris kedua di dalam header agar label tidak terpotong: di bawah lg untuk <=4 item,
+        // di bawah 2xl untuk lebih banyak item (enam item + pemilih company + akun tidak muat satu baris di 1280)
         <nav
           aria-label={t("nav.main")}
-          className="gap-1 max-lg:order-last max-lg:basis-full max-lg:border-t max-lg:border-inherit max-lg:py-1 md:flex hidden"
+          className={cn(
+            "gap-1 md:flex hidden",
+            slots > 4
+              ? "max-2xl:order-last max-2xl:basis-full max-2xl:border-t max-2xl:border-inherit max-2xl:py-1"
+              : "max-lg:order-last max-lg:basis-full max-lg:border-t max-lg:border-inherit max-lg:py-1",
+          )}
         >
-          {visibleNavItems(user).map((item) => (
-            <NavItemLink key={item.to} item={item} collapsed={collapsed} tooltipSide="bottom" />
+          {items.map((item) => (
+            <NavItemLink key={item.to} item={item} collapsed={collapsed} tooltipSide="bottom" popover short />
           ))}
+          {overflow && <NavMore items={rest} />}
         </nav>
       )}
-      <div className="gap-2 ml-auto flex items-center">
-        {inlineNav && <span className="text-xs md:inline hidden text-muted-foreground">v{version}</span>}
+      {/* di bawah md turun ke baris kedua header agar tidak ada overflow horizontal */}
+      <CompanySwitcher className="max-md:order-last max-md:basis-full md:ml-auto md:w-48 xl:w-60" />
+      <div className="gap-2 md:ml-0 ml-auto flex items-center">
+        {inlineNav && <span className="text-xs xl:inline hidden text-muted-foreground">v{version}</span>}
         <AccountMenu />
       </div>
     </header>

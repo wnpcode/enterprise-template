@@ -1,0 +1,1 @@
+export { KonfigurasiCompanyPage } from "./KonfigurasiCompanyPage";

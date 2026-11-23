@@ -110,7 +110,7 @@ Menambah fitur: buat `src/features/<nama>/` + `index.ts`, tambah route di `route
 
 ### Yang harus diganti saat dipakai sungguhan
 
-- Auth: kontrak REST + Bearer JWT ada di `features/auth/api.ts` (`POST /auth/login|refresh|register|forgot|reset|password`, `GET|PATCH /auth/me`); sesuaikan path dan bentuk respons dengan backend, selebihnya (`AuthProvider`, guard, halaman) tidak perlu berubah. Tanpa backend, MSW (`src/mocks/auth.ts`) menyediakan akun `admin@sekolah.id / admin123` (role `admin`) dan `guru@sekolah.id / guru123` (role `guru`); tautan reset dicetak ke konsol saat "Lupa kata sandi".
+- Auth: kontrak REST + Bearer JWT ada di `features/auth/api.ts` (`POST /auth/login|refresh|register|forgot|reset|password`, `GET|PATCH /auth/me`, `GET /auth/companies`); sesuaikan path dan bentuk respons dengan backend, selebihnya (`AuthProvider`, guard, halaman) tidak perlu berubah. Tanpa backend, MSW (`src/mocks/auth.ts`) menyediakan akun `admin@sekolah.id / admin123` (role `admin`) `guru@sekolah.id / guru123` (role `guru`), dan `superadmin@sekolah.id / super123` (role `superadmin`, 25 company); tautan reset dicetak ke konsol saat "Lupa kata sandi".
 - Data: `features/siswa/api.ts` memanggil `GET /siswa?q=&page=&size=&sort=&order=`, `POST /siswa`, `PATCH /siswa/:id` (ubah nama/kelas atau status), dan `DELETE /siswa/:id` lewat `shared/api/client.ts` dan dipakai halaman dengan TanStack Query (`useQuery`, key di `siswaKeys`). Tanpa backend, MSW (`src/mocks/handlers.ts`) menjawab dari `features/siswa/contoh.ts`; sesuaikan handler dengan kontrak backend atau matikan lewat `VITE_API_MOCK=0`.
 - Ikon: `public/favicon.svg`, `pwa-192.png`, `pwa-512.png`, `pwa-maskable-512.png`, `apple-touch-icon.png` dibuat dari `brand/` oleh `brand/generate.sh` dan memakai logo template. Ganti SVG di `brand/` dengan logo produk lalu jalankan ulang skripnya. Panduan logo: `brand/README.md`.
 - Nama produk "Portal Sekolah" hanya didefinisikan di `apps/web/.env` (`VITE_APP_NAME`); `index.html` (`%VITE_APP_NAME%`), manifest di `vite.config.ts`, `BrandMark`, dan teks locale (`{{appName}}` lewat `interpolation.defaultVariables` di `src/app/i18n.ts`) membacanya dari sana. `.env.local` mengalahkan `.env`.
@@ -127,6 +127,13 @@ Menambah fitur: buat `src/features/<nama>/` + `index.ts`, tambah route di `route
 - MSW: `src/mocks/handlers.ts` (satu handler per endpoint), `browser.ts` dinyalakan di `main.tsx` hanya saat dev dan `VITE_API_MOCK=1`, `server.ts` dipasang di `src/test/setup.ts` untuk vitest (`server.use(...)` per test untuk skenario error). Worker: `public/mockServiceWorker.js` (regenerasi dengan `npx msw init public`).
 - Form: react-hook-form + zod (`zodResolver`) dengan komponen `FormField` dari design system; contoh di `features/auth/LoginPage.tsx`. Contoh CRUD lengkap: `features/siswa` (DataTable dengan pencarian, sorting, dan halaman di URL; `SiswaFormSheet` untuk tambah dan ubah; `HapusSiswaDialog` dengan konfirmasi; semua mutasi memakai `useMutation` dan `invalidateQueries`; aksi baris lewat `DropdownMenu`, sheet dan dialog dikendalikan dari halaman karena item menu menutup menu saat dipilih). Pesan bawaan zod berbahasa Indonesia lewat `src/app/zod.ts`.
 - Error: `shared/RouteErrorBoundary.tsx` dipasang sebagai route tanpa path di dalam tiap layout (`routes.tsx`); halaman yang melempar error diganti `ErrorPage` tanpa merobohkan shell dan pulih saat pindah halaman.
+
+### Multi-company
+
+- Setelah login berhasil, `AuthProvider` memanggil `GET /auth/companies` **sekali** (`{ items: Company[], defaultId }`) dan menyimpannya di sesi (`localStorage["web-auth"]`: `companies`, `companyId`); reload tidak memanggilnya lagi dan logout menghapusnya. Bila pemanggilan gagal, login dianggap gagal. Sesi lama tanpa `companies` ditolak sekali dan pengguna login ulang.
+- Superadmin menerima semua company, role lain hanya company miliknya (satu item, pilihan ganti disembunyikan). Company terpilih awal = `defaultId`; ganti lewat `Combobox` berpencarian di header (`app/shell/CompanySwitcher.tsx`; di footer sidebar saat header disembunyikan, dan tidak tampil saat sidebar diciutkan), yang juga memuat ulang semua query. Di kode: `useAuth()` → `companies`, `company`, `selectCompany(id)`.
+- Id company **tidak dikirim otomatis**; tiap endpoint memasangnya sendiri lewat `selectedCompanyId()` (`shared/api/client.ts`, `null` bila belum login, jangan kirim): query `qs.set("company_id", String(id))` (contoh `fetchSiswa`), body `{ ...input, company_id: id }` (contoh `createSiswa`), atau path `` `/companies/${id}/...` ``.
+- Mock: `mocks/handlers.ts` memfilter siswa per `company_id`. Tanpa parameter itu semua data dikembalikan; backend nyata harus mewajibkannya dan memeriksa bahwa pengguna berhak atas company tersebut.
 
 ### Auth dan role
 
@@ -149,7 +156,12 @@ Menambah fitur: buat `src/features/<nama>/` + `index.ts`, tambah route di `route
 - Shell dashboard berupa panel mengambang: sidebar dan header sticky, versi (dari `package.json`) tampil di bawah sidebar, di header saat horisontal, di dropdown akun, dan di Pengaturan, bottom nav mobile berbentuk pill. Panel memakai resep Card (`rounded-lg border bg-surface shadow-sm`) sehingga ikut skin.
 - Orientasi (vertikal/horisontal) dan ciut (ikon saja) diatur di halaman Pengaturan atau tombol di topbar, disimpan di `localStorage["web-layout"]`. Pada orientasi horisontal menu tampil di dalam header, di sebelah nama produk.
 - Gaya permukaan (flat/neo/glass/clay/fluid/aurora/swiss) dipilih di Pengaturan (`src/app/skin.tsx`, `localStorage["web-skin"]`), default neo.
-- Di bawah `md` (768px) sidebar/topnav disembunyikan dan tiga tujuan tampil di bottom nav berlabel.
+- Di bawah `md` (768px) sidebar/topnav disembunyikan dan tujuan tampil di bottom nav berlabel (grup membuka popup ke atas berisi anak-anaknya; lihat bagian menu bersarang untuk batas jumlah item).
+- Menu bersarang: `NavNode.children` rekursif, jadi grup boleh lebih dari satu tingkat (anjuran UX maksimal 3). `to` sebuah grup adalah awalan path semua turunannya (dipakai status aktif dan label tab), dan `roles` berlaku di tingkat mana pun (`pruneNav` membuang node yang tersaring dan grup yang jadi kosong). Ikon hanya di tingkat atas.
+  - Sidebar terbuka: pohon lipat (`NavTree`), terbuka sejak awal di jalur halaman aktif.
+  - Sidebar ciut dan header horizontal: popup dengan submenu bersarang (`NavMenuItems` di atas `DropdownMenuSub*` design system).
+  - Banyak menu: nav sidebar di-scroll sendiri (brand dan footer tetap). Header horizontal menampilkan paling banyak 6 item inline; bila lebih, 5 pertama inline dan sisanya di popup "Lainnya" (`INLINE_MAX` di `Topbar.tsx`). Nav header turun ke baris kedua di bawah `lg` (≤4 slot) atau `2xl` (lebih banyak). Bottom nav ponsel menampilkan semua item bila ≤5 (`BAR_MAX` di `BottomNav.tsx`); bila lebih, 4 item pertama dan tombol "Menu" yang membuka Sheet berisi seluruh pohon. Karena itu urutan `navItems` menentukan apa yang tampil lebih dulu di header dan bottom nav.
+- Halaman `features/konfigurasi` (hanya admin dan superadmin) dan `features/reporting` masih kerangka tanpa data backend.
 
 ### Hasil cek (2026-11-02)
 

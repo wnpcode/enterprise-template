@@ -34,6 +34,7 @@ describe("visited tabs", () => {
     expect(tabLabel("/app")).toEqual({ key: "nav.dashboard", suffix: "" });
     expect(tabLabel("/app/komponen/button")).toEqual({ key: "nav.komponen", suffix: "button" });
     expect(tabLabel("/app/profil")).toEqual({ key: "account.profile", suffix: "" });
+    expect(tabLabel("/app/reporting/siswa")).toEqual({ key: "nav.reportingSiswa", suffix: "" });
     expect(tabLabel("/app/tidak-ada")).toBeNull();
   });
 });
