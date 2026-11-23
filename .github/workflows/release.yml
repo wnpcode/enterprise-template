@@ -1,7 +1,9 @@
 name: Release
 
 # Changesets: push ke main membuka (atau memperbarui) PR "Version Packages" bila ada .changeset/*.md;
-# menggabungkan PR itu mempublikasikan @wnp_code/design-system ke npmjs.com (publik, dengan provenance).
+# menggabungkan PR itu mempublikasikan @wnp_code/design-system ke npmjs.com (publik).
+# Provenance npm sengaja mati: hanya didukung untuk repo publik. Bila repo dipublikkan, tambah "provenance": true di publishConfig
+# paket dan id-token: write di permissions.
 # Perlu secret repo NPM_TOKEN (npm granular token, publish untuk @wnp_code/*).
 # Perlu Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
 on:
@@ -15,8 +17,6 @@ concurrency:
 permissions:
   contents: write
   pull-requests: write
-  # provenance npm: tanda tangan OIDC yang mengikat paket ke workflow dan commit ini
-  id-token: write
 
 jobs:
   release:

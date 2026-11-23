@@ -39,7 +39,7 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm build-storybook
 cd packages/design-system && pnpm pack --dry-run   # harus hanya berisi dist/** dan package.json
 ```
 
-Rilis berjalan otomatis lewat `.github/workflows/release.yml` ke npmjs.com (`@wnp_code/design-system`, publik, dengan provenance):
+Rilis berjalan otomatis lewat `.github/workflows/release.yml` ke npmjs.com (`@wnp_code/design-system`, publik; tanpa provenance selama repo private):
 
 1. Merge perubahan beserta file changeset ke `main`. Workflow membuka (atau memperbarui) PR "release: versi baru @wnp_code/design-system" yang menjalankan `pnpm release:version` (naik versi + CHANGELOG).
 2. Merge PR itu: workflow menjalankan `pnpm release:publish` (build lalu `changeset publish`) dan membuat tag git.
