@@ -5,6 +5,8 @@
 pnpm workspace berisi design system reusable (`packages/design-system`) dan app fixture (`apps/playground`).
 Spesifikasi: `enterprise-design-system-agent-plan.md`. Token: `DESIGN-SYSTEM.md`. Assessment: `docs/design-system/implementation-assessment.md`. Tutorial langkah demi langkah untuk developer baru: `docs/TUTORIAL.md`.
 
+Demo online (GitHub Pages, otomatis dari `main`): [Storybook](https://wnpcode.github.io/enterprise-template/) dan [Playground](https://wnpcode.github.io/enterprise-template/playground/). Paket: [`@wnp_code/design-system` di npm](https://www.npmjs.com/package/@wnp_code/design-system).
+
 Prasyarat: Node 20+, pnpm 10.
 
 ```bash
