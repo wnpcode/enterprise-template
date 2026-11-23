@@ -5,6 +5,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), versi
 ## [Unreleased]
 
 ### Added
+- `DropdownMenuSub`, `DropdownMenuSubTrigger`, `DropdownMenuSubContent`: submenu bertingkat di `DropdownMenu` (Radix), dengan story `Submenu`.
 - `LocaleProvider` + `useLocale` + `defaultLocale`: teks bawaan komponen (tutup, memuat, tidak ada data/hasil, placeholder Combobox, label Pagination, label DataTable) bisa diganti sekali di root untuk i18n; default tetap bahasa Indonesia, prop per komponen tetap mengalahkan.
 - `Alert` (info/success/warning/danger, `live` untuk `role="alert"`), `EmptyState`, `Avatar` (Radix, fallback inisial, `initials()`), `Breadcrumb` (komposisi, `BreadcrumbLink asChild`), `Sheet` (Radix Dialog, `side` right/left/bottom), `DataTable` (TanStack Table v8: sorting klien/server, seleksi baris, loading, kosong, Pagination; re-export `createColumnHelper` dan tipe). `PageHeader` dapat prop `breadcrumb`. Ikon internal `ChevronRightIcon`.
 - `FormField`: pembungkus Label + kontrol (render prop) + hint + error dengan `aria-describedby`/`aria-invalid` terhubung.
@@ -13,6 +14,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), versi
 - Token `surface-elevated` (permukaan melayang) dan `overlay` (backdrop Dialog); nilai default sama dengan sebelumnya.
 
 ### Changed
+- `DropdownMenuContent` dan `DropdownMenuSubContent` dibatasi setinggi ruang yang tersedia di layar (`overflow-y-auto`), agar menu panjang bisa di-scroll.
 - Popover, DropdownMenu, SelectContent, daftar Combobox, dan Toast default memakai `bg-surface-elevated`; backdrop Dialog memakai `bg-overlay`. Tampilan default dan skin neo tidak berubah.
 - Pagination: daftar tombol membungkus baris (`flex-wrap`) dan target sentuh minimal 44px, agar tidak overflow di layar sempit.
 - Teks default berbahasa Indonesia: tombol tutup Dialog/Toast "Tutup", `Spinner label` "Memuat", `Pagination label` "Navigasi halaman".

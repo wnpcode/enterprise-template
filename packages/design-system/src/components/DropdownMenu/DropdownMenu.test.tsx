@@ -10,6 +10,9 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "./DropdownMenu";
 
@@ -101,5 +104,38 @@ describe("DropdownMenu", () => {
     render(<Example />);
     await openMenu();
     await expectNoA11yViolations(await screen.findByRole("menu"));
+  });
+
+  it("opens a submenu with ArrowRight, closes it with ArrowLeft, and selects an item inside it", async () => {
+    const onSelect = vi.fn();
+    render(
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button>Aksi</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>Laporan</DropdownMenuSubTrigger>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem onSelect={onSelect}>Keuangan</DropdownMenuItem>
+            </DropdownMenuSubContent>
+          </DropdownMenuSub>
+        </DropdownMenuContent>
+      </DropdownMenu>,
+    );
+    await openMenu();
+    const trigger = await screen.findByRole("menuitem", { name: "Laporan" });
+    expect(trigger).toHaveAttribute("aria-haspopup", "menu");
+    expect(screen.queryByRole("menuitem", { name: "Keuangan" })).not.toBeInTheDocument();
+    trigger.focus();
+    await userEvent.keyboard("{ArrowRight}");
+    expect(await screen.findByRole("menuitem", { name: "Keuangan" })).toBeInTheDocument();
+    await userEvent.keyboard("{ArrowLeft}");
+    expect(screen.queryByRole("menuitem", { name: "Keuangan" })).not.toBeInTheDocument();
+    expect(screen.getByRole("menuitem", { name: "Laporan" })).toBeInTheDocument();
+
+    await userEvent.keyboard("{ArrowRight}");
+    await userEvent.click(await screen.findByRole("menuitem", { name: "Keuangan" }));
+    expect(onSelect).toHaveBeenCalledTimes(1);
   });
 });

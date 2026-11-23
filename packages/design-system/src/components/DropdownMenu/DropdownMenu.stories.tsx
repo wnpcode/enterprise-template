@@ -7,6 +7,9 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "./DropdownMenu";
 
@@ -17,15 +20,16 @@ const meta: Meta<typeof DropdownMenu> = {
   parameters: {
     docs: {
       description: {
-        component: `Menu aksi yang terbuka dari sebuah tombol. Sub-komponen: \`DropdownMenu\`, \`DropdownMenuTrigger\`, \`DropdownMenuContent\`, \`DropdownMenuItem\` (prop \`destructive\`), \`DropdownMenuCheckboxItem\`, \`DropdownMenuLabel\`, \`DropdownMenuSeparator\`.
+        component: `Menu aksi yang terbuka dari sebuah tombol. Sub-komponen: \`DropdownMenu\`, \`DropdownMenuTrigger\`, \`DropdownMenuContent\`, \`DropdownMenuItem\` (prop \`destructive\`), \`DropdownMenuCheckboxItem\`, \`DropdownMenuLabel\`, \`DropdownMenuSeparator\`, dan submenu bertingkat \`DropdownMenuSub\` + \`DropdownMenuSubTrigger\` + \`DropdownMenuSubContent\`.
 
 **Import**
 \`\`\`tsx
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuLabel, DropdownMenuSeparator } from "@enterprise/design-system";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent } from "@enterprise/design-system";
 \`\`\`
 
 **Keyboard dan fokus**
 - Enter, Space, atau ArrowDown pada trigger membuka menu dan fokus masuk ke item; Escape menutup dan fokus kembali ke trigger.
+- Submenu: ArrowRight pada \`DropdownMenuSubTrigger\` membuka, ArrowLeft menutup submenu dan fokus kembali ke pemicunya; Escape menutup seluruh menu.
 - Di dalam menu: ArrowUp/ArrowDown berpindah item, Home/End ke awal/akhir, ketik huruf untuk typeahead, Enter/Space mengaktifkan item.
 - Menu memakai peran \`menu\`, item \`menuitem\`, dan \`menuitemcheckbox\` untuk \`DropdownMenuCheckboxItem\`; item \`disabled\` dilewati.
 - Konten di-portal ke body; \`data-brand\` di subtree tidak menjangkau portal, pasang brand lewat \`ThemeProvider brand\`.
@@ -57,6 +61,26 @@ export const RowActions: Story = {
         <DropdownMenuCheckboxItem>Tampilkan arsip</DropdownMenuCheckboxItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem destructive>Hapus</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  ),
+};
+
+export const Submenu: Story = {
+  render: () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="secondary">Reporting</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start">
+        <DropdownMenuItem>Laporan Siswa</DropdownMenuItem>
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>Keuangan</DropdownMenuSubTrigger>
+          <DropdownMenuSubContent>
+            <DropdownMenuItem>Tagihan</DropdownMenuItem>
+            <DropdownMenuItem>Pembayaran</DropdownMenuItem>
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
       </DropdownMenuContent>
     </DropdownMenu>
   ),

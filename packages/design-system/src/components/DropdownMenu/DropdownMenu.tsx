@@ -1,28 +1,46 @@
 import type React from "react";
 import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui";
 import { cn } from "../../utils/cn";
-import { CheckIcon } from "../icons";
+import { CheckIcon, ChevronRightIcon } from "../icons";
 
 export const DropdownMenu = DropdownMenuPrimitive.Root;
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+export const DropdownMenuSub = DropdownMenuPrimitive.Sub;
+
+const contentClass =
+  "p-1 z-50 min-w-[8rem] max-h-(--radix-dropdown-menu-content-available-height) overflow-y-auto rounded-md border border-border bg-surface-elevated text-surface-foreground shadow-md data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in motion-reduce:animate-none";
 
 export function DropdownMenuContent({ className, sideOffset = 4, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {
   return (
     <DropdownMenuPrimitive.Portal>
-      <DropdownMenuPrimitive.Content
-        sideOffset={sideOffset}
-        className={cn(
-          "p-1 z-50 min-w-[8rem] rounded-md border border-border bg-surface-elevated text-surface-foreground shadow-md data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in motion-reduce:animate-none",
-          className,
-        )}
-        {...props}
-      />
+      <DropdownMenuPrimitive.Content sideOffset={sideOffset} className={cn(contentClass, className)} {...props} />
+    </DropdownMenuPrimitive.Portal>
+  );
+}
+
+export function DropdownMenuSubContent({
+  className,
+  sideOffset = 4,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
+  return (
+    <DropdownMenuPrimitive.Portal>
+      <DropdownMenuPrimitive.SubContent sideOffset={sideOffset} className={cn(contentClass, className)} {...props} />
     </DropdownMenuPrimitive.Portal>
   );
 }
 
 const itemClass =
   "relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-muted data-[highlighted]:text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50";
+
+export function DropdownMenuSubTrigger({ className, children, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger>) {
+  return (
+    <DropdownMenuPrimitive.SubTrigger className={cn(itemClass, "data-[state=open]:bg-muted", className)} {...props}>
+      {children}
+      <ChevronRightIcon className="ml-auto" />
+    </DropdownMenuPrimitive.SubTrigger>
+  );
+}
 
 export type DropdownMenuItemProps = React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
   destructive?: boolean;
