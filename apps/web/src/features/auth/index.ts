@@ -5,4 +5,4 @@ export { RegisterPage } from "./RegisterPage";
 export { ForgotPasswordPage } from "./ForgotPasswordPage";
 export { ResetPasswordPage } from "./ResetPasswordPage";
 export { ProfilPage } from "./ProfilPage";
-export type { User, RegisterInput } from "./api";
+export type { Company, User, RegisterInput } from "./api";

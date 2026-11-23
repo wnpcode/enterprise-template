@@ -1,11 +1,11 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { ApiError, setAuthHooks } from "../../shared/api/client";
 import * as authApi from "./api";
-import type { LoginResponse, RegisterInput, User } from "./api";
+import type { AuthTokens, Company, RegisterInput, User } from "./api";
 
 export const AUTH_STORAGE_KEY = "web-auth";
 
-type Session = { refreshToken: string; user: User };
+type Session = { refreshToken: string; user: User; companies: Company[]; companyId: number | null };
 
 type AuthContextValue = {
   user: User | null;
@@ -14,6 +14,11 @@ type AuthContextValue = {
   logout: () => void;
   /** Setelah profil diubah di server. */
   setUser: (user: User) => void;
+  /** Daftar company hasil login (superadmin: semua; role lain: satu milik user). */
+  companies: Company[];
+  /** Company terpilih; null bila belum login. */
+  company: Company | null;
+  selectCompany: (id: number) => void;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -25,7 +30,11 @@ function readSession(): Session | null {
     const s = JSON.parse(raw) as Partial<Session>;
     const u = s.user as Partial<User> | undefined;
     const valid =
-      typeof s.refreshToken === "string" && typeof u?.email === "string" && typeof u.name === "string" && Array.isArray(u.roles);
+      typeof s.refreshToken === "string" &&
+      typeof u?.email === "string" &&
+      typeof u.name === "string" &&
+      Array.isArray(u.roles) &&
+      Array.isArray(s.companies);
     return valid ? (s as Session) : null;
   } catch {
     return null;
@@ -40,6 +49,7 @@ function writeSession(session: Session | null) {
 
 // access token hanya di memori; hilang saat reload dan diperbarui lewat refresh token
 let accessToken: string | null = null;
+let currentCompanyId: number | null = null;
 let refreshInflight: Promise<boolean> | null = null;
 
 function refreshAccessToken(): Promise<boolean> {
@@ -66,15 +76,28 @@ function refreshAccessToken(): Promise<boolean> {
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUserState] = useState<User | null>(() => readSession()?.user ?? null);
+  const [companies, setCompanies] = useState<Company[]>(() => readSession()?.companies ?? []);
+  const [companyId, setCompanyId] = useState<number | null>(() => readSession()?.companyId ?? null);
 
   const logout = useCallback(() => {
     accessToken = null;
+    currentCompanyId = null;
     writeSession(null);
     setUserState(null);
+    setCompanies([]);
+    setCompanyId(null);
   }, []);
 
   // didaftarkan sebelum anak pertama merender agar request pertama sudah membawa hook
-  useState(() => setAuthHooks({ getToken: () => accessToken, refresh: refreshAccessToken, onUnauthorized: logout }));
+  useState(() => {
+    currentCompanyId = readSession()?.companyId ?? null;
+    setAuthHooks({
+      getToken: () => accessToken,
+      refresh: refreshAccessToken,
+      onUnauthorized: logout,
+      getCompanyId: () => currentCompanyId,
+    });
+  });
 
   const setUser = useCallback((next: User) => {
     const s = readSession();
@@ -82,10 +105,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUserState(next);
   }, []);
 
-  const startSession = useCallback((res: LoginResponse) => {
+  // daftar company diambil sekali di sini dan disimpan di sesi; reload tidak mengambilnya lagi
+  const startSession = useCallback(async (res: AuthTokens & { user: User }) => {
     accessToken = res.accessToken;
-    writeSession({ refreshToken: res.refreshToken, user: res.user });
-    setUserState(res.user);
+    try {
+      const list = await authApi.fetchCompanies();
+      const selected = list.items.find((c) => c.id === list.defaultId) ?? list.items[0];
+      currentCompanyId = selected?.id ?? null;
+      writeSession({ refreshToken: res.refreshToken, user: res.user, companies: list.items, companyId: currentCompanyId });
+      setCompanies(list.items);
+      setCompanyId(currentCompanyId);
+      setUserState(res.user);
+    } catch (e) {
+      // login dianggap gagal bila company tidak bisa dimuat; jangan tinggalkan token tanpa sesi
+      accessToken = null;
+      throw e;
+    }
+  }, []);
+
+  const selectCompany = useCallback((id: number) => {
+    const s = readSession();
+    if (!s || !s.companies.some((c) => c.id === id)) return;
+    currentCompanyId = id;
+    writeSession({ ...s, companyId: id });
+    setCompanyId(id);
   }, []);
 
   const login = useCallback(
@@ -114,7 +157,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
   }, [setUser, logout]);
 
-  const value = useMemo(() => ({ user, login, register, logout, setUser }), [user, login, register, logout, setUser]);
+  const company = useMemo(() => companies.find((c) => c.id === companyId) ?? null, [companies, companyId]);
+  const value = useMemo(
+    () => ({ user, login, register, logout, setUser, companies, company, selectCompany }),
+    [user, login, register, logout, setUser, companies, company, selectCompany],
+  );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 

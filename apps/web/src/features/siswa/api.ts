@@ -1,4 +1,4 @@
-import { api } from "../../shared/api/client";
+import { api, selectedCompanyId } from "../../shared/api/client";
 
 export type SiswaStatus = "Aktif" | "Menunggu" | "Ditolak";
 export type Siswa = { id: number; nama: string; kelas: string; status: SiswaStatus; terdaftar: string };
@@ -13,6 +13,8 @@ export const siswaKeys = {
 
 export function fetchSiswa(params: SiswaListParams = {}): Promise<SiswaList> {
   const qs = new URLSearchParams();
+  const companyId = selectedCompanyId();
+  if (companyId !== null) qs.set("company_id", String(companyId));
   if (params.q) qs.set("q", params.q);
   if (params.page) qs.set("page", String(params.page));
   if (params.size) qs.set("size", String(params.size));
@@ -22,7 +24,10 @@ export function fetchSiswa(params: SiswaListParams = {}): Promise<SiswaList> {
   return api<SiswaList>(`/siswa${s ? `?${s}` : ""}`);
 }
 
-export const createSiswa = (json: SiswaInput) => api<Siswa>("/siswa", { method: "POST", json });
+export const createSiswa = (input: SiswaInput) => {
+  const companyId = selectedCompanyId();
+  return api<Siswa>("/siswa", { method: "POST", json: companyId === null ? input : { ...input, company_id: companyId } });
+};
 
 export const updateSiswa = (id: number, json: SiswaInput) => api<Siswa>(`/siswa/${id}`, { method: "PATCH", json });
 

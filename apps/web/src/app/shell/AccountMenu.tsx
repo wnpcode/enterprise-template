@@ -18,7 +18,7 @@ type Props = { compact?: boolean; side?: "top" | "right" | "bottom" | "left" };
 
 export function AccountMenu({ compact = false, side }: Props) {
   const { t } = useTranslation();
-  const { user, logout } = useAuth();
+  const { user, logout, company } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -38,6 +38,7 @@ export function AccountMenu({ compact = false, side }: Props) {
         <DropdownMenuLabel>
           {user?.name}
           <span className="font-normal block">{user?.email}</span>
+          {company && <span className="font-normal block">{company.name}</span>}
           <span className="font-normal block">{t("app.version", { version })}</span>
         </DropdownMenuLabel>
         <DropdownMenuItem onSelect={() => navigate("/app/profil")}>{t("account.profile")}</DropdownMenuItem>

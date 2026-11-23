@@ -16,14 +16,23 @@ type AuthHooks = {
   /** Coba perbarui token; true bila berhasil dan request boleh diulang. */
   refresh: () => Promise<boolean>;
   onUnauthorized: () => void;
+  /** Company terpilih (superadmin bisa mengganti); null bila belum login. */
+  getCompanyId: () => number | null;
 };
 
-let auth: AuthHooks = { getToken: () => null, refresh: async () => false, onUnauthorized: () => {} };
+let auth: AuthHooks = { getToken: () => null, refresh: async () => false, onUnauthorized: () => {}, getCompanyId: () => null };
 
 // didaftarkan AuthProvider; client tidak mengimpor fitur auth agar tidak ada import melingkar
 export function setAuthHooks(next: Partial<AuthHooks>) {
   auth = { ...auth, ...next };
 }
+
+/**
+ * Id company terpilih untuk dipasang per endpoint, bukan otomatis di semua request:
+ * query `qs.set("company_id", String(id))`, body `{ ...input, company_id: id }`, atau path `/companies/${id}/...`.
+ * null berarti tidak ada company (belum login), jadi param jangan dikirim.
+ */
+export const selectedCompanyId = () => auth.getCompanyId();
 
 export type ApiInit = Omit<RequestInit, "body" | "headers"> & { json?: unknown; headers?: Record<string, string> };
 

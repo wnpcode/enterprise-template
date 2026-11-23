@@ -8,6 +8,9 @@ export { apiUrl };
 // jeda hanya di browser agar state memuat terlihat; test tidak menunggu
 const jeda = () => (import.meta.env.MODE === "test" ? Promise.resolve() : delay(400));
 
+// shortcut: penetapan siswa ke company hidup di memori (sebagian company 2, sisanya company 1, company lain kosong); backend nyata menyimpannya di kolom
+const companyDari = new Map(siswaContoh.map((s) => [s.id, s.id % 4 === 0 ? 2 : 1]));
+
 export const handlers = [
   ...authHandlers,
   http.post(apiUrl("/kontak"), async ({ request }) => {
@@ -25,13 +28,17 @@ export const handlers = [
     const size = Math.min(100, Math.max(1, Number(p.get("size") ?? 10)));
     const sort = p.get("sort") as keyof Siswa | null;
     const order = p.get("order") === "desc" ? -1 : 1;
-    const cocok = siswaContoh.filter((s) => s.nama.toLowerCase().includes(q));
+    // shortcut: tanpa company_id semua data dikembalikan agar halaman tanpa sesi (test, demo) tetap jalan; backend nyata wajib mewajibkannya
+    const companyId = p.get("company_id");
+    const cocok = siswaContoh.filter(
+      (s) => s.nama.toLowerCase().includes(q) && (companyId === null || companyDari.get(s.id) === Number(companyId)),
+    );
     if (sort) cocok.sort((a, b) => (a[sort] < b[sort] ? -order : a[sort] > b[sort] ? order : 0));
     await jeda();
     return HttpResponse.json({ items: cocok.slice((page - 1) * size, page * size), total: cocok.length });
   }),
   http.post(apiUrl("/siswa"), async ({ request }) => {
-    const { nama, kelas } = (await request.json()) as { nama?: string; kelas?: string };
+    const { nama, kelas, company_id } = (await request.json()) as { nama?: string; kelas?: string; company_id?: number };
     if (!nama?.trim() || !kelas?.trim()) return HttpResponse.json({ message: "Nama dan kelas wajib diisi." }, { status: 422 });
     const baru: Siswa = {
       id: Math.max(0, ...siswaContoh.map((s) => s.id)) + 1,
@@ -41,6 +48,7 @@ export const handlers = [
       terdaftar: new Date().toISOString().slice(0, 10),
     };
     siswaContoh.unshift(baru);
+    companyDari.set(baru.id, company_id ?? 1);
     await jeda();
     return HttpResponse.json(baru, { status: 201 });
   }),

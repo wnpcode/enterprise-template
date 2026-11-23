@@ -1,6 +1,8 @@
 import { api } from "../../shared/api/client";
 
 export type User = { id: number; name: string; email: string; roles: string[] };
+export type Company = { id: number; name: string };
+export type CompanyList = { items: Company[]; defaultId: number };
 export type AuthTokens = { accessToken: string; refreshToken: string };
 export type LoginResponse = AuthTokens & { user: User };
 export type RegisterInput = { name: string; email: string; password: string };
@@ -13,3 +15,6 @@ export const forgotPassword = (email: string) => api<void>("/auth/forgot", { met
 export const resetPassword = (json: { token: string; password: string }) => api<void>("/auth/reset", { method: "POST", json });
 export const updateProfile = (json: { name: string }) => api<User>("/auth/me", { method: "PATCH", json });
 export const changePassword = (json: { current: string; next: string }) => api<void>("/auth/password", { method: "POST", json });
+
+/** Dipanggil sekali setelah login berhasil; hasilnya disimpan di sesi. */
+export const fetchCompanies = () => api<CompanyList>("/auth/companies");
