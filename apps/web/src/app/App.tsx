@@ -1,8 +1,8 @@
 import { LocaleProvider, ThemeProvider, ToastProvider, TooltipProvider, type LocaleOverride } from "@wnpcode/design-system";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useMemo, type ReactNode } from "react";
+import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useMemo, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { AuthProvider } from "../features/auth";
+import { AuthProvider, useAuth } from "../features/auth";
 import { AppRoutes } from "./routes";
 import { SkinProvider } from "./skin";
 
@@ -35,6 +35,16 @@ function DsLocale({ children }: { children: ReactNode }) {
   return <LocaleProvider value={value}>{children}</LocaleProvider>;
 }
 
+// data milik sesi sebelumnya tidak boleh tampil ke pengguna berikutnya di tab yang sama (logout dan sesi kedaluwarsa)
+export function ClearCacheOnSignOut() {
+  const queryClient = useQueryClient();
+  const signedIn = useAuth().user !== null;
+  useEffect(() => {
+    if (!signedIn) queryClient.clear();
+  }, [signedIn, queryClient]);
+  return null;
+}
+
 export function App() {
   return (
     <SkinProvider>
@@ -45,6 +55,7 @@ export function App() {
               <ToastProvider>
                 <AuthProvider>
                   <QueryClientProvider client={queryClient}>
+                    <ClearCacheOnSignOut />
                     <AppRoutes />
                   </QueryClientProvider>
                 </AuthProvider>

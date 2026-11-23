@@ -51,16 +51,22 @@ function writeSession(session: Session | null) {
 let accessToken: string | null = null;
 let currentCompanyId: number | null = null;
 let refreshInflight: Promise<boolean> | null = null;
+// naik setiap logout: hasil request lama (refresh/fetchMe) tidak boleh menghidupkan lagi sesi yang sudah ditutup
+let sessionEpoch = 0;
 
 function refreshAccessToken(): Promise<boolean> {
   const session = readSession();
   if (!session) return Promise.resolve(false);
+  const epoch = sessionEpoch;
   // satu refresh untuk semua request 401 yang datang bersamaan
   refreshInflight ??= authApi
     .refresh(session.refreshToken)
     .then((t) => {
+      const current = readSession();
+      // logout (di tab ini atau tab lain) terjadi selagi menunggu: jangan tulis ulang sesi yang sudah dihapus
+      if (epoch !== sessionEpoch || !current) return false;
       accessToken = t.accessToken;
-      writeSession({ ...(readSession() ?? session), refreshToken: t.refreshToken });
+      writeSession({ ...current, refreshToken: t.refreshToken });
       return true;
     })
     // hanya jawaban 4xx yang berarti sesi tidak valid; galat jaringan dilempar agar sesi tidak dihapus
@@ -80,6 +86,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [companyId, setCompanyId] = useState<number | null>(() => readSession()?.companyId ?? null);
 
   const logout = useCallback(() => {
+    sessionEpoch++;
+    refreshInflight = null;
     accessToken = null;
     currentCompanyId = null;
     writeSession(null);
@@ -142,15 +150,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!readSession()) return;
     let active = true;
+    const epoch = sessionEpoch;
+    // `active` hanya mati saat unmount; logout selagi menunggu ditangkap lewat epoch
+    const stale = () => !active || epoch !== sessionEpoch;
     refreshAccessToken()
       .then((ok) => (ok ? authApi.fetchMe() : null))
       .then((u) => {
-        if (!active) return;
+        if (stale()) return;
         if (u) setUser(u);
         else logout();
       })
       .catch((e: unknown) => {
-        if (active && e instanceof ApiError && e.status < 500) logout();
+        if (!stale() && e instanceof ApiError && e.status < 500) logout();
       });
     return () => {
       active = false;

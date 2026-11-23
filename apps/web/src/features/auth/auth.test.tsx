@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
 import { server } from "../../mocks/server";
@@ -185,6 +185,41 @@ describe("autentikasi", () => {
     renderAt("/app");
     expect(await screen.findByRole("heading", { name: "Masuk" })).toBeInTheDocument();
     expect(localStorage.getItem(AUTH_STORAGE_KEY)).toBeNull();
+  });
+
+  it("logout selagi refresh berjalan tidak menghidupkan lagi sesi", async () => {
+    seedSession(2, "Budi Guru", ["guru"]);
+    let lepas!: () => void;
+    const gerbang = new Promise<void>((r) => {
+      lepas = r;
+    });
+    server.use(
+      http.post(apiUrl("/auth/refresh"), async () => {
+        await gerbang;
+        return HttpResponse.json({ accessToken: "access.2.9999999999999", refreshToken: "refresh.2.baru" });
+      }),
+    );
+    function Keluar() {
+      const { logout, user } = useAuth();
+      return (
+        <>
+          <p>pengguna: {user?.name ?? "kosong"}</p>
+          <button onClick={logout}>keluar</button>
+        </>
+      );
+    }
+    render(
+      <AuthProvider>
+        <Keluar />
+      </AuthProvider>,
+    );
+    await userEvent.setup().click(screen.getByRole("button", { name: "keluar" }));
+    await act(async () => {
+      lepas();
+      await new Promise((r) => setTimeout(r, 50));
+    });
+    expect(localStorage.getItem(AUTH_STORAGE_KEY)).toBeNull();
+    expect(screen.getByText("pengguna: kosong")).toBeInTheDocument();
   });
 
   it("RequireRole menolak role lain dan meloloskan admin", async () => {
