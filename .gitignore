@@ -1,0 +1,11 @@
+node_modules
+dist
+storybook-static
+*.tsbuildinfo
+.DS_Store
+.env.local
+.env.*.local
+apps/web/playwright-report
+apps/web/test-results
+graphify-out
+.claude/settings.local.json

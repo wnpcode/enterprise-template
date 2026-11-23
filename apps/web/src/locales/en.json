@@ -1,0 +1,369 @@
+{
+  "app": {
+    "tagline": "Internal school application.",
+    "version": "{{appName}} v{{version}}"
+  },
+  "nav": {
+    "main": "Main navigation",
+    "tabs": "Open pages",
+    "closeTab": "Close tab {{label}}",
+    "dashboard": "Dashboard",
+    "siswa": "Students",
+    "komponen": "Components",
+    "pengaturan": "Settings",
+    "expand": "Expand navigation",
+    "collapse": "Collapse navigation"
+  },
+  "account": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Sign out"
+  },
+  "common": {
+    "retry": "Try again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "toDashboard": "Go to dashboard",
+    "toHome": "Go to home",
+    "reload": "Reload",
+    "sampleData": "Sample data",
+    "columns": {
+      "nama": "Name",
+      "kelas": "Class",
+      "status": "Status",
+      "terdaftar": "Registered"
+    }
+  },
+  "status": {
+    "Aktif": "Active",
+    "Menunggu": "Pending",
+    "Ditolak": "Rejected"
+  },
+  "landing": {
+    "login": "Sign in",
+    "footer": "{{appName}}. Internal school application.",
+    "heroTitle": "School administration in one portal",
+    "heroText": "Office staff verify registrations and manage student data from a single place.",
+    "cta": "Sign in to the portal",
+    "seeFeatures": "See features",
+    "previewTitle": "Pending verification",
+    "featuresTitle": "What you can do in the portal",
+    "features": {
+      "dashboard": "See students waiting for verification today.",
+      "siswa": "Search and browse the student list page by page.",
+      "komponen": "Browse a demo of every design system component inside the portal.",
+      "pengaturan": "Choose light or dark theme and the navigation layout."
+    },
+    "nav": {
+      "fitur": "Features",
+      "harga": "Pricing",
+      "faq": "FAQ",
+      "kontak": "Contact"
+    },
+    "pricing": {
+      "title": "Pricing",
+      "text": "One subscription per school, every module included. The figures below are samples.",
+      "perYear": "per year",
+      "contact": "Contact us",
+      "choose": "Choose plan",
+      "plans": [
+        {
+          "id": "sekolah",
+          "name": "School",
+          "price": "Rp 2,400,000",
+          "text": "For one school with one administrative team.",
+          "features": ["Up to 1,500 students", "Registration verification", "CSV export", "Email support"]
+        },
+        {
+          "id": "yayasan",
+          "name": "Foundation",
+          "price": "Rp 6,000,000",
+          "text": "Several schools under one foundation, one central account.",
+          "features": ["Up to 5 schools", "Roles per school", "Combined reports", "Priority support"]
+        },
+        {
+          "id": "dinas",
+          "name": "District",
+          "price": null,
+          "text": "For regional education offices that need integrations.",
+          "features": ["Unlimited schools", "Dapodik integration", "SSO", "Written SLA"]
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Used by school administrators",
+      "items": [
+        {
+          "quote": "Registration verification used to take a week; now it is done in two days because every document is in one place.",
+          "name": "Dewi Lestari",
+          "role": "Head of Administration, sample high school"
+        },
+        {
+          "quote": "Teachers can check student status themselves without waiting for us to open the archive.",
+          "name": "Ahmad Fauzi",
+          "role": "School operator, sample vocational school"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "Is school data stored on our own server?",
+          "a": "Yes, if you want. The portal can run on the school or foundation server, or be hosted by us. The data stays the school's."
+        },
+        {
+          "q": "Can we import from existing spreadsheets?",
+          "a": "Yes. Student data is imported from CSV or Excel with column mapping, then verified before saving."
+        },
+        {
+          "q": "Who can access it?",
+          "a": "Access is per role: admin, administration staff, and teachers. Each role sees only the relevant menus and data."
+        },
+        {
+          "q": "What if the school stops subscribing?",
+          "a": "All data can be exported at any time. After cancellation the account is disabled and data is deleted on request."
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "text": "Tell us what your school needs. We reply within two working days.",
+      "school": "School name",
+      "message": "Message",
+      "submit": "Send message",
+      "sent": "Message sent. We will reply by email.",
+      "failed": "Could not send the message. Try again."
+    },
+    "footerLabels": {
+      "language": "Language",
+      "theme": "Theme"
+    }
+  },
+  "auth": {
+    "aside": "Registration verification and student data, handled from one portal.",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full name",
+    "newPassword": "New password",
+    "confirmPassword": "Repeat password",
+    "confirmNewPassword": "Repeat new password",
+    "currentPassword": "Current password",
+    "passwordHint": "At least 8 characters.",
+    "login": {
+      "title": "Sign in",
+      "submit": "Sign in",
+      "forgot": "Forgot password?",
+      "register": "Create account",
+      "demo": "Demo accounts: admin@sekolah.id / admin123, guru@sekolah.id / guru123.",
+      "failed": "Sign in failed. Try again.",
+      "apiMissing": "API server not found. Dev mode: reload the page normally (not a hard reload) so the sample data is active. Production: check VITE_API_URL."
+    },
+    "register": {
+      "title": "Create account",
+      "submit": "Register",
+      "haveAccount": "Already have an account?",
+      "login": "Sign in",
+      "failed": "Registration failed. Try again."
+    },
+    "forgot": {
+      "title": "Forgot password",
+      "submit": "Send link",
+      "sent": "If the email is registered, a password reset link has been sent. Check your inbox.",
+      "back": "Back to sign in",
+      "failed": "Could not send. Try again."
+    },
+    "reset": {
+      "title": "Reset password",
+      "submit": "Save password",
+      "done": "Password updated",
+      "doneText": "Sign in with your new password.",
+      "noTokenTitle": "Incomplete link",
+      "noTokenText": "Open the link from your email, or request a new one.",
+      "requestNew": "Request a new link",
+      "failed": "Reset failed. Try again."
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "Details of the signed-in account.",
+      "dataTitle": "Personal data",
+      "emailHint": "Email cannot be changed.",
+      "save": "Save profile",
+      "saved": "Profile saved",
+      "saveFailed": "Could not save profile.",
+      "passwordTitle": "Change password",
+      "changePassword": "Change password",
+      "passwordChanged": "Password changed",
+      "passwordFailed": "Could not change password."
+    }
+  },
+  "validation": {
+    "emailRequired": "Email is required.",
+    "emailInvalid": "Invalid email format.",
+    "passwordRequired": "Password is required.",
+    "passwordMin": "Password must be at least 8 characters.",
+    "currentPasswordRequired": "Current password is required.",
+    "confirmMismatch": "Passwords do not match.",
+    "nameRequired": "Name is required.",
+    "kelasRequired": "Class is required.",
+    "messageRequired": "Message is required.",
+    "schoolRequired": "School name is required."
+  },
+  "dashboard": {
+    "title": "Today",
+    "description": "Registration summary. Sample data.",
+    "loadError": "Could not load student data.",
+    "seeAll": "See all students",
+    "stats": {
+      "title": "Summary",
+      "total": "Total students",
+      "totalNote": "Registered this school year",
+      "aktif": "Active students",
+      "menunggu": "Pending verification",
+      "ditolak": "Rejected",
+      "share": "{{persen}}% of total"
+    },
+    "charts": {
+      "title": "Charts",
+      "kelasTitle": "Students per class",
+      "statusTitle": "Status breakdown",
+      "kelasEmpty": "No class data yet."
+    },
+    "table": {
+      "title": "Latest registrations",
+      "actions": "Actions",
+      "review": "Review",
+      "reviewFor": "Review {{nama}}",
+      "approve": "Approve",
+      "reject": "Reject",
+      "approved": "Student approved",
+      "rejected": "Student rejected",
+      "updateError": "Could not update the student status.",
+      "empty": "No registrations yet."
+    },
+    "preview": {
+      "title": "Available components",
+      "description": "A glimpse of some components in this app. Try them all on the Components page.",
+      "open": "See {{nama}} demo"
+    }
+  },
+  "siswa": {
+    "title": "Students",
+    "description": "Students registered this school year. Sample data.",
+    "searchLabel": "Search student name",
+    "searchPlaceholder": "Search name",
+    "add": "Add student",
+    "edit": "Edit student",
+    "actions": "Actions",
+    "rowActions": "Actions for {{nama}}",
+    "delete": {
+      "title": "Delete student?",
+      "text": "{{nama}} will be permanently removed from the student list.",
+      "confirm": "Delete",
+      "done": "Student deleted",
+      "error": "Could not delete student"
+    },
+    "loadError": "Could not load student data.",
+    "emptySearch": "No student named \"{{q}}\".",
+    "emptyTitle": "No students yet",
+    "emptyText": "Add the first student to start verifying registrations.",
+    "sheet": {
+      "description": "New students start with a pending verification status.",
+      "kelasHint": "Example: X IPA 1",
+      "editDescription": "Change the student's name or class.",
+      "updated": "Student updated",
+      "added": "Student added",
+      "addedText": "{{nama}} is now in the pending list."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Changes are saved automatically on this device.",
+    "appearance": "Appearance",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "Follow system",
+    "skin": "Surface style",
+    "skinFlat": "Flat",
+    "skinNeo": "Neumorphism",
+    "skinGlass": "Glassmorphism",
+    "skinClay": "Claymorphism",
+    "skinFluid": "Fluidmorphism",
+    "skinAurora": "Aurora UI",
+    "skinSwiss": "Swiss",
+    "language": "Language",
+    "navigation": "Navigation",
+    "orientation": "Orientation",
+    "vertical": "Vertical (side)",
+    "horizontal": "Horizontal (top)",
+    "collapse": "Collapse to icons only",
+    "preset": "Layout theme",
+    "presetCustom": "Custom",
+    "presetClassic": "Classic",
+    "presetAdmin": "Admin (dark sidebar)",
+    "presetCorporate": "Corporate",
+    "presetCompact": "Compact",
+    "presetTopnav": "Top menu",
+    "presetMinimal": "Minimal",
+    "presetNote": "One choice applies all the header and sidebar settings below. Changing them one by one makes the theme Custom.",
+    "header": "Header",
+    "sidebar": "Sidebar",
+    "headerVisible": "Show header",
+    "headerVisibleNote": "The header always shows in horizontal orientation because it holds the menu.",
+    "type": "Type",
+    "typeSticky": "Sticky",
+    "typeStatic": "Scrolls away",
+    "typeFloating": "Floating",
+    "typeFull": "Full",
+    "headerSpan": "Header position",
+    "spanFull": "Across the top",
+    "spanInset": "Beside the sidebar",
+    "sidebarSide": "Sidebar position",
+    "sideLeft": "Left",
+    "sideRight": "Right",
+    "tone": "Color",
+    "toneDefault": "Default",
+    "toneMuted": "Muted",
+    "toneInverse": "Inverse",
+    "tonePrimary": "Primary",
+    "toneNote": "Color only applies to the Solid style.",
+    "chromeStyle": "Style",
+    "styleSolid": "Solid",
+    "styleBordered": "Outlined",
+    "styleTransparent": "Transparent",
+    "mobileNote": "On small screens the navigation is always at the bottom.",
+    "about": "About"
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundText": "The address you opened does not exist or has moved.",
+    "forbiddenTitle": "Access denied",
+    "forbiddenText": "Your account is not allowed to open this page.",
+    "errorTitle": "Something went wrong",
+    "errorText": "This page failed to render. Reload, or go back to the dashboard."
+  },
+  "ds": {
+    "close": "Close",
+    "loading": "Loading",
+    "noData": "No data",
+    "noResults": "No results",
+    "select": "Select…",
+    "search": "Search…",
+    "paginationNav": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "previousLabel": "Previous page",
+    "nextLabel": "Next page",
+    "page": "Page {{n}}",
+    "selectAll": "Select all rows",
+    "selectRow": "Select row",
+    "sortBy": "Sort by {{column}}"
+  },
+  "seo": {
+    "landingTitle": "{{appName}}: school administration in one portal",
+    "landingDescription": "Registration verification, student data, and reports for school administrators in one application.",
+    "loginTitle": "Sign in",
+    "registerTitle": "Create account"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "enterprise-template",
+  "private": true,
+  "packageManager": "pnpm@10.34.4",
+  "scripts": {
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "storybook": "pnpm --filter @enterprise/design-system storybook",
+    "build-storybook": "pnpm --filter @enterprise/design-system build-storybook",
+    "dev": "pnpm --filter playground dev",
+    "dev:web": "pnpm --filter web dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "e2e": "pnpm --filter web e2e",
+    "prepare": "husky",
+    "changeset": "changeset",
+    "release:version": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.1",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-tailwindcss": "^0.8.1"
+  },
+  "type": "module",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{js,json,css,html,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}

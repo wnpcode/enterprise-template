@@ -1,0 +1,369 @@
+{
+  "app": {
+    "tagline": "Aplikasi internal sekolah.",
+    "version": "{{appName}} v{{version}}"
+  },
+  "nav": {
+    "main": "Navigasi utama",
+    "tabs": "Halaman yang dibuka",
+    "closeTab": "Tutup tab {{label}}",
+    "dashboard": "Dashboard",
+    "siswa": "Siswa",
+    "komponen": "Komponen",
+    "pengaturan": "Pengaturan",
+    "expand": "Perluas navigasi",
+    "collapse": "Ciutkan navigasi"
+  },
+  "account": {
+    "profile": "Profil",
+    "settings": "Pengaturan",
+    "logout": "Keluar"
+  },
+  "common": {
+    "retry": "Coba lagi",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "toDashboard": "Ke dashboard",
+    "toHome": "Ke beranda",
+    "reload": "Muat ulang",
+    "sampleData": "Data contoh",
+    "columns": {
+      "nama": "Nama",
+      "kelas": "Kelas",
+      "status": "Status",
+      "terdaftar": "Terdaftar"
+    }
+  },
+  "status": {
+    "Aktif": "Aktif",
+    "Menunggu": "Menunggu",
+    "Ditolak": "Ditolak"
+  },
+  "landing": {
+    "login": "Masuk",
+    "footer": "{{appName}}. Aplikasi internal sekolah.",
+    "heroTitle": "Administrasi sekolah dalam satu portal",
+    "heroText": "Staf tata usaha memverifikasi pendaftaran dan mengelola data siswa dari satu tempat.",
+    "cta": "Masuk ke portal",
+    "seeFeatures": "Lihat fitur",
+    "previewTitle": "Menunggu verifikasi",
+    "featuresTitle": "Yang bisa dilakukan di portal",
+    "features": {
+      "dashboard": "Lihat siswa yang menunggu verifikasi hari ini.",
+      "siswa": "Cari dan telusuri daftar siswa per halaman.",
+      "komponen": "Lihat demo setiap komponen design system di dalam portal.",
+      "pengaturan": "Atur tema terang atau gelap dan tata letak navigasi."
+    },
+    "nav": {
+      "fitur": "Fitur",
+      "harga": "Harga",
+      "faq": "FAQ",
+      "kontak": "Kontak"
+    },
+    "pricing": {
+      "title": "Harga",
+      "text": "Satu langganan per sekolah, semua modul termasuk. Angka di bawah hanya contoh.",
+      "perYear": "per tahun",
+      "contact": "Hubungi kami",
+      "choose": "Pilih paket",
+      "plans": [
+        {
+          "id": "sekolah",
+          "name": "Sekolah",
+          "price": "Rp 2.400.000",
+          "text": "Untuk satu sekolah dengan satu tim tata usaha.",
+          "features": ["Sampai 1.500 siswa", "Verifikasi pendaftaran", "Ekspor data CSV", "Dukungan email"]
+        },
+        {
+          "id": "yayasan",
+          "name": "Yayasan",
+          "price": "Rp 6.000.000",
+          "text": "Beberapa sekolah dalam satu yayasan, satu akun pusat.",
+          "features": ["Sampai 5 sekolah", "Peran per sekolah", "Laporan gabungan", "Dukungan prioritas"]
+        },
+        {
+          "id": "dinas",
+          "name": "Dinas",
+          "price": null,
+          "text": "Untuk dinas pendidikan daerah dengan kebutuhan integrasi.",
+          "features": ["Sekolah tanpa batas", "Integrasi Dapodik", "SSO", "SLA tertulis"]
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Dipakai staf tata usaha",
+      "items": [
+        {
+          "quote": "Verifikasi pendaftaran yang dulu seminggu sekarang selesai dua hari karena semua berkas ada di satu tempat.",
+          "name": "Dewi Lestari",
+          "role": "Kepala Tata Usaha, SMA contoh"
+        },
+        {
+          "quote": "Guru bisa melihat status siswa sendiri tanpa menunggu kami membuka arsip.",
+          "name": "Ahmad Fauzi",
+          "role": "Operator sekolah, SMK contoh"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Pertanyaan yang sering diajukan",
+      "items": [
+        {
+          "q": "Apakah data sekolah disimpan di server kami sendiri?",
+          "a": "Bisa. Portal dapat dipasang di server sekolah atau yayasan, atau dikelola oleh kami. Datanya tetap milik sekolah."
+        },
+        {
+          "q": "Bisakah diimpor dari spreadsheet yang sudah ada?",
+          "a": "Ya. Data siswa diimpor dari CSV atau Excel dengan pemetaan kolom, lalu diverifikasi sebelum disimpan."
+        },
+        {
+          "q": "Siapa saja yang bisa mengakses?",
+          "a": "Akses diatur per peran: admin, tata usaha, dan guru. Setiap peran hanya melihat menu dan data yang relevan."
+        },
+        {
+          "q": "Bagaimana kalau sekolah berhenti berlangganan?",
+          "a": "Semua data bisa diekspor kapan saja. Setelah berhenti, akun dinonaktifkan dan data dihapus sesuai permintaan."
+        }
+      ]
+    },
+    "contact": {
+      "title": "Kontak",
+      "text": "Ceritakan kebutuhan sekolah Anda. Kami membalas dalam dua hari kerja.",
+      "school": "Nama sekolah",
+      "message": "Pesan",
+      "submit": "Kirim pesan",
+      "sent": "Pesan terkirim. Kami akan membalas lewat email.",
+      "failed": "Gagal mengirim pesan. Coba lagi."
+    },
+    "footerLabels": {
+      "language": "Bahasa",
+      "theme": "Tema"
+    }
+  },
+  "auth": {
+    "aside": "Verifikasi pendaftaran dan data siswa, dikerjakan dari satu portal.",
+    "email": "Email",
+    "password": "Kata sandi",
+    "name": "Nama lengkap",
+    "newPassword": "Kata sandi baru",
+    "confirmPassword": "Ulangi kata sandi",
+    "confirmNewPassword": "Ulangi kata sandi baru",
+    "currentPassword": "Kata sandi saat ini",
+    "passwordHint": "Minimal 8 karakter.",
+    "login": {
+      "title": "Masuk",
+      "submit": "Masuk",
+      "forgot": "Lupa kata sandi?",
+      "register": "Buat akun",
+      "demo": "Akun contoh: admin@sekolah.id / admin123, guru@sekolah.id / guru123.",
+      "failed": "Gagal masuk. Coba lagi.",
+      "apiMissing": "Server API tidak ditemukan. Mode dev: muat ulang halaman seperti biasa (bukan hard reload) agar data contoh aktif. Produksi: periksa VITE_API_URL."
+    },
+    "register": {
+      "title": "Buat akun",
+      "submit": "Daftar",
+      "haveAccount": "Sudah punya akun?",
+      "login": "Masuk",
+      "failed": "Gagal mendaftar. Coba lagi."
+    },
+    "forgot": {
+      "title": "Lupa kata sandi",
+      "submit": "Kirim tautan",
+      "sent": "Jika email terdaftar, tautan untuk mengatur ulang kata sandi sudah dikirim. Periksa kotak masuk Anda.",
+      "back": "Kembali ke halaman masuk",
+      "failed": "Gagal mengirim. Coba lagi."
+    },
+    "reset": {
+      "title": "Atur ulang kata sandi",
+      "submit": "Simpan kata sandi",
+      "done": "Kata sandi diperbarui",
+      "doneText": "Silakan masuk dengan kata sandi baru.",
+      "noTokenTitle": "Tautan tidak lengkap",
+      "noTokenText": "Buka tautan dari email, atau minta tautan baru.",
+      "requestNew": "Minta tautan baru",
+      "failed": "Gagal mengatur ulang. Coba lagi."
+    },
+    "profile": {
+      "title": "Profil",
+      "description": "Data akun yang sedang masuk.",
+      "dataTitle": "Data diri",
+      "emailHint": "Email tidak bisa diubah.",
+      "save": "Simpan profil",
+      "saved": "Profil disimpan",
+      "saveFailed": "Gagal menyimpan profil.",
+      "passwordTitle": "Ganti kata sandi",
+      "changePassword": "Ganti kata sandi",
+      "passwordChanged": "Kata sandi diganti",
+      "passwordFailed": "Gagal mengganti kata sandi."
+    }
+  },
+  "validation": {
+    "emailRequired": "Email wajib diisi.",
+    "emailInvalid": "Format email tidak valid.",
+    "passwordRequired": "Kata sandi wajib diisi.",
+    "passwordMin": "Kata sandi minimal 8 karakter.",
+    "currentPasswordRequired": "Kata sandi saat ini wajib diisi.",
+    "confirmMismatch": "Konfirmasi kata sandi tidak sama.",
+    "nameRequired": "Nama wajib diisi.",
+    "kelasRequired": "Kelas wajib diisi.",
+    "messageRequired": "Pesan wajib diisi.",
+    "schoolRequired": "Nama sekolah wajib diisi."
+  },
+  "dashboard": {
+    "title": "Hari ini",
+    "description": "Ringkasan pendaftaran siswa. Data contoh.",
+    "loadError": "Gagal memuat data siswa.",
+    "seeAll": "Lihat semua siswa",
+    "stats": {
+      "title": "Ringkasan",
+      "total": "Total siswa",
+      "totalNote": "Terdaftar tahun ajaran ini",
+      "aktif": "Siswa aktif",
+      "menunggu": "Menunggu verifikasi",
+      "ditolak": "Ditolak",
+      "share": "{{persen}}% dari total"
+    },
+    "charts": {
+      "title": "Grafik",
+      "kelasTitle": "Siswa per kelas",
+      "statusTitle": "Komposisi status",
+      "kelasEmpty": "Belum ada data kelas."
+    },
+    "table": {
+      "title": "Pendaftaran terbaru",
+      "actions": "Aksi",
+      "review": "Tinjau",
+      "reviewFor": "Tinjau {{nama}}",
+      "approve": "Setujui",
+      "reject": "Tolak",
+      "approved": "Siswa disetujui",
+      "rejected": "Siswa ditolak",
+      "updateError": "Gagal memperbarui status siswa.",
+      "empty": "Belum ada pendaftaran."
+    },
+    "preview": {
+      "title": "Komponen yang tersedia",
+      "description": "Cuplikan sebagian komponen aplikasi ini. Semuanya bisa dicoba di halaman Komponen.",
+      "open": "Lihat demo {{nama}}"
+    }
+  },
+  "siswa": {
+    "title": "Siswa",
+    "description": "Daftar siswa terdaftar tahun ajaran ini. Data contoh.",
+    "searchLabel": "Cari nama siswa",
+    "searchPlaceholder": "Cari nama",
+    "add": "Tambah siswa",
+    "edit": "Ubah siswa",
+    "actions": "Aksi",
+    "rowActions": "Aksi untuk {{nama}}",
+    "delete": {
+      "title": "Hapus siswa?",
+      "text": "{{nama}} akan dihapus permanen dari daftar siswa.",
+      "confirm": "Hapus",
+      "done": "Siswa dihapus",
+      "error": "Gagal menghapus siswa"
+    },
+    "loadError": "Gagal memuat data siswa.",
+    "emptySearch": "Tidak ada siswa bernama \"{{q}}\".",
+    "emptyTitle": "Belum ada siswa",
+    "emptyText": "Tambah siswa pertama untuk mulai verifikasi pendaftaran.",
+    "sheet": {
+      "description": "Siswa baru masuk dengan status menunggu verifikasi.",
+      "kelasHint": "Contoh: X IPA 1",
+      "editDescription": "Ubah nama atau kelas siswa.",
+      "updated": "Data siswa diperbarui",
+      "added": "Siswa ditambahkan",
+      "addedText": "{{nama}} masuk daftar menunggu verifikasi."
+    }
+  },
+  "settings": {
+    "title": "Pengaturan",
+    "description": "Perubahan tersimpan otomatis di perangkat ini.",
+    "appearance": "Tampilan",
+    "theme": "Tema",
+    "themeLight": "Terang",
+    "themeDark": "Gelap",
+    "themeSystem": "Ikuti sistem",
+    "skin": "Gaya permukaan",
+    "skinFlat": "Datar",
+    "skinNeo": "Neumorphism",
+    "skinGlass": "Glassmorphism",
+    "skinClay": "Claymorphism",
+    "skinFluid": "Fluidmorphism",
+    "skinAurora": "Aurora UI",
+    "skinSwiss": "Swiss",
+    "language": "Bahasa",
+    "navigation": "Navigasi",
+    "orientation": "Orientasi",
+    "vertical": "Vertikal (samping)",
+    "horizontal": "Horisontal (atas)",
+    "collapse": "Ciutkan jadi ikon saja",
+    "preset": "Tema layout",
+    "presetCustom": "Kustom",
+    "presetClassic": "Klasik",
+    "presetAdmin": "Admin (sidebar gelap)",
+    "presetCorporate": "Korporat",
+    "presetCompact": "Ringkas",
+    "presetTopnav": "Menu atas",
+    "presetMinimal": "Minimal",
+    "presetNote": "Satu pilihan menerapkan semua pengaturan header dan sidebar di bawah. Mengubahnya satu per satu menjadikan tema Kustom.",
+    "header": "Header",
+    "sidebar": "Sidebar",
+    "headerVisible": "Tampilkan header",
+    "headerVisibleNote": "Header selalu tampil pada orientasi horisontal karena memuat menu.",
+    "type": "Tipe",
+    "typeSticky": "Menempel",
+    "typeStatic": "Ikut gulir",
+    "typeFloating": "Melayang",
+    "typeFull": "Penuh",
+    "headerSpan": "Posisi header",
+    "spanFull": "Melintang di atas",
+    "spanInset": "Di samping sidebar",
+    "sidebarSide": "Posisi sidebar",
+    "sideLeft": "Kiri",
+    "sideRight": "Kanan",
+    "tone": "Warna",
+    "toneDefault": "Default",
+    "toneMuted": "Abu",
+    "toneInverse": "Kebalikan tema",
+    "tonePrimary": "Primary",
+    "toneNote": "Warna hanya berlaku di style Solid.",
+    "chromeStyle": "Style",
+    "styleSolid": "Solid",
+    "styleBordered": "Garis",
+    "styleTransparent": "Transparan",
+    "mobileNote": "Di layar kecil navigasi selalu tampil di bagian bawah.",
+    "about": "Tentang"
+  },
+  "errors": {
+    "notFoundTitle": "Halaman tidak ditemukan",
+    "notFoundText": "Alamat yang Anda buka tidak ada atau sudah dipindahkan.",
+    "forbiddenTitle": "Akses ditolak",
+    "forbiddenText": "Akun Anda tidak punya hak untuk membuka halaman ini.",
+    "errorTitle": "Terjadi kesalahan",
+    "errorText": "Halaman ini gagal ditampilkan. Muat ulang, atau kembali ke dashboard."
+  },
+  "ds": {
+    "close": "Tutup",
+    "loading": "Memuat",
+    "noData": "Tidak ada data",
+    "noResults": "Tidak ada hasil",
+    "select": "Pilih…",
+    "search": "Cari…",
+    "paginationNav": "Navigasi halaman",
+    "previous": "Sebelumnya",
+    "next": "Berikutnya",
+    "previousLabel": "Halaman sebelumnya",
+    "nextLabel": "Halaman berikutnya",
+    "page": "Halaman {{n}}",
+    "selectAll": "Pilih semua baris",
+    "selectRow": "Pilih baris",
+    "sortBy": "Urutkan menurut {{column}}"
+  },
+  "seo": {
+    "landingTitle": "{{appName}}: administrasi sekolah dalam satu portal",
+    "landingDescription": "Verifikasi pendaftaran, data siswa, dan laporan untuk tata usaha sekolah dalam satu aplikasi.",
+    "loginTitle": "Masuk",
+    "registerTitle": "Buat akun"
+  }
+}

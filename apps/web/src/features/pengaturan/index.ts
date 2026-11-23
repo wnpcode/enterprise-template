@@ -1,0 +1,1 @@
+export { PengaturanPage } from "./PengaturanPage";

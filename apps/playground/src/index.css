@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "@enterprise/design-system/styles.css";
+@source "../../../packages/design-system/dist";
+
+html {
+  scroll-padding-top: 1rem;
+}
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

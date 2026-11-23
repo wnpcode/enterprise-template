@@ -1,0 +1,626 @@
+/* Enterprise Design System — sumber: ../../../../DESIGN-SYSTEM.md
+   Consumer: @import "tailwindcss"; @import "@enterprise/design-system/styles.css"; @source ke dist package. */
+
+/* 1. Primitive tokens */
+:root {
+  --ds-white: #ffffff;
+
+  --ds-blue-50: #eff6ff;
+  --ds-blue-100: #dbeafe;
+  --ds-blue-200: #bfdbfe;
+  --ds-blue-300: #93c5fd;
+  --ds-blue-400: #60a5fa;
+  --ds-blue-500: #3b82f6;
+  --ds-blue-600: #2563eb;
+  --ds-blue-700: #1d4ed8;
+  --ds-blue-800: #1e40af;
+  --ds-blue-900: #1e3a8a;
+  --ds-blue-950: #172554;
+
+  --ds-slate-50: #f8fafc;
+  --ds-slate-100: #f1f5f9;
+  --ds-slate-200: #e2e8f0;
+  --ds-slate-300: #cbd5e1;
+  --ds-slate-400: #94a3b8;
+  --ds-slate-500: #64748b;
+  --ds-slate-600: #475569;
+  --ds-slate-700: #334155;
+  --ds-slate-800: #1e293b;
+  --ds-slate-900: #0f172a;
+  --ds-slate-950: #020617;
+
+  --ds-green-50: #f0fdf4;
+  --ds-green-100: #dcfce7;
+  --ds-green-200: #bbf7d0;
+  --ds-green-300: #86efac;
+  --ds-green-400: #4ade80;
+  --ds-green-500: #22c55e;
+  --ds-green-600: #16a34a;
+  --ds-green-700: #15803d;
+  --ds-green-800: #166534;
+  --ds-green-900: #14532d;
+  --ds-green-950: #052e16;
+
+  --ds-amber-50: #fffbeb;
+  --ds-amber-100: #fef3c7;
+  --ds-amber-200: #fde68a;
+  --ds-amber-300: #fcd34d;
+  --ds-amber-400: #fbbf24;
+  --ds-amber-500: #f59e0b;
+  --ds-amber-600: #d97706;
+  --ds-amber-700: #b45309;
+  --ds-amber-800: #92400e;
+  --ds-amber-900: #78350f;
+  --ds-amber-950: #451a03;
+
+  --ds-red-50: #fef2f2;
+  --ds-red-100: #fee2e2;
+  --ds-red-200: #fecaca;
+  --ds-red-300: #fca5a5;
+  --ds-red-400: #f87171;
+  --ds-red-500: #ef4444;
+  --ds-red-600: #dc2626;
+  --ds-red-700: #b91c1c;
+  --ds-red-800: #991b1b;
+  --ds-red-900: #7f1d1d;
+  --ds-red-950: #450a0a;
+
+  --ds-sky-50: #f0f9ff;
+  --ds-sky-100: #e0f2fe;
+  --ds-sky-200: #bae6fd;
+  --ds-sky-300: #7dd3fc;
+  --ds-sky-400: #38bdf8;
+  --ds-sky-500: #0ea5e9;
+  --ds-sky-600: #0284c7;
+  --ds-sky-700: #0369a1;
+  --ds-sky-800: #075985;
+  --ds-sky-900: #0c4a6e;
+  --ds-sky-950: #082f49;
+
+  --ds-font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --ds-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ds-radius-none: 0;
+  --ds-radius-sm: 4px;
+  --ds-radius-md: 6px;
+  --ds-radius-lg: 8px;
+  --ds-radius-xl: 12px;
+  --ds-radius-full: 9999px;
+
+  --ds-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --ds-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --ds-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* bayangan timbul/cekung untuk kontrol; default none, diisi oleh skin (mis. neo) */
+  --ds-shadow-raised: none;
+  --ds-shadow-inset: none;
+
+  --ds-motion-fast: 150ms;
+  --ds-motion-normal: 200ms;
+  --ds-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2. Semantic tokens — light */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --ds-color-background: var(--ds-white);
+  --ds-color-foreground: var(--ds-slate-900);
+  --ds-color-surface: var(--ds-white);
+  --ds-color-surface-foreground: var(--ds-slate-900);
+  /* permukaan melayang (dialog, popover, dropdown, select, combobox, toast) dan backdrop dialog */
+  --ds-color-surface-elevated: var(--ds-white);
+  --ds-color-overlay: rgb(15 23 42 / 0.5);
+  --ds-color-muted: var(--ds-slate-100);
+  --ds-color-muted-foreground: var(--ds-slate-600);
+  --ds-color-border: var(--ds-slate-200);
+  --ds-color-input: var(--ds-slate-300);
+  --ds-color-ring: var(--ds-blue-600);
+  --ds-color-primary: var(--ds-blue-600);
+  --ds-color-primary-foreground: var(--ds-white);
+  --ds-color-primary-hover: var(--ds-blue-700);
+  --ds-color-secondary: var(--ds-slate-100);
+  --ds-color-secondary-foreground: var(--ds-slate-900);
+  --ds-color-secondary-hover: var(--ds-slate-200);
+  --ds-color-success: var(--ds-green-700);
+  --ds-color-success-foreground: var(--ds-white);
+  --ds-color-success-subtle: var(--ds-green-50);
+  --ds-color-success-subtle-fg: var(--ds-green-800);
+  --ds-color-warning: var(--ds-amber-700);
+  --ds-color-warning-foreground: var(--ds-white);
+  --ds-color-warning-subtle: var(--ds-amber-50);
+  --ds-color-warning-subtle-fg: var(--ds-amber-800);
+  --ds-color-danger: var(--ds-red-600);
+  --ds-color-danger-foreground: var(--ds-white);
+  --ds-color-danger-hover: var(--ds-red-700);
+  --ds-color-danger-subtle: var(--ds-red-50);
+  --ds-color-danger-subtle-fg: var(--ds-red-800);
+  --ds-color-info: var(--ds-sky-700);
+  --ds-color-info-foreground: var(--ds-white);
+  --ds-color-info-subtle: var(--ds-sky-50);
+  --ds-color-info-subtle-fg: var(--ds-sky-800);
+}
+
+/* 2. Semantic tokens — dark */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ds-color-background: var(--ds-slate-950);
+  --ds-color-foreground: var(--ds-slate-50);
+  --ds-color-surface: var(--ds-slate-900);
+  --ds-color-surface-foreground: var(--ds-slate-50);
+  --ds-color-surface-elevated: var(--ds-slate-900);
+  --ds-color-overlay: rgb(248 250 252 / 0.5);
+  --ds-color-muted: var(--ds-slate-800);
+  --ds-color-muted-foreground: var(--ds-slate-400);
+  --ds-color-border: var(--ds-slate-800);
+  --ds-color-input: var(--ds-slate-700);
+  --ds-color-ring: var(--ds-blue-400);
+  --ds-color-primary: var(--ds-blue-500);
+  --ds-color-primary-foreground: var(--ds-slate-950);
+  --ds-color-primary-hover: var(--ds-blue-400);
+  --ds-color-secondary: var(--ds-slate-800);
+  --ds-color-secondary-foreground: var(--ds-slate-50);
+  --ds-color-secondary-hover: var(--ds-slate-700);
+  --ds-color-success: var(--ds-green-500);
+  --ds-color-success-foreground: var(--ds-slate-950);
+  --ds-color-success-subtle: var(--ds-green-950);
+  --ds-color-success-subtle-fg: var(--ds-green-300);
+  --ds-color-warning: var(--ds-amber-500);
+  --ds-color-warning-foreground: var(--ds-slate-950);
+  --ds-color-warning-subtle: var(--ds-amber-950);
+  --ds-color-warning-subtle-fg: var(--ds-amber-300);
+  --ds-color-danger: var(--ds-red-500);
+  --ds-color-danger-foreground: var(--ds-slate-950);
+  --ds-color-danger-hover: var(--ds-red-400);
+  --ds-color-danger-subtle: var(--ds-red-950);
+  --ds-color-danger-subtle-fg: var(--ds-red-300);
+  --ds-color-info: var(--ds-sky-500);
+  --ds-color-info-foreground: var(--ds-slate-950);
+  --ds-color-info-subtle: var(--ds-sky-950);
+  --ds-color-info-subtle-fg: var(--ds-sky-300);
+}
+
+/* 3. Brand override contoh — hanya token semantik, API komponen tidak berubah */
+[data-brand="acme"] {
+  --ds-color-primary: #7c3aed;
+  --ds-color-primary-hover: #6d28d9;
+  --ds-color-ring: #7c3aed;
+}
+[data-theme="dark"][data-brand="acme"],
+[data-theme="dark"] [data-brand="acme"] {
+  --ds-color-primary: #8b5cf6;
+  --ds-color-primary-hover: #a78bfa;
+  --ds-color-ring: #a78bfa;
+}
+
+/* 3b. Skin override contoh — perlakuan permukaan (neumorphism), bisa digabung dengan brand */
+[data-skin="neo"] {
+  --ds-color-background: #e9edf3;
+  --ds-color-surface: #e9edf3;
+  --ds-color-surface-elevated: #e9edf3;
+  --ds-color-input: #e9edf3;
+  --ds-color-muted: #dfe4ec;
+  --ds-color-border: #d5dbe5;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 14px;
+  --ds-radius-xl: 18px;
+  --ds-shadow-raised: 6px 6px 12px rgb(163 177 198 / 0.55), -6px -6px 12px rgb(255 255 255 / 0.9);
+  --ds-shadow-inset: inset 3px 3px 6px rgb(163 177 198 / 0.55), inset -3px -3px 6px rgb(255 255 255 / 0.9);
+  --ds-shadow-sm: var(--ds-shadow-raised);
+  --ds-shadow-md: 10px 10px 24px rgb(163 177 198 / 0.5), -8px -8px 20px rgb(255 255 255 / 0.8);
+}
+[data-theme="dark"][data-skin="neo"],
+[data-theme="dark"] [data-skin="neo"] {
+  --ds-color-background: #171c26;
+  --ds-color-surface: #171c26;
+  --ds-color-surface-elevated: #171c26;
+  --ds-color-input: #171c26;
+  --ds-color-muted: #1f2531;
+  --ds-color-border: #262d3a;
+  --ds-shadow-raised: 6px 6px 12px rgb(0 0 0 / 0.55), -6px -6px 12px rgb(255 255 255 / 0.04);
+  --ds-shadow-inset: inset 3px 3px 6px rgb(0 0 0 / 0.55), inset -3px -3px 6px rgb(255 255 255 / 0.04);
+  --ds-shadow-sm: var(--ds-shadow-raised);
+  --ds-shadow-md: 10px 10px 24px rgb(0 0 0 / 0.5), -8px -8px 20px rgb(255 255 255 / 0.03);
+}
+
+/* 3c. Skin glass — kaca 90% transparan + blur; overlay lebih pekat agar terbaca; latar blob agar blur terlihat */
+[data-skin="glass"] {
+  --ds-color-background: #eef2ff;
+  --ds-color-surface: rgb(255 255 255 / 0.1);
+  --ds-color-surface-elevated: rgb(255 255 255 / 0.75);
+  --ds-color-overlay: rgb(238 242 255 / 0.6);
+  --ds-color-muted: rgb(100 116 139 / 0.18);
+  --ds-color-border: rgb(255 255 255 / 0.7);
+  --ds-color-input: rgb(100 116 139 / 0.4);
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 14px;
+  --ds-radius-xl: 18px;
+  --ds-shadow-sm: inset 0 1px 0 rgb(255 255 255 / 0.8), 0 4px 24px rgb(31 38 135 / 0.1);
+  --ds-shadow-md: inset 0 1px 0 rgb(255 255 255 / 0.8), 0 8px 32px rgb(31 38 135 / 0.18);
+}
+[data-theme="dark"][data-skin="glass"],
+[data-theme="dark"] [data-skin="glass"] {
+  --ds-color-background: #0b1220;
+  --ds-color-surface: rgb(255 255 255 / 0.08);
+  --ds-color-surface-elevated: rgb(15 23 42 / 0.8);
+  --ds-color-overlay: rgb(11 18 32 / 0.6);
+  --ds-color-muted: rgb(148 163 184 / 0.16);
+  --ds-color-border: rgb(255 255 255 / 0.2);
+  --ds-color-input: rgb(148 163 184 / 0.4);
+  --ds-shadow-sm: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 4px 24px rgb(0 0 0 / 0.35);
+  --ds-shadow-md: inset 0 1px 0 rgb(255 255 255 / 0.1), 0 8px 32px rgb(0 0 0 / 0.5);
+}
+/* shade -200 light / -950 dark agar muted-foreground tetap >= 4.5:1 di pusat blob; fixed diabaikan iOS Safari (gradient ikut scroll) */
+[data-skin="glass"] body {
+  background-image:
+    radial-gradient(55% 50% at 8% 0%, #c7d2fe 0%, transparent 65%), radial-gradient(45% 45% at 100% 15%, #fbcfe8 0%, transparent 65%),
+    radial-gradient(60% 55% at 55% 100%, #bae6fd 0%, transparent 65%);
+  background-attachment: fixed;
+}
+[data-theme="dark"][data-skin="glass"] body {
+  background-image:
+    radial-gradient(55% 50% at 8% 0%, #172554 0%, transparent 65%), radial-gradient(45% 45% at 100% 15%, #2e1065 0%, transparent 65%),
+    radial-gradient(60% 55% at 55% 100%, #082f49 0%, transparent 65%);
+}
+/* shortcut: bergantung nama kelas .bg-surface/.bg-surface-elevated/.bg-overlay, ganti ke token --ds-backdrop di komponen kalau ada surface tanpa kelas itu */
+:is([data-skin="glass"], [data-skin="aurora"]) :is(.bg-surface, .bg-surface-elevated) {
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+:is([data-skin="glass"], [data-skin="aurora"]) .bg-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* 3e. Skin clay — claymorphism: bentuk menggembung dari bayangan luar lembut + highlight/sudut gelap inset; radius besar */
+[data-skin="clay"] {
+  --ds-color-background: #eef0fb;
+  --ds-color-surface: #f6f7fd;
+  --ds-color-surface-elevated: #f6f7fd;
+  --ds-color-input: #f6f7fd;
+  --ds-color-muted: #e3e6f6;
+  --ds-color-border: #e1e4f4;
+  --ds-radius-md: 14px;
+  --ds-radius-lg: 20px;
+  --ds-radius-xl: 28px;
+  --ds-shadow-raised:
+    6px 6px 14px rgb(112 124 190 / 0.3), inset -4px -4px 8px rgb(112 124 190 / 0.2), inset 4px 4px 8px rgb(255 255 255 / 0.95);
+  --ds-shadow-inset: inset 4px 4px 8px rgb(112 124 190 / 0.3), inset -3px -3px 6px rgb(255 255 255 / 0.95);
+  --ds-shadow-sm: var(--ds-shadow-raised);
+  --ds-shadow-md:
+    12px 12px 28px rgb(112 124 190 / 0.35), inset -6px -6px 12px rgb(112 124 190 / 0.18), inset 6px 6px 12px rgb(255 255 255 / 0.95);
+}
+[data-theme="dark"][data-skin="clay"],
+[data-theme="dark"] [data-skin="clay"] {
+  --ds-color-background: #1b1d2e;
+  --ds-color-surface: #232640;
+  --ds-color-surface-elevated: #232640;
+  --ds-color-input: #232640;
+  --ds-color-muted: #2b2f4d;
+  --ds-color-border: #2d3152;
+  --ds-shadow-raised: 6px 6px 14px rgb(0 0 0 / 0.5), inset -4px -4px 8px rgb(0 0 0 / 0.3), inset 4px 4px 8px rgb(255 255 255 / 0.07);
+  --ds-shadow-inset: inset 4px 4px 8px rgb(0 0 0 / 0.5), inset -3px -3px 6px rgb(255 255 255 / 0.05);
+  --ds-shadow-sm: var(--ds-shadow-raised);
+  --ds-shadow-md: 12px 12px 28px rgb(0 0 0 / 0.55), inset -6px -6px 12px rgb(0 0 0 / 0.3), inset 6px 6px 12px rgb(255 255 255 / 0.07);
+}
+
+/* 3f. Skin fluid — fluidmorphism: radius organik besar, latar gradient yang mengalir pelan (tanpa blur), permukaan semi-solid */
+[data-skin="fluid"] {
+  --ds-color-background: #f5f3ff;
+  --ds-color-surface: rgb(255 255 255 / 0.82);
+  --ds-color-surface-elevated: rgb(255 255 255 / 0.96);
+  --ds-color-muted: rgb(139 92 246 / 0.1);
+  --ds-color-border: rgb(139 92 246 / 0.22);
+  --ds-color-input: rgb(109 40 217 / 0.4);
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 20px;
+  --ds-radius-xl: 32px;
+  --ds-shadow-sm: 0 4px 18px rgb(109 40 217 / 0.1);
+  --ds-shadow-md: 0 12px 36px rgb(109 40 217 / 0.18);
+}
+[data-theme="dark"][data-skin="fluid"],
+[data-theme="dark"] [data-skin="fluid"] {
+  --ds-color-background: #0f0b24;
+  --ds-color-surface: rgb(30 22 66 / 0.78);
+  --ds-color-surface-elevated: rgb(30 22 66 / 0.97);
+  --ds-color-muted: rgb(167 139 250 / 0.14);
+  --ds-color-border: rgb(167 139 250 / 0.25);
+  --ds-color-input: rgb(167 139 250 / 0.45);
+  --ds-shadow-sm: 0 4px 18px rgb(0 0 0 / 0.4);
+  --ds-shadow-md: 0 12px 36px rgb(0 0 0 / 0.55);
+}
+[data-skin="fluid"] body {
+  background-image:
+    radial-gradient(50% 45% at 20% 20%, #ddd6fe 0%, transparent 70%), radial-gradient(45% 50% at 80% 30%, #fbcfe8 0%, transparent 70%),
+    radial-gradient(55% 50% at 50% 85%, #bae6fd 0%, transparent 70%);
+  background-size: 140% 140%;
+  animation: ds-fluid-flow 24s ease-in-out infinite alternate;
+}
+[data-theme="dark"][data-skin="fluid"] body {
+  background-image:
+    radial-gradient(50% 45% at 20% 20%, #2e1065 0%, transparent 70%), radial-gradient(45% 50% at 80% 30%, #500724 0%, transparent 70%),
+    radial-gradient(55% 50% at 50% 85%, #082f49 0%, transparent 70%);
+}
+@keyframes ds-fluid-flow {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-skin="fluid"] body {
+    animation: none;
+  }
+}
+
+/* 3g. Skin aurora — pita warna teal/hijau/violet di latar + kaca lebih pekat dari glass (teks tetap AA); blur lewat selector glass di atas */
+[data-skin="aurora"] {
+  --ds-color-background: #f0fdfa;
+  --ds-color-surface: rgb(255 255 255 / 0.62);
+  --ds-color-surface-elevated: rgb(255 255 255 / 0.9);
+  --ds-color-overlay: rgb(240 253 250 / 0.6);
+  --ds-color-muted: rgb(71 85 105 / 0.12);
+  --ds-color-border: rgb(255 255 255 / 0.75);
+  --ds-color-input: rgb(71 85 105 / 0.45);
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 14px;
+  --ds-radius-xl: 18px;
+  --ds-shadow-sm: inset 0 1px 0 rgb(255 255 255 / 0.8), 0 4px 24px rgb(13 148 136 / 0.12);
+  --ds-shadow-md: inset 0 1px 0 rgb(255 255 255 / 0.8), 0 8px 32px rgb(91 33 182 / 0.18);
+}
+[data-theme="dark"][data-skin="aurora"],
+[data-theme="dark"] [data-skin="aurora"] {
+  --ds-color-background: #050816;
+  --ds-color-surface: rgb(15 23 42 / 0.62);
+  --ds-color-surface-elevated: rgb(15 23 42 / 0.88);
+  --ds-color-overlay: rgb(5 8 22 / 0.65);
+  --ds-color-muted: rgb(148 163 184 / 0.16);
+  --ds-color-border: rgb(255 255 255 / 0.16);
+  --ds-color-input: rgb(148 163 184 / 0.45);
+  --ds-shadow-sm: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 4px 24px rgb(0 0 0 / 0.4);
+  --ds-shadow-md: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 8px 32px rgb(0 0 0 / 0.55);
+}
+[data-skin="aurora"] body {
+  background-image:
+    radial-gradient(70% 45% at 15% 0%, #99f6e4 0%, transparent 70%), radial-gradient(60% 45% at 85% 10%, #ddd6fe 0%, transparent 70%),
+    radial-gradient(70% 40% at 50% 100%, #bbf7d0 0%, transparent 70%);
+  background-attachment: fixed;
+}
+[data-theme="dark"][data-skin="aurora"] body {
+  background-image:
+    radial-gradient(70% 45% at 15% 0%, #134e4a 0%, transparent 70%), radial-gradient(60% 45% at 85% 10%, #4c1d95 0%, transparent 70%),
+    radial-gradient(70% 40% at 50% 100%, #064e3b 0%, transparent 70%);
+}
+
+/* 3h. Skin swiss — International Typographic Style: sudut siku, tanpa bayangan, garis tegas, satu aksen merah, Helvetica */
+[data-skin="swiss"] {
+  --ds-font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ds-color-background: #ffffff;
+  --ds-color-surface: #ffffff;
+  --ds-color-surface-elevated: #ffffff;
+  --ds-color-overlay: rgb(15 23 42 / 0.6);
+  --ds-color-border: var(--ds-slate-900);
+  --ds-color-input: var(--ds-slate-900);
+  --ds-color-ring: #d0021b;
+  --ds-color-primary: #d0021b;
+  --ds-color-primary-hover: #a80216;
+  --ds-radius-sm: 0;
+  --ds-radius-md: 0;
+  --ds-radius-lg: 0;
+  --ds-radius-xl: 0;
+  --ds-shadow-sm: 0 0 #0000;
+  --ds-shadow-md: 0 0 #0000;
+  --ds-shadow-lg: 0 0 #0000;
+}
+[data-theme="dark"][data-skin="swiss"],
+[data-theme="dark"] [data-skin="swiss"] {
+  --ds-color-background: #000000;
+  --ds-color-surface: #000000;
+  --ds-color-surface-elevated: #000000;
+  --ds-color-overlay: rgb(248 250 252 / 0.5);
+  --ds-color-border: var(--ds-slate-100);
+  --ds-color-input: var(--ds-slate-100);
+  --ds-color-ring: var(--ds-red-400);
+  --ds-color-primary: var(--ds-red-500);
+  --ds-color-primary-hover: var(--ds-red-400);
+}
+
+/* 3d. Chrome tone — warna sidebar/header. Dipasang sebagai data-tone di elemen chrome; hanya token semantik di subtree itu
+   yang diganti, jadi bg-surface, text-muted-foreground, hover:bg-muted, dst. ikut berubah tanpa mengubah komponen.
+   muted = abu terang; inverse = kebalikan tema (gelap di light, terang di dark); primary = warna aksi. Portal (tooltip, menu) di luar subtree, tetap token tema. */
+[data-tone="muted"] {
+  color: var(--ds-color-foreground);
+  --ds-color-surface: var(--ds-slate-100);
+  --ds-color-surface-elevated: var(--ds-slate-100);
+  --ds-color-muted: var(--ds-slate-200);
+  --ds-color-border: var(--ds-slate-300);
+}
+[data-theme="dark"] [data-tone="muted"] {
+  --ds-color-surface: var(--ds-slate-800);
+  --ds-color-surface-elevated: var(--ds-slate-800);
+  --ds-color-muted: var(--ds-slate-700);
+  --ds-color-muted-foreground: var(--ds-slate-300);
+  --ds-color-border: var(--ds-slate-700);
+}
+
+[data-tone="inverse"] {
+  color-scheme: dark;
+  color: var(--ds-slate-50);
+  --ds-color-foreground: var(--ds-slate-50);
+  --ds-color-surface: var(--ds-slate-900);
+  --ds-color-surface-foreground: var(--ds-slate-50);
+  --ds-color-surface-elevated: var(--ds-slate-900);
+  --ds-color-muted: var(--ds-slate-800);
+  --ds-color-muted-foreground: var(--ds-slate-400);
+  --ds-color-border: var(--ds-slate-800);
+  --ds-color-input: var(--ds-slate-700);
+  --ds-color-ring: var(--ds-blue-400);
+  --ds-color-primary: var(--ds-blue-400);
+  --ds-color-primary-foreground: var(--ds-slate-950);
+  --ds-color-primary-hover: var(--ds-blue-300);
+  --ds-color-secondary: var(--ds-slate-800);
+  --ds-color-secondary-foreground: var(--ds-slate-50);
+  --ds-color-secondary-hover: var(--ds-slate-700);
+}
+[data-theme="dark"] [data-tone="inverse"] {
+  color-scheme: light;
+  color: var(--ds-slate-900);
+  --ds-color-foreground: var(--ds-slate-900);
+  --ds-color-surface: var(--ds-slate-100);
+  --ds-color-surface-foreground: var(--ds-slate-900);
+  --ds-color-surface-elevated: var(--ds-slate-100);
+  --ds-color-muted: var(--ds-slate-200);
+  --ds-color-muted-foreground: var(--ds-slate-600);
+  --ds-color-border: var(--ds-slate-300);
+  --ds-color-input: var(--ds-slate-300);
+  --ds-color-ring: var(--ds-blue-600);
+  --ds-color-primary: var(--ds-blue-600);
+  --ds-color-primary-foreground: var(--ds-white);
+  --ds-color-primary-hover: var(--ds-blue-700);
+  --ds-color-secondary: var(--ds-slate-200);
+  --ds-color-secondary-foreground: var(--ds-slate-900);
+  --ds-color-secondary-hover: var(--ds-slate-300);
+}
+[data-brand="acme"] [data-tone="inverse"] {
+  --ds-color-primary: #a78bfa;
+  --ds-color-primary-hover: #c4b5fd;
+  --ds-color-ring: #a78bfa;
+}
+[data-theme="dark"][data-brand="acme"] [data-tone="inverse"] {
+  --ds-color-primary: #7c3aed;
+  --ds-color-primary-hover: #6d28d9;
+  --ds-color-ring: #7c3aed;
+}
+
+[data-tone="primary"] {
+  color-scheme: dark;
+  color: var(--ds-white);
+  --ds-color-foreground: var(--ds-white);
+  --ds-color-surface: var(--ds-blue-700);
+  --ds-color-surface-foreground: var(--ds-white);
+  --ds-color-surface-elevated: var(--ds-blue-700);
+  --ds-color-muted: var(--ds-blue-800);
+  --ds-color-muted-foreground: var(--ds-blue-100);
+  --ds-color-border: rgb(255 255 255 / 0.2);
+  --ds-color-input: var(--ds-blue-400);
+  --ds-color-ring: var(--ds-white);
+  --ds-color-primary: var(--ds-white);
+  --ds-color-primary-foreground: var(--ds-blue-700);
+  --ds-color-primary-hover: var(--ds-blue-50);
+  --ds-color-secondary: var(--ds-blue-800);
+  --ds-color-secondary-foreground: var(--ds-white);
+  --ds-color-secondary-hover: var(--ds-blue-900);
+}
+[data-theme="dark"] [data-tone="primary"] {
+  --ds-color-surface: var(--ds-blue-900);
+  --ds-color-surface-elevated: var(--ds-blue-900);
+  --ds-color-muted: var(--ds-blue-800);
+  --ds-color-muted-foreground: var(--ds-blue-200);
+  --ds-color-primary-foreground: var(--ds-blue-900);
+  --ds-color-secondary: var(--ds-blue-800);
+  --ds-color-secondary-hover: var(--ds-blue-700);
+}
+[data-brand="acme"] [data-tone="primary"] {
+  --ds-color-surface: #6d28d9;
+  --ds-color-surface-elevated: #6d28d9;
+  --ds-color-muted: #5b21b6;
+  --ds-color-muted-foreground: #ede9fe;
+  --ds-color-primary-foreground: #6d28d9;
+  --ds-color-primary-hover: #f5f3ff;
+  --ds-color-input: #a78bfa;
+  --ds-color-secondary: #5b21b6;
+  --ds-color-secondary-hover: #4c1d95;
+}
+[data-theme="dark"][data-brand="acme"] [data-tone="primary"] {
+  --ds-color-surface: #4c1d95;
+  --ds-color-surface-elevated: #4c1d95;
+  --ds-color-muted: #5b21b6;
+  --ds-color-muted-foreground: #ddd6fe;
+  --ds-color-primary-foreground: #4c1d95;
+  --ds-color-secondary: #5b21b6;
+  --ds-color-secondary-hover: #6d28d9;
+}
+
+/* 4. Tailwind theme — inline agar utilitas menunjuk langsung ke var --ds-* (theme switch di subtree tetap jalan) */
+@theme inline {
+  --font-sans: var(--ds-font-sans);
+  --font-mono: var(--ds-font-mono);
+
+  --color-background: var(--ds-color-background);
+  --color-foreground: var(--ds-color-foreground);
+  --color-surface: var(--ds-color-surface);
+  --color-surface-foreground: var(--ds-color-surface-foreground);
+  --color-surface-elevated: var(--ds-color-surface-elevated);
+  --color-overlay: var(--ds-color-overlay);
+  --color-muted: var(--ds-color-muted);
+  --color-muted-foreground: var(--ds-color-muted-foreground);
+  --color-border: var(--ds-color-border);
+  --color-input: var(--ds-color-input);
+  --color-ring: var(--ds-color-ring);
+  --color-primary: var(--ds-color-primary);
+  --color-primary-foreground: var(--ds-color-primary-foreground);
+  --color-primary-hover: var(--ds-color-primary-hover);
+  --color-secondary: var(--ds-color-secondary);
+  --color-secondary-foreground: var(--ds-color-secondary-foreground);
+  --color-secondary-hover: var(--ds-color-secondary-hover);
+  --color-success: var(--ds-color-success);
+  --color-success-foreground: var(--ds-color-success-foreground);
+  --color-success-subtle: var(--ds-color-success-subtle);
+  --color-success-subtle-fg: var(--ds-color-success-subtle-fg);
+  --color-warning: var(--ds-color-warning);
+  --color-warning-foreground: var(--ds-color-warning-foreground);
+  --color-warning-subtle: var(--ds-color-warning-subtle);
+  --color-warning-subtle-fg: var(--ds-color-warning-subtle-fg);
+  --color-danger: var(--ds-color-danger);
+  --color-danger-foreground: var(--ds-color-danger-foreground);
+  --color-danger-hover: var(--ds-color-danger-hover);
+  --color-danger-subtle: var(--ds-color-danger-subtle);
+  --color-danger-subtle-fg: var(--ds-color-danger-subtle-fg);
+  --color-info: var(--ds-color-info);
+  --color-info-foreground: var(--ds-color-info-foreground);
+  --color-info-subtle: var(--ds-color-info-subtle);
+  --color-info-subtle-fg: var(--ds-color-info-subtle-fg);
+
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+  --radius-xl: var(--ds-radius-xl);
+
+  --shadow-sm: var(--ds-shadow-sm);
+  --shadow-md: var(--ds-shadow-md);
+  --shadow-lg: var(--ds-shadow-lg);
+  --shadow-raised: var(--ds-shadow-raised);
+  --shadow-inset: var(--ds-shadow-inset);
+
+  --ease-ds: var(--ds-ease);
+
+  --animate-fade-in: ds-fade-in var(--ds-motion-normal) var(--ds-ease);
+  --animate-fade-out: ds-fade-out var(--ds-motion-fast) var(--ds-ease);
+}
+
+@keyframes ds-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ds-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* 5. Base */
+@layer base {
+  body {
+    background-color: var(--ds-color-background);
+    color: var(--ds-color-foreground);
+    font-family: var(--ds-font-sans);
+  }
+}

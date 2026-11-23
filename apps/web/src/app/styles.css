@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@enterprise/design-system/styles.css";
+@source "../../../../packages/design-system/dist";
+
+/* token package menyebut Inter; file fontnya dimuat di sini oleh consumer */
+:root {
+  --ds-font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
