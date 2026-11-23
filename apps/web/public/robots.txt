@@ -1,6 +1,0 @@
-# Ganti domain dengan domain produksi sebelum rilis
-User-agent: *
-Allow: /
-Disallow: /app
-
-Sitemap: https://portal.contoh.sch.id/sitemap.xml

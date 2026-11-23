@@ -31,7 +31,7 @@ pnpm install
 
 ```text
 packages/design-system/   paket @wnpcode/design-system: token, tema, komponen, Storybook
-apps/web/                 boilerplate aplikasi "Portal Sekolah" yang memakai paket itu
+apps/web/                 boilerplate aplikasi web yang memakai paket itu
 apps/playground/          fixture kecil untuk mencoba paket dari export publiknya
 ```
 
