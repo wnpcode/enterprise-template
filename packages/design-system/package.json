@@ -1,6 +1,6 @@
 {
   "name": "@wnp_code/design-system",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Komponen React 19 untuk aplikasi admin: Tailwind CSS v4, Radix UI, tema terang/gelap, dan teks bawaan yang bisa diganti bahasanya.",
   "keywords": [
     "design-system",

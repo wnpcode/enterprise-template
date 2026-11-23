@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+
+### Patch Changes
+
+- 84cdcc8: Tambah README dan metadata paket (deskripsi, kata kunci) agar halaman npmjs.com informatif.
+
 ## 0.2.0
 
 ### Minor Changes
