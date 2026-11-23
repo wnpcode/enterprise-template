@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import { cn } from "@wnpcode/design-system";
+import { cn } from "@wnp_code/design-system";
 import { flattenNav, navItems } from "./nav";
 import { useVisitedTabs } from "./useVisitedTabs";
 

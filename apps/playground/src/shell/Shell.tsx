@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cn, Tooltip, TooltipContent, TooltipTrigger } from "@wnpcode/design-system";
+import { cn, Tooltip, TooltipContent, TooltipTrigger } from "@wnp_code/design-system";
 import { chromeClass, toneAttr, type ShellConfig } from "./config";
 import { icons } from "./icons";
 

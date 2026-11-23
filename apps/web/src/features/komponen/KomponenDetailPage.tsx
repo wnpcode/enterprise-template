@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router";
-import { PageHeader } from "@wnpcode/design-system";
+import { PageHeader } from "@wnp_code/design-system";
 import { NotFoundPage } from "../../shared/NotFoundPage";
 import { demos } from "./demos";
 

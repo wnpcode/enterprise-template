@@ -11,7 +11,7 @@ const meta: Meta<typeof Skeleton> = {
 
 **Import**
 \`\`\`tsx
-import { Skeleton } from "@wnpcode/design-system";
+import { Skeleton } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

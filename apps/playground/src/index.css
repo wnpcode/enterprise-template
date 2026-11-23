@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@wnpcode/design-system/styles.css";
+@import "@wnp_code/design-system/styles.css";
 @source "../../../packages/design-system/dist";
 
 html {

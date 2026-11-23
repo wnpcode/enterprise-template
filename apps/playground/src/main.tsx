@@ -1,6 +1,6 @@
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { ThemeProvider, ToastProvider, TooltipProvider } from "@wnpcode/design-system";
+import { ThemeProvider, ToastProvider, TooltipProvider } from "@wnp_code/design-system";
 import "./index.css";
 import { App, type PlaygroundSkin } from "./App";
 import { defaultShell } from "./shell/config";

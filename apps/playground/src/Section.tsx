@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cn } from "@wnpcode/design-system";
+import { cn } from "@wnp_code/design-system";
 
 type SectionProps = { id: string; title: string; description?: string; children: ReactNode };
 

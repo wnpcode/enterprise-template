@@ -1,8 +1,8 @@
 name: Release
 
 # Changesets: push ke main membuka (atau memperbarui) PR "Version Packages" bila ada .changeset/*.md;
-# menggabungkan PR itu mempublikasikan @wnpcode/design-system ke npmjs.com (publik, dengan provenance).
-# Perlu secret repo NPM_TOKEN (npm granular token, publish untuk @wnpcode/*).
+# menggabungkan PR itu mempublikasikan @wnp_code/design-system ke npmjs.com (publik, dengan provenance).
+# Perlu secret repo NPM_TOKEN (npm granular token, publish untuk @wnp_code/*).
 # Perlu Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
 on:
   push:
@@ -35,15 +35,15 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: pnpm install --frozen-lockfile
       # apps/* membaca design system dari dist (di-gitignore): bangun dulu sebelum typecheck
-      - run: pnpm --filter @wnpcode/design-system build
+      - run: pnpm --filter @wnp_code/design-system build
       - run: pnpm typecheck
-      - run: pnpm --filter @wnpcode/design-system test
+      - run: pnpm --filter @wnp_code/design-system test
       - uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
         with:
           version: pnpm release:version
           publish: pnpm release:publish
-          title: "release: versi baru @wnpcode/design-system"
-          commit: "release: versi baru @wnpcode/design-system"
+          title: "release: versi baru @wnp_code/design-system"
+          commit: "release: versi baru @wnp_code/design-system"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

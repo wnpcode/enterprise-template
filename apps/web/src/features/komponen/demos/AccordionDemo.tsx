@@ -1,4 +1,4 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@wnpcode/design-system";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function AccordionDemo() {

@@ -15,7 +15,7 @@ const meta: Meta<typeof Popover> = {
 
 **Import**
 \`\`\`tsx
-import { Popover, PopoverTrigger, PopoverContent, PopoverAnchor } from "@wnpcode/design-system";
+import { Popover, PopoverTrigger, PopoverContent, PopoverAnchor } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

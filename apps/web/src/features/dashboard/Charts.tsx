@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Card, CardContent, CardHeader, CardTitle } from "@wnpcode/design-system";
+import { Card, CardContent, CardHeader, CardTitle } from "@wnp_code/design-system";
 import type { Siswa, SiswaStatus } from "../siswa";
 
 function KelasBarChart({ siswa }: { siswa: Siswa[] }) {

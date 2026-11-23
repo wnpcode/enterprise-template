@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { EmptyState, PageHeader } from "@wnpcode/design-system";
+import { EmptyState, PageHeader } from "@wnp_code/design-system";
 import { useAuth } from "../auth";
 
 // shortcut: kerangka halaman laporan tanpa data; isi tabel/ekspor menunggu kontrak backend

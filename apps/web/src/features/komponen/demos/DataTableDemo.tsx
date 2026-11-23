@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, createColumnHelper, DataTable, EmptyState, type RowSelectionState, type SortingState } from "@wnpcode/design-system";
+import { Button, createColumnHelper, DataTable, EmptyState, type RowSelectionState, type SortingState } from "@wnp_code/design-system";
 import { siswaContoh, StatusBadge, type Siswa } from "../../siswa";
 import { DemoSection } from "../DemoSection";
 

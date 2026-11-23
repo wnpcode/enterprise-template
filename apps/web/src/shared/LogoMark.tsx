@@ -1,4 +1,4 @@
-import { cn } from "@wnpcode/design-system";
+import { cn } from "@wnp_code/design-system";
 
 // sumber bentuk: brand/mark.svg; warna dari currentColor
 export function LogoMark({ className }: { className?: string }) {

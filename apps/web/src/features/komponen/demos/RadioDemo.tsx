@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Label, Radio } from "@wnpcode/design-system";
+import { Label, Radio } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 const jenjang = ["SD", "SMP", "SMA"];

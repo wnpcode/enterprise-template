@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
   useToast,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";

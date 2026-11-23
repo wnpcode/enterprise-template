@@ -12,7 +12,7 @@ const meta: Meta<typeof Radio> = {
 
 **Import**
 \`\`\`tsx
-import { Radio } from "@wnpcode/design-system";
+import { Radio } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

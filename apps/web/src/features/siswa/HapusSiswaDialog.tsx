@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   useToast,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { deleteSiswa, siswaKeys, type Siswa } from "./api";

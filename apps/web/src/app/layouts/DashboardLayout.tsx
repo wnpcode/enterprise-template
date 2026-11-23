@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import { cn, Container } from "@wnpcode/design-system";
+import { cn, Container } from "@wnp_code/design-system";
 import { useTranslation } from "react-i18next";
 import { Seo } from "../../shared/Seo";
 import { BottomNav } from "../shell/BottomNav";

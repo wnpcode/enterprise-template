@@ -15,7 +15,7 @@ import {
   Input,
   PageHeader,
   type SortingState,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { formatTanggal } from "../../shared/format";
 import { fetchSiswa, siswaKeys, type Siswa, type SiswaListParams } from "./api";
 import { HapusSiswaDialog } from "./HapusSiswaDialog";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@wnpcode/design-system";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 const namaTab: Record<string, string> = { profil: "Profil", nilai: "Nilai", kehadiran: "Kehadiran" };

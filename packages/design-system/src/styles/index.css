@@ -1,5 +1,5 @@
 /* Enterprise Design System — sumber: ../../../../DESIGN-SYSTEM.md
-   Consumer: @import "tailwindcss"; @import "@wnpcode/design-system/styles.css"; @source ke dist package. */
+   Consumer: @import "tailwindcss"; @import "@wnp_code/design-system/styles.css"; @source ke dist package. */
 
 /* 1. Primitive tokens */
 :root {

@@ -12,7 +12,7 @@ const meta: Meta<typeof Tabs> = {
 
 **Import**
 \`\`\`tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@wnpcode/design-system";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

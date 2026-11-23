@@ -12,7 +12,7 @@ const meta: Meta<typeof Alert> = {
 
 **Import**
 \`\`\`tsx
-import { Alert } from "@wnpcode/design-system";
+import { Alert } from "@wnp_code/design-system";
 \`\`\`
 
 **Aksesibilitas**

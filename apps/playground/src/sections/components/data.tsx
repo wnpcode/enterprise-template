@@ -23,7 +23,7 @@ import {
   TableRow,
   type RowSelectionState,
   type SortingState,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { Demo, Section } from "../../Section";
 
 type Siswa = { id: number; nama: string; kelas: string; status: "Aktif" | "Menunggu" | "Ditolak" };

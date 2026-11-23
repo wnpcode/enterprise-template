@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter, Route, Routes } from "react-router";
-import { TooltipProvider } from "@wnpcode/design-system";
+import { TooltipProvider } from "@wnp_code/design-system";
 import { AUTH_STORAGE_KEY, AuthProvider } from "../../features/auth/AuthProvider";
 import { DashboardLayout } from "../layouts/DashboardLayout";
 import { DEFAULT_PREFS, LAYOUT_STORAGE_KEY, type LayoutPrefs } from "./useLayoutPrefs";

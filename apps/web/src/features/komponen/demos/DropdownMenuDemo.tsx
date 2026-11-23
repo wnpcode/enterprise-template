@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function DropdownMenuDemo() {

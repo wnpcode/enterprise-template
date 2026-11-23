@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import { TooltipProvider } from "@wnpcode/design-system";
+import { TooltipProvider } from "@wnp_code/design-system";
 import { z } from "zod";
 import { AuthProvider } from "../features/auth";
 import { Sidebar } from "./shell/Sidebar";

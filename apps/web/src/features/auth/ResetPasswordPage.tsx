@@ -1,4 +1,4 @@
-import { Button, FormField, Input, useToast } from "@wnpcode/design-system";
+import { Button, FormField, Input, useToast } from "@wnp_code/design-system";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";

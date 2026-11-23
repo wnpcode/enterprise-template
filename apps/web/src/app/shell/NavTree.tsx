@@ -2,7 +2,7 @@ import { ChevronDown } from "lucide-react";
 import { useId, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, useMatch } from "react-router";
-import { cn } from "@wnpcode/design-system";
+import { cn } from "@wnp_code/design-system";
 import type { NavNode } from "./nav";
 import { activeClass, indent, rowClass } from "./navStyles";
 

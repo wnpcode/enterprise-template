@@ -1,5 +1,5 @@
 import { Component, Suspense, type ReactNode } from "react";
-import { Spinner } from "@wnpcode/design-system";
+import { Spinner } from "@wnp_code/design-system";
 import { Outlet, useLocation, useOutletContext } from "react-router";
 import { ErrorPage } from "./ErrorPage";
 

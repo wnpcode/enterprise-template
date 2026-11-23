@@ -39,7 +39,7 @@ Rilis awal, belum dipublikasikan ke registry.
 - Komponen inti: Button, Input, Textarea, Label, Badge, Checkbox, Radio, Switch, Spinner, Skeleton, Card.
 - Komponen overlay dan navigasi di atas Radix UI: Dialog, Select, Combobox (cmdk), DropdownMenu, Tabs, Accordion, Tooltip (`TooltipProvider`), Popover, Toast (`ToastProvider`, `useToast`).
 - Data dan layout: Pagination (+ `getPaginationRange`), Table primitives (+ `TableEmpty`), Container, Stack, PageHeader.
-- Entry CSS `@wnpcode/design-system/styles.css`, output ESM + deklarasi tipe.
+- Entry CSS `@wnp_code/design-system/styles.css`, output ESM + deklarasi tipe.
 
 ### Known limitations
 

@@ -20,7 +20,7 @@ const meta: Meta<typeof ToastProvider> = {
 
 **Import**
 \`\`\`tsx
-import { ToastProvider, useToast } from "@wnpcode/design-system";
+import { ToastProvider, useToast } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
-import { DropdownMenuItem, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger } from "@wnpcode/design-system";
+import { DropdownMenuItem, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger } from "@wnp_code/design-system";
 import type { NavNode } from "./nav";
 
 /** Isi menu popup dengan kedalaman bebas: leaf jadi item, grup jadi submenu. Dipakai di dalam `DropdownMenuContent`. */

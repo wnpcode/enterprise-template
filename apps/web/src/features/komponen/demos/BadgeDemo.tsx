@@ -1,4 +1,4 @@
-import { Badge } from "@wnpcode/design-system";
+import { Badge } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function BadgeDemo() {

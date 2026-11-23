@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { NavLink, useMatch } from "react-router";
-import { cn, Tooltip, TooltipContent, TooltipTrigger } from "@wnpcode/design-system";
+import { cn, Tooltip, TooltipContent, TooltipTrigger } from "@wnp_code/design-system";
 import type { NavItem } from "./nav";
 import { NavGroup } from "./NavGroup";
 import { activeClass, rowClass } from "./navStyles";

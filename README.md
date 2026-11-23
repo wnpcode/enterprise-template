@@ -20,7 +20,7 @@ pnpm dev              # playground, http://localhost:5173
 ## Struktur
 
 ```text
-packages/design-system/   @wnpcode/design-system (ESM + .d.ts + styles.css)
+packages/design-system/   @wnp_code/design-system (ESM + .d.ts + styles.css)
   src/styles/index.css    token --ds-*, tema light/dark, brand, @theme inline
   src/themes/             ThemeProvider, useTheme, themeInitScript
   src/components/<Name>/  <Name>.tsx, .test.tsx, .stories.tsx, index.ts
@@ -31,13 +31,13 @@ apps/playground/          consumer fixture, import hanya dari export publik
 
 ## Memakai package di app lain (Tailwind CSS v4)
 
-1. Install dari npmjs.com (publik, tanpa token atau `.npmrc`): `pnpm add @wnpcode/design-system` (peer: `react@^19`, `react-dom@^19`, `tailwindcss@^4` di app).
+1. Install dari npmjs.com (publik, tanpa token atau `.npmrc`): `pnpm add @wnp_code/design-system` (peer: `react@^19`, `react-dom@^19`, `tailwindcss@^4` di app).
 2. CSS entry app:
 
 ```css
 @import "tailwindcss";
-@import "@wnpcode/design-system/styles.css";
-@source "../node_modules/@wnpcode/design-system/dist";
+@import "@wnp_code/design-system/styles.css";
+@source "../node_modules/@wnp_code/design-system/dist";
 ```
 
 `@source` wajib agar utilitas Tailwind yang dipakai komponen ikut di-generate oleh app. Package tidak mengirim CSS Tailwind yang sudah dikompilasi.
@@ -45,7 +45,7 @@ apps/playground/          consumer fixture, import hanya dari export publik
 3. Bungkus app dengan `ThemeProvider`, `TooltipProvider`, dan `ToastProvider`; pasang `themeInitScript` di `<head>` agar tidak ada flash tema:
 
 ```tsx
-import { ThemeProvider, TooltipProvider, ToastProvider, Button } from "@wnpcode/design-system";
+import { ThemeProvider, TooltipProvider, ToastProvider, Button } from "@wnp_code/design-system";
 
 <ThemeProvider>
   <TooltipProvider>

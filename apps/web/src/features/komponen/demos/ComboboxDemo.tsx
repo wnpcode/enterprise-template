@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Combobox, Label, type ComboboxOption } from "@wnpcode/design-system";
+import { Combobox, Label, type ComboboxOption } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 const kelasOptions: ComboboxOption[] = [

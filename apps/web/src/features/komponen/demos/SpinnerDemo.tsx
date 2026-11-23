@@ -1,4 +1,4 @@
-import { Button, Spinner } from "@wnpcode/design-system";
+import { Button, Spinner } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function SpinnerDemo() {

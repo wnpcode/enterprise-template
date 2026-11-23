@@ -4,7 +4,7 @@ Format mengikuti bagian "Final agent report" di `enterprise-design-system-agent-
 
 ## 1. Ringkasan
 
-Repo baru `enterprise-template` (pnpm workspace) berisi `packages/design-system` (`@wnpcode/design-system` 0.1.0) dan `apps/playground` sebagai consumer. Token tiga lapis dengan Tailwind CSS v4 CSS-first, tema light/dark/system + brand override, 11 komponen inti, 9 komponen overlay/navigasi di atas Radix UI (+ cmdk), Pagination, Table primitives, layout primitives. Storybook dengan autodocs dan deskripsi per komponen, Foundations, toolbar tema. Test perilaku + axe per komponen. CHANGELOG dan CONTRIBUTING untuk rilis.
+Repo baru `enterprise-template` (pnpm workspace) berisi `packages/design-system` (`@wnp_code/design-system` 0.1.0) dan `apps/playground` sebagai consumer. Token tiga lapis dengan Tailwind CSS v4 CSS-first, tema light/dark/system + brand override, 11 komponen inti, 9 komponen overlay/navigasi di atas Radix UI (+ cmdk), Pagination, Table primitives, layout primitives. Storybook dengan autodocs dan deskripsi per komponen, Foundations, toolbar tema. Test perilaku + axe per komponen. CHANGELOG dan CONTRIBUTING untuk rilis.
 
 ## 2. File
 
@@ -45,7 +45,7 @@ Otomatis: semua di atas lolos. Tidak ada yang gagal.
 Manual/headless (skrip Playwright di scratchpad sesi, tidak di repo):
 - Playground: ganti tema, persist localStorage, mode system, brand sampai ke portal Dialog, focus trap/return Dialog, Select, Combobox, DropdownMenu, Tabs, Accordion, Tooltip, Toast, Table + Pagination; konsol bersih; screenshot light/dark.
 - Storybook build disajikan statis: halaman Docs Button dan Dialog menampilkan deskripsi, blok import, tabel props, Do/Don't; story Dialog di tema dark membuka dialog dengan tombol "Tutup"; Foundations Colors tampil; konsol bersih.
-- Consumer terisolasi dari tarball `pnpm pack` (di luar workspace): `pnpm install` dari `.tgz`, `renderToString(<Button/>)` menghasilkan kelas token, `import.meta.resolve("@wnpcode/design-system/styles.css")` resolve, 77 export, `tsc --strict` lolos termasuk `@ts-expect-error` untuk variant tidak valid.
+- Consumer terisolasi dari tarball `pnpm pack` (di luar workspace): `pnpm install` dari `.tgz`, `renderToString(<Button/>)` menghasilkan kelas token, `import.meta.resolve("@wnp_code/design-system/styles.css")` resolve, 77 export, `tsc --strict` lolos termasuk `@ts-expect-error` untuk variant tidak valid.
 - Kontras: skrip luminance, semua pasangan teks ≥ 4.5:1; border/input vs background ~1.2–1.5:1 (dicatat).
 
 ## 6. Keterbatasan dan isu terbuka

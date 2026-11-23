@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource-variable/inter";
-@import "@wnpcode/design-system/styles.css";
+@import "@wnp_code/design-system/styles.css";
 @source "../../../../packages/design-system/dist";
 
 /* token package menyebut Inter; file fontnya dimuat di sini oleh consumer */

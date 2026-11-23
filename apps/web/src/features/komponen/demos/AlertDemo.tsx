@@ -1,4 +1,4 @@
-import { Alert } from "@wnpcode/design-system";
+import { Alert } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function AlertDemo() {

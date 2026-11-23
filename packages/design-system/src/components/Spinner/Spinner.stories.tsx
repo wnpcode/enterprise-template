@@ -11,7 +11,7 @@ const meta: Meta<typeof Spinner> = {
 
 **Import**
 \`\`\`tsx
-import { Spinner } from "@wnpcode/design-system";
+import { Spinner } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

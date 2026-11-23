@@ -13,7 +13,7 @@ const meta: Meta = {
 
 **Import**
 \`\`\`tsx
-import { Container, Stack, PageHeader } from "@wnpcode/design-system";
+import { Container, Stack, PageHeader } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

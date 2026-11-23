@@ -14,7 +14,7 @@ const meta: Meta<typeof FormField> = {
 
 **Import**
 \`\`\`tsx
-import { FormField, Input } from "@wnpcode/design-system";
+import { FormField, Input } from "@wnp_code/design-system";
 
 <FormField label="Email" required error={errors.email?.message}>
   {(control) => <Input {...control} type="email" {...register("email")} />}

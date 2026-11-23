@@ -12,7 +12,7 @@ const meta: Meta<typeof Label> = {
 
 **Import**
 \`\`\`tsx
-import { Label } from "@wnpcode/design-system";
+import { Label } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

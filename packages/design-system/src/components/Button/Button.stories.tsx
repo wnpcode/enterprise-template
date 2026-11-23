@@ -11,7 +11,7 @@ const meta: Meta<typeof Button> = {
 
 **Import**
 \`\`\`tsx
-import { Button } from "@wnpcode/design-system";
+import { Button } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

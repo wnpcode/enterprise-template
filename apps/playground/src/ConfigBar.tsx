@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Button, cn, Tooltip, TooltipContent, TooltipTrigger, useTheme, type Theme } from "@wnpcode/design-system";
+import { Button, cn, Tooltip, TooltipContent, TooltipTrigger, useTheme, type Theme } from "@wnp_code/design-system";
 import { icons } from "./shell/icons";
 
 export type PlaygroundSkin = "flat" | "neo" | "glass" | "clay" | "fluid" | "aurora" | "swiss";

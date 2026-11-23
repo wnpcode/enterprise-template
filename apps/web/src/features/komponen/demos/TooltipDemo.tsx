@@ -1,4 +1,4 @@
-import { Button, Tooltip, TooltipContent, TooltipTrigger } from "@wnpcode/design-system";
+import { Button, Tooltip, TooltipContent, TooltipTrigger } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 const sides = [

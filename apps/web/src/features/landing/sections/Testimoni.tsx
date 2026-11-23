@@ -1,4 +1,4 @@
-import { Avatar } from "@wnpcode/design-system";
+import { Avatar } from "@wnp_code/design-system";
 import { useTranslation } from "react-i18next";
 import { useLandingContent } from "../content";
 

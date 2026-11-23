@@ -15,7 +15,7 @@ const meta: Meta<typeof SheetContent> = {
 
 **Import**
 \`\`\`tsx
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose } from "@wnpcode/design-system";
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan aksesibilitas**

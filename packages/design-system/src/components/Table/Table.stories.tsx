@@ -14,7 +14,7 @@ const meta: Meta<typeof Table> = {
 
 **Import**
 \`\`\`tsx
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, TableEmpty } from "@wnpcode/design-system";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, TableEmpty } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

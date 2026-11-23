@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Checkbox, Label } from "@wnpcode/design-system";
+import { Checkbox, Label } from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 const ekstrakurikuler = ["Pramuka", "Basket", "Paduan suara", "Robotik"];

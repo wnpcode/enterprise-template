@@ -15,7 +15,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { Demo, Section } from "../../Section";
 
 export function TabsSection() {

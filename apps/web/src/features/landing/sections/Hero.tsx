@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@wnpcode/design-system";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@wnp_code/design-system";
 import { siswaContoh, StatusBadge } from "../../siswa";
 import { linkButton } from "../../../shared/linkButton";
 

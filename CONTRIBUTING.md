@@ -1,4 +1,4 @@
-# Kontribusi ke `@wnpcode/design-system`
+# Kontribusi ke `@wnp_code/design-system`
 
 ## Prasyarat
 
@@ -16,7 +16,7 @@ Checklist sebelum PR:
 - [ ] Test perilaku (keyboard, disabled/invalid/loading, asosiasi label) + `expectNoA11yViolations`. Axe adalah cek otomatis, bukan bukti kepatuhan WCAG.
 - [ ] Story untuk semua variant dan state publik, plus `parameters.docs.description.component` (tujuan, import, keyboard, Do/Don't).
 - [ ] Tidak ada logika bisnis atau data fetching di package.
-- [ ] Baris di `CHANGELOG.md` bagian Unreleased dan satu file changeset (`pnpm changeset`, pilih `@wnpcode/design-system`, minor untuk fitur, patch untuk perbaikan).
+- [ ] Baris di `CHANGELOG.md` bagian Unreleased dan satu file changeset (`pnpm changeset`, pilih `@wnp_code/design-system`, minor untuk fitur, patch untuk perbaikan).
 - [ ] `pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm build-storybook` lolos dari root.
 
 ## Review API publik
@@ -39,11 +39,11 @@ pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm build-storybook
 cd packages/design-system && pnpm pack --dry-run   # harus hanya berisi dist/** dan package.json
 ```
 
-Rilis berjalan otomatis lewat `.github/workflows/release.yml` ke npmjs.com (`@wnpcode/design-system`, publik, dengan provenance):
+Rilis berjalan otomatis lewat `.github/workflows/release.yml` ke npmjs.com (`@wnp_code/design-system`, publik, dengan provenance):
 
-1. Merge perubahan beserta file changeset ke `main`. Workflow membuka (atau memperbarui) PR "release: versi baru @wnpcode/design-system" yang menjalankan `pnpm release:version` (naik versi + CHANGELOG).
+1. Merge perubahan beserta file changeset ke `main`. Workflow membuka (atau memperbarui) PR "release: versi baru @wnp_code/design-system" yang menjalankan `pnpm release:version` (naik versi + CHANGELOG).
 2. Merge PR itu: workflow menjalankan `pnpm release:publish` (build lalu `changeset publish`) dan membuat tag git.
-3. Prasyarat sekali jalan: di repo GitHub aktifkan Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests". Publish memakai secret repo `NPM_TOKEN` (npm granular token dengan izin publish untuk `@wnpcode/*`, organisasi `wnpcode` harus ada di npmjs.com); PR memakai `GITHUB_TOKEN` bawaan.
+3. Prasyarat sekali jalan: di repo GitHub aktifkan Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests". Publish memakai secret repo `NPM_TOKEN` (npm granular token dengan izin publish untuk `@wnp_code/*`, organisasi `wnpcode` harus ada di npmjs.com); PR memakai `GITHUB_TOKEN` bawaan.
 
 Rilis manual dari mesin lokal (darurat): `pnpm release:version`, commit, lalu `NODE_AUTH_TOKEN=<npm token> pnpm release:publish`.
 

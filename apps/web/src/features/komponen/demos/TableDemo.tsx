@@ -12,7 +12,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { StatusBadge, siswaContoh } from "../../siswa";
 import { DemoSection } from "../DemoSection";
 

@@ -11,7 +11,7 @@ import {
   DialogTrigger,
   Input,
   Label,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 export function DialogDemo() {

@@ -32,7 +32,7 @@ importers:
 
   apps/playground:
     dependencies:
-      '@wnpcode/design-system':
+      '@wnp_code/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
       react:
@@ -75,7 +75,7 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.105.3
         version: 5.105.3(@types/react@19.3.0)(react@19.3.1)
-      '@wnpcode/design-system':
+      '@wnp_code/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
       gsap:

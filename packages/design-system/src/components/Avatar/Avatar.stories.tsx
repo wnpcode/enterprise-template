@@ -12,7 +12,7 @@ const meta: Meta<typeof Avatar> = {
 
 **Import**
 \`\`\`tsx
-import { Avatar } from "@wnpcode/design-system";
+import { Avatar } from "@wnp_code/design-system";
 \`\`\`
 
 **Aksesibilitas**

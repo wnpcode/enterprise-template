@@ -36,7 +36,7 @@ const meta: Meta<typeof DataTable<Siswa>> = {
 
 **Import**
 \`\`\`tsx
-import { DataTable, createColumnHelper, type SortingState } from "@wnpcode/design-system";
+import { DataTable, createColumnHelper, type SortingState } from "@wnp_code/design-system";
 
 const col = createColumnHelper<Siswa>();
 const columns = [col.accessor("nama", { header: "Nama" }), col.accessor("kelas", { header: "Kelas", enableSorting: false })];

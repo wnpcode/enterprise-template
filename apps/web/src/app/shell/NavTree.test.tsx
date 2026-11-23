@@ -2,7 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Layers } from "lucide-react";
 import { MemoryRouter, useLocation } from "react-router";
-import { TooltipProvider } from "@wnpcode/design-system";
+import { TooltipProvider } from "@wnp_code/design-system";
 import type { NavItem } from "./nav";
 import { NavItemLink } from "./NavItemLink";
 

@@ -25,7 +25,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       # apps/* membaca design system dari dist (di-gitignore): bangun dulu sebelum typecheck dan test
-      - run: pnpm --filter @wnpcode/design-system build
+      - run: pnpm --filter @wnp_code/design-system build
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm format:check
@@ -48,7 +48,7 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @wnpcode/design-system build
+      - run: pnpm --filter @wnp_code/design-system build
       - run: pnpm --filter web exec playwright install --with-deps chromium
       - run: pnpm e2e
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7

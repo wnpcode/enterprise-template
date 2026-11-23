@@ -22,7 +22,7 @@ const meta: Meta<typeof Tooltip> = {
 
 **Import**
 \`\`\`tsx
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@wnpcode/design-system";
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

@@ -9,7 +9,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { DemoSection } from "../DemoSection";
 
 const jenjang: Record<string, string> = { sd: "SD", smp: "SMP", sma: "SMA" };

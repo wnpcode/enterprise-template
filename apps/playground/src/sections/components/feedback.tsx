@@ -1,4 +1,4 @@
-import { Alert, Button, EmptyState, Skeleton, Spinner } from "@wnpcode/design-system";
+import { Alert, Button, EmptyState, Skeleton, Spinner } from "@wnp_code/design-system";
 import { Demo, Section } from "../../Section";
 
 export function AlertSection() {

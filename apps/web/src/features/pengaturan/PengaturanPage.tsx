@@ -12,7 +12,7 @@ import {
   Switch,
   useTheme,
   type Theme,
-} from "@wnpcode/design-system";
+} from "@wnp_code/design-system";
 import { LANGUAGE_NAMES, LANGUAGES, type Language } from "../../app/i18n";
 import type { LayoutContext } from "../../app/layouts/DashboardLayout";
 import { CHROME_STYLES, TONES } from "../../app/shell/chrome";

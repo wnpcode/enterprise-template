@@ -13,7 +13,7 @@ const meta: Meta<typeof Select> = {
 
 **Import**
 \`\`\`tsx
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from "@wnpcode/design-system";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from "@wnp_code/design-system";
 \`\`\`
 
 **Keyboard dan fokus**

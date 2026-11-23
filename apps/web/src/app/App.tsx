@@ -1,4 +1,4 @@
-import { LocaleProvider, ThemeProvider, ToastProvider, TooltipProvider, type LocaleOverride } from "@wnpcode/design-system";
+import { LocaleProvider, ThemeProvider, ToastProvider, TooltipProvider, type LocaleOverride } from "@wnp_code/design-system";
 import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
