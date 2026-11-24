@@ -268,6 +268,19 @@
     "edit": "Ubah siswa",
     "actions": "Aksi",
     "rowActions": "Aksi untuk {{nama}}",
+    "tour": {
+      "start": "Lihat tur",
+      "groups": { "cari": "Pencarian", "tambah": "Tambah siswa", "aksi": "Ubah dan hapus" },
+      "cari": { "title": "Cari siswa", "text": "Ketik nama untuk menyaring daftar. Hasil ikut berubah saat Anda mengetik." },
+      "tambah": { "title": "Tambah siswa baru", "text": "Tombol ini membuka form untuk mendaftarkan siswa. Kami buka formnya untuk Anda." },
+      "tambahNama": { "title": "Isi nama siswa", "text": "Nama wajib diisi. Siswa baru masuk daftar menunggu verifikasi." },
+      "tambahKelas": { "title": "Isi kelas", "text": "Tulis kelas siswa, misalnya X IPA 1." },
+      "tambahSimpan": {
+        "title": "Simpan",
+        "text": "Simpan untuk menambah siswa ke daftar. Untuk sekarang cukup lihat-lihat, tidak perlu disimpan."
+      },
+      "aksi": { "title": "Ubah atau hapus", "text": "Menu Aksi di setiap baris dipakai untuk mengubah data atau menghapus siswa." }
+    },
     "delete": {
       "title": "Hapus siswa?",
       "text": "{{nama}} akan dihapus permanen dari daftar siswa.",
@@ -382,7 +395,11 @@
     "page": "Halaman {{n}}",
     "selectAll": "Pilih semua baris",
     "selectRow": "Pilih baris",
-    "sortBy": "Urutkan menurut {{column}}"
+    "sortBy": "Urutkan menurut {{column}}",
+    "tourSkip": "Lewati",
+    "tourSkipGroup": "Lewati fitur ini",
+    "tourDone": "Selesai",
+    "tourProgress": "Langkah {{current}} dari {{total}}"
   },
   "seo": {
     "landingTitle": "{{appName}}: administrasi sekolah dalam satu portal",

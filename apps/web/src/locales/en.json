@@ -268,6 +268,19 @@
     "edit": "Edit student",
     "actions": "Actions",
     "rowActions": "Actions for {{nama}}",
+    "tour": {
+      "start": "Take the tour",
+      "groups": { "cari": "Search", "tambah": "Add student", "aksi": "Edit and delete" },
+      "cari": { "title": "Search students", "text": "Type a name to filter the list. Results update as you type." },
+      "tambah": { "title": "Add a new student", "text": "This button opens the form to register a student. We opened it for you." },
+      "tambahNama": {
+        "title": "Enter the student's name",
+        "text": "The name is required. New students join the pending verification list."
+      },
+      "tambahKelas": { "title": "Enter the class", "text": "Write the student's class, for example X IPA 1." },
+      "tambahSimpan": { "title": "Save", "text": "Save adds the student to the list. For now just look around, no need to save." },
+      "aksi": { "title": "Edit or delete", "text": "The Actions menu on each row edits a student's details or deletes the student." }
+    },
     "delete": {
       "title": "Delete student?",
       "text": "{{nama}} will be permanently removed from the student list.",
@@ -382,7 +395,11 @@
     "page": "Page {{n}}",
     "selectAll": "Select all rows",
     "selectRow": "Select row",
-    "sortBy": "Sort by {{column}}"
+    "sortBy": "Sort by {{column}}",
+    "tourSkip": "Skip",
+    "tourSkipGroup": "Skip this feature",
+    "tourDone": "Done",
+    "tourProgress": "Step {{current}} of {{total}}"
   },
   "seo": {
     "landingTitle": "{{appName}}: school administration in one portal",

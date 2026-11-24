@@ -28,6 +28,14 @@ function DsLocale({ children }: { children: ReactNode }) {
         page: (n) => t("ds.page", { n }),
       },
       dataTable: { selectAll: t("ds.selectAll"), selectRow: t("ds.selectRow"), sort: (column) => t("ds.sortBy", { column }) },
+      tour: {
+        next: t("ds.next"),
+        previous: t("ds.previous"),
+        skip: t("ds.tourSkip"),
+        skipGroup: t("ds.tourSkipGroup"),
+        done: t("ds.tourDone"),
+        progress: (current, total) => t("ds.tourProgress", { current, total }),
+      },
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps -- t berganti bersama i18n.language
     [t, i18n.language],

@@ -14,9 +14,11 @@ import {
   EmptyState,
   Input,
   PageHeader,
+  Tour,
   type SortingState,
 } from "@wnp_code/design-system";
 import { formatTanggal } from "../../shared/format";
+import { useTour, type PageTourStep } from "../../shared/useTour";
 import { fetchSiswa, siswaKeys, type Siswa, type SiswaListParams } from "./api";
 import { HapusSiswaDialog } from "./HapusSiswaDialog";
 import { SiswaFormSheet } from "./SiswaFormSheet";
@@ -76,10 +78,16 @@ export function SiswaPage() {
       col.display({
         id: "aksi",
         header: t("siswa.actions"),
-        cell: ({ row: { original: s } }) => (
+        cell: ({ row: { original: s, index } }) => (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="min-h-11" aria-label={t("siswa.rowActions", { nama: s.nama })}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="min-h-11"
+                aria-label={t("siswa.rowActions", { nama: s.nama })}
+                data-tour={index === 0 ? "siswa-aksi" : undefined}
+              >
                 {t("siswa.actions")}
               </Button>
             </DropdownMenuTrigger>
@@ -98,7 +106,31 @@ export function SiswaPage() {
     [t, i18n.language],
   );
   const pageCount = Math.ceil((data?.total ?? 0) / PAGE_SIZE);
-  const tambah = <SiswaFormSheet trigger={<Button className="min-h-11">{t("siswa.add")}</Button>} />;
+  const tambahButton = (
+    <Button className="min-h-11" data-tour="siswa-tambah">
+      {t("siswa.add")}
+    </Button>
+  );
+  // sheet di header dikendalikan dari sini agar tur bisa membukanya; yang di EmptyState tetap mandiri
+  const [tambahOpen, setTambahOpen] = useState(false);
+  const tourStep = (feature: "cari" | "tambah" | "aksi", key: string, before?: () => void): PageTourStep => ({
+    feature: `siswa-${feature}`,
+    group: t(`siswa.tour.groups.${feature}`),
+    target: `[data-tour="siswa-${key}"]`,
+    title: t(`siswa.tour.${key}.title`),
+    content: t(`siswa.tour.${key}.text`),
+    before,
+  });
+  const tourSteps: PageTourStep[] = [
+    tourStep("cari", "cari"),
+    tourStep("tambah", "tambah", () => setTambahOpen(false)),
+    tourStep("tambah", "tambahNama", () => setTambahOpen(true)),
+    tourStep("tambah", "tambahKelas", () => setTambahOpen(true)),
+    tourStep("tambah", "tambahSimpan", () => setTambahOpen(true)),
+    tourStep("aksi", "aksi", () => setTambahOpen(false)),
+  ];
+  // tur menunggu data tampil agar tombol aksi baris sudah ada
+  const tour = useTour(tourSteps, { ready: !isPending });
 
   return (
     <div className="space-y-6">
@@ -112,15 +144,20 @@ export function SiswaPage() {
               aria-label={t("siswa.searchLabel")}
               placeholder={t("siswa.searchPlaceholder")}
               className="min-h-11"
+              data-tour="siswa-cari"
               value={query}
               onChange={(e) => {
                 setFilter({ q: e.target.value, page: undefined });
               }}
             />
-            {tambah}
+            <SiswaFormSheet open={tambahOpen} onOpenChange={setTambahOpen} trigger={tambahButton} />
+            <Button variant="ghost" className="min-h-11" onClick={tour.start}>
+              {t("siswa.tour.start")}
+            </Button>
           </>
         }
       />
+      <Tour steps={tour.steps} open={tour.open} onOpenChange={tour.onOpenChange} />
       {isError ? (
         <div className="space-y-3">
           <p role="alert">{t("siswa.loadError")}</p>
@@ -147,7 +184,11 @@ export function SiswaPage() {
             q ? (
               t("siswa.emptySearch", { q })
             ) : (
-              <EmptyState title={t("siswa.emptyTitle")} description={t("siswa.emptyText")} action={tambah} />
+              <EmptyState
+                title={t("siswa.emptyTitle")}
+                description={t("siswa.emptyText")}
+                action={<SiswaFormSheet trigger={tambahButton} />}
+              />
             )
           }
         />

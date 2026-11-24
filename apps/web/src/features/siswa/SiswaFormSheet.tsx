@@ -72,7 +72,9 @@ export function SiswaFormSheet({ trigger, siswa, open: openProp, onOpenChange }:
             <SheetDescription>{t(siswa ? "siswa.sheet.editDescription" : "siswa.sheet.description")}</SheetDescription>
           </SheetHeader>
           <FormField id="siswa-nama" label={t("auth.name")} required error={fieldError(errors.nama)}>
-            {(control) => <Input {...control} autoComplete="off" className="min-h-11" {...form.register("nama")} />}
+            {(control) => (
+              <Input {...control} autoComplete="off" className="min-h-11" data-tour="siswa-tambahNama" {...form.register("nama")} />
+            )}
           </FormField>
           <FormField
             id="siswa-kelas"
@@ -81,7 +83,9 @@ export function SiswaFormSheet({ trigger, siswa, open: openProp, onOpenChange }:
             hint={t("siswa.sheet.kelasHint")}
             error={fieldError(errors.kelas)}
           >
-            {(control) => <Input {...control} autoComplete="off" className="min-h-11" {...form.register("kelas")} />}
+            {(control) => (
+              <Input {...control} autoComplete="off" className="min-h-11" data-tour="siswa-tambahKelas" {...form.register("kelas")} />
+            )}
           </FormField>
           {errors.root && (
             <p role="alert" className="text-sm text-danger">
@@ -94,7 +98,7 @@ export function SiswaFormSheet({ trigger, siswa, open: openProp, onOpenChange }:
                 {t("common.cancel")}
               </Button>
             </SheetClose>
-            <Button type="submit" loading={simpan.isPending} className="min-h-11">
+            <Button type="submit" loading={simpan.isPending} className="min-h-11" data-tour="siswa-tambahSimpan">
               {t("common.save")}
             </Button>
           </SheetFooter>

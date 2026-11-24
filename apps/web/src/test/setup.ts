@@ -24,6 +24,10 @@ window.matchMedia = vi.fn((query: string) => ({
 }));
 import "../app/i18n";
 import { server } from "../mocks/server";
+import { ALL_TOURS_SEEN, TOUR_STORAGE_KEY } from "../shared/useTour";
+
+// tur terbuka sendiri pada kunjungan pertama; test lain tidak boleh terganggu olehnya
+beforeEach(() => localStorage.setItem(TOUR_STORAGE_KEY, JSON.stringify([ALL_TOURS_SEEN])));
 
 beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
 afterEach(() => server.resetHandlers());
