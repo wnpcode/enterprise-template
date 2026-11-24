@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { cn } from "../../utils/cn";
+import { ignoreTourPointer } from "../../utils/tourGuard";
 import { useLocale } from "../../locale/LocaleProvider";
 import { XIcon } from "../icons";
 
@@ -10,12 +11,16 @@ export const DialogClose = DialogPrimitive.Close;
 
 export type DialogContentProps = ComponentProps<typeof DialogPrimitive.Content>;
 
-export function DialogContent({ className, children, ...props }: DialogContentProps) {
+export function DialogContent({ className, children, onPointerDownOutside, ...props }: DialogContentProps) {
   const { close } = useLocale();
   return (
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay className="inset-0 fixed z-50 bg-overlay data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in motion-reduce:animate-none" />
       <DialogPrimitive.Content
+        onPointerDownOutside={(e) => {
+          onPointerDownOutside?.(e);
+          ignoreTourPointer(e);
+        }}
         className={cn(
           "max-w-lg p-6 fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2 rounded-md border border-border bg-surface text-surface-foreground shadow-md data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in motion-reduce:animate-none",
           className,

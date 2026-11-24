@@ -1,7 +1,8 @@
 name: Release
 
 # Changesets: push ke main membuka (atau memperbarui) PR "Version Packages" bila ada .changeset/*.md;
-# menggabungkan PR itu mempublikasikan @wnp_code/design-system ke npmjs.com (publik).
+# menggabungkan PR itu mempublikasikan @wnp_code/design-system ke npmjs.com (publik) dan menaikkan versi app web
+# (private, tidak dipublikasikan) yang dipakai tur produk di apps/web/src/shared/releases.ts.
 # Provenance npm aktif ("provenance": true di publishConfig paket + id-token: write). Hanya didukung untuk repo publik:
 # bila repo dijadikan private, publish gagal E422 sampai provenance dimatikan.
 # Perlu secret repo NPM_TOKEN (npm granular token, publish untuk @wnp_code/*).
@@ -43,8 +44,8 @@ jobs:
         with:
           version: pnpm release:version
           publish: pnpm release:publish
-          title: "release: versi baru @wnp_code/design-system"
-          commit: "release: versi baru @wnp_code/design-system"
+          title: "release: versi baru"
+          commit: "release: versi baru"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

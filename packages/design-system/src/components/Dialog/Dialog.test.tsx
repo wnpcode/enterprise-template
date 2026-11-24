@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { expectNoA11yViolations } from "../../test/axe";
 import { Button } from "../Button";
@@ -89,5 +89,26 @@ describe("Dialog", () => {
     await userEvent.click(screen.getByRole("button", { name: "Open" }));
     const dialog = await screen.findByRole("dialog");
     await expectNoA11yViolations(dialog);
+  });
+
+  it("tidak menutup saat pointer ditekan di dalam Tour, tetapi tetap menutup untuk klik di luar lainnya", async () => {
+    render(
+      <>
+        <button>Luar</button>
+        <div data-ds-tour="">Panel tur</div>
+        <Dialog defaultOpen>
+          <DialogContent>
+            <DialogTitle>Judul</DialogTitle>
+            <span id="x" />
+          </DialogContent>
+        </Dialog>
+      </>,
+    );
+    await screen.findByRole("dialog");
+    await new Promise((r) => setTimeout(r, 20)); // Radix baru memasang listener di luar setelah satu tick
+    fireEvent.pointerDown(screen.getByText("Panel tur"));
+    expect(screen.getByRole("dialog")).toBeVisible();
+    fireEvent.pointerDown(screen.getByText("Luar"));
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
   });
 });

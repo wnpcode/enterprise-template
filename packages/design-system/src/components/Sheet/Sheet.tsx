@@ -2,6 +2,7 @@ import type { ComponentProps } from "react";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
+import { ignoreTourPointer } from "../../utils/tourGuard";
 import { useLocale } from "../../locale/LocaleProvider";
 import { XIcon } from "../icons";
 
@@ -25,12 +26,19 @@ const sheetVariants = cva(
 
 export type SheetContentProps = ComponentProps<typeof DialogPrimitive.Content> & VariantProps<typeof sheetVariants>;
 
-export function SheetContent({ side, className, children, ...props }: SheetContentProps) {
+export function SheetContent({ side, className, children, onPointerDownOutside, ...props }: SheetContentProps) {
   const { close } = useLocale();
   return (
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay className="inset-0 fixed z-50 bg-overlay data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in motion-reduce:animate-none" />
-      <DialogPrimitive.Content className={cn(sheetVariants({ side }), className)} {...props}>
+      <DialogPrimitive.Content
+        onPointerDownOutside={(e) => {
+          onPointerDownOutside?.(e);
+          ignoreTourPointer(e);
+        }}
+        className={cn(sheetVariants({ side }), className)}
+        {...props}
+      >
         {children}
         <DialogPrimitive.Close className="right-4 top-4 absolute rounded-sm text-muted-foreground outline-none hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
           <XIcon />
