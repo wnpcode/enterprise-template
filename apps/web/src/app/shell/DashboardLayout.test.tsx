@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter, Route, Routes } from "react-router";
 import { TooltipProvider } from "@wnp_code/design-system";
+import { version } from "../../../package.json";
 import { AUTH_STORAGE_KEY, AuthProvider } from "../../features/auth/AuthProvider";
 import { DashboardLayout } from "../layouts/DashboardLayout";
 import { DEFAULT_PREFS, LAYOUT_STORAGE_KEY, type LayoutPrefs } from "./useLayoutPrefs";
@@ -50,19 +51,19 @@ describe("DashboardLayout", () => {
     renderWith({ orientation: "horizontal", collapsed: false });
     expect(within(screen.getByRole("banner")).getByRole("link", { name: "Siswa" })).toBeInTheDocument();
     expect(screen.queryByRole("complementary")).not.toBeInTheDocument();
-    expect(screen.getByRole("banner")).toHaveTextContent("v0.1.0");
+    expect(screen.getByRole("banner")).toHaveTextContent(`v${version}`);
   });
 
   it("orientasi vertical menaruh menu di sidebar yang memuat versi, tanpa footer", () => {
     renderWith({ orientation: "vertical", collapsed: false });
     expect(within(screen.getByRole("complementary")).getByRole("link", { name: "Siswa" })).toBeInTheDocument();
-    expect(screen.getByRole("complementary")).toHaveTextContent("v0.1.0");
+    expect(screen.getByRole("complementary")).toHaveTextContent(`v${version}`);
     expect(screen.queryByRole("contentinfo")).not.toBeInTheDocument();
   });
 
   it("sidebar ciut tidak menampilkan versi", () => {
     renderWith({ orientation: "vertical", collapsed: true });
-    expect(screen.getByRole("complementary")).not.toHaveTextContent("v0.1.0");
+    expect(screen.getByRole("complementary")).not.toHaveTextContent(`v${version}`);
   });
 
   it("header disembunyikan memindahkan menu akun ke footer sidebar", () => {
