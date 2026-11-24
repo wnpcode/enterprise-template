@@ -1,14 +1,21 @@
 import type { Page } from "@playwright/test";
+import { RELEASES } from "../src/shared/releases";
 
-// tur terbuka sendiri pada kunjungan pertama dan menutupi halaman; tandai semua sudah dilihat kecuali test-nya menguji tur
-// (tourSeen: false = belum ada yang dilihat, array = id step yang sudah dilihat)
+// tur terbuka sendiri pada kunjungan pertama dan menutupi halaman; tandai semua sudah dilihat sampai rilis terbaru kecuali
+// test-nya menguji tur (tourSeen: false = belum ada catatan, string = versi terakhir yang sudah dilihat di halaman Siswa)
 export async function login(
   page: Page,
   email = "guru@sekolah.id",
   password = "guru123",
-  { tourSeen = ["*"] }: { tourSeen?: string[] | false } = {},
+  { tourSeen = RELEASES[0].version }: { tourSeen?: string | false } = {},
 ) {
-  if (tourSeen) await page.addInitScript((seen) => localStorage.setItem("web-tour-seen", JSON.stringify(seen)), tourSeen);
+  if (tourSeen) {
+    const seen = tourSeen === RELEASES[0].version ? { "*": tourSeen } : { siswa: tourSeen };
+    // hanya bila belum ada: init script berjalan di setiap navigasi, termasuk reload, dan tidak boleh menimpa catatan yang ditulis tur
+    await page.addInitScript((value) => {
+      if (!localStorage.getItem("web-tour-version")) localStorage.setItem("web-tour-version", JSON.stringify(value));
+    }, seen);
+  }
   await page.goto("/login");
   await page.getByLabel("Email").fill(email);
   await page.getByLabel(/^Kata sandi/).fill(password);

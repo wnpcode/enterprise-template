@@ -130,7 +130,7 @@ export function SiswaPage() {
     tourStep("aksi", "aksi", () => setTambahOpen(false)),
   ];
   // tur menunggu data tampil agar tombol aksi baris sudah ada
-  const tour = useTour(tourSteps, { ready: !isPending });
+  const tour = useTour("siswa", tourSteps, { ready: !isPending });
 
   return (
     <div className="space-y-6">

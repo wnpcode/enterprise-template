@@ -68,15 +68,22 @@ test("tur siswa muncul sekali pada kunjungan pertama dan bisa diulang", async ({
   await expect(page.getByRole("dialog", { name: "Cari siswa" })).toBeVisible();
 });
 
-test("pengguna lama hanya melihat step fitur baru", async ({ page }) => {
-  await login(page, undefined, undefined, { tourSeen: ["siswa-cari", "siswa-tambah"] });
+test("pengguna lama hanya melihat fitur versi baru, bukan yang sudah dilihat di versi sebelumnya", async ({ page }) => {
+  // terakhir melihat 0.1.0 (cari dan aksi); fitur Tambah siswa baru masuk di 0.2.0
+  await login(page, undefined, undefined, { tourSeen: "0.1.0" });
   await page.goto("/app/siswa");
-  const tour = page.getByRole("dialog", { name: "Ubah atau hapus" });
-  await expect(tour).toContainText("Ubah dan hapus");
-  await expect(tour).not.toContainText("Langkah");
+  const tour = page.getByRole("dialog", { name: "Tambah siswa baru" });
+  await expect(tour).toContainText("Tambah siswa");
+  await expect(tour).toContainText("Langkah 1 dari 4");
+  await expect(page.getByRole("dialog", { name: "Cari siswa" })).toHaveCount(0);
   await expect(tour.getByRole("button", { name: "Tutup" })).toHaveCount(0);
-  await tour.getByRole("button", { name: "Selesai" }).click();
-  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await tour.getByRole("button", { name: "Lewati" }).click();
+  await expect(page.getByRole("dialog", { name: "Tambah siswa baru" })).toHaveCount(0);
+
+  // versi terbaru tercatat: tidak muncul lagi setelah reload
+  await page.reload();
+  await expect(page.getByText("Aisyah Putri")).toBeVisible();
+  await expect(page.getByRole("dialog", { name: "Tambah siswa baru" })).toHaveCount(0);
 
   await page.getByRole("button", { name: "Lihat tur" }).click();
   await expect(page.getByRole("dialog", { name: "Cari siswa" })).toContainText("Pencarian");

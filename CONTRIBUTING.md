@@ -31,7 +31,7 @@ Perubahan pada nama export, prop, nilai `variant`/`size`, nama token, atau path 
 
 ## Versioning dan rilis
 
-SemVer: major untuk breaking change, minor untuk fitur kompatibel, patch untuk perbaikan. Versi dinaikkan lewat Changesets (`.changeset/`); app `web` dan `playground` diabaikan dari versioning.
+SemVer: major untuk breaking change, minor untuk fitur kompatibel, patch untuk perbaikan. Versi dinaikkan lewat Changesets (`.changeset/`) untuk `@wnp_code/design-system` dan app `web` (private, hanya dinaikkan versinya, tidak dipublikasikan); `playground` diabaikan.
 
 ```bash
 pnpm changeset                 # saat mengerjakan perubahan: tulis file changeset
@@ -41,13 +41,25 @@ cd packages/design-system && pnpm pack --dry-run   # harus hanya berisi dist/** 
 
 Rilis berjalan otomatis lewat `.github/workflows/release.yml` ke npmjs.com (`@wnp_code/design-system`, publik; tanpa provenance selama repo private):
 
-1. Merge perubahan beserta file changeset ke `main`. Workflow membuka (atau memperbarui) PR "release: versi baru @wnp_code/design-system" yang menjalankan `pnpm release:version` (naik versi + CHANGELOG).
+1. Merge perubahan beserta file changeset ke `main`. Workflow membuka (atau memperbarui) PR "release: versi baru" yang menjalankan `pnpm release:version` (naik versi + CHANGELOG).
 2. Merge PR itu: workflow menjalankan `pnpm release:publish` (build lalu `changeset publish`) dan membuat tag git.
 3. Prasyarat sekali jalan: di repo GitHub aktifkan Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests". Publish memakai secret repo `NPM_TOKEN` (npm granular token dengan izin publish untuk `@wnp_code/*`, organisasi `wnpcode` harus ada di npmjs.com); PR memakai `GITHUB_TOKEN` bawaan.
 
 Rilis manual dari mesin lokal (darurat): `pnpm release:version`, commit, lalu `NODE_AUTH_TOKEN=<npm token> pnpm release:publish`.
 
 `changeset status` butuh branch dasar (`baseBranch` di `.changeset/config.json`, default `main`) yang sudah ada di git.
+
+### Fitur baru di app `web` dan tur produk
+
+Tur produk mengenalkan fitur baru ke pengguna per versi rilis `web`. Daftar fitur per versi ada di `apps/web/src/shared/releases.ts` (terbaru di atas). Pengguna baru melihat semua fitur sampai versi yang berjalan; pengguna lama hanya fitur yang lebih baru dari versi terakhir yang mereka lihat di halaman itu. Fitur yang versinya belum dideploy tidak muncul.
+
+Untuk fitur baru yang perlu tur:
+
+1. Buat changeset untuk `web` (`pnpm changeset`, pilih `web`, minor untuk fitur).
+2. Tambah versi hasil changeset itu di baris teratas `RELEASES` beserta id fiturnya (mis. `{ version: "0.3.0", features: ["siswa-ekspor"] }`). Id fitur yang salah ketik gagal di typecheck.
+3. Beri elemen atribut `data-tour`, lalu tambah step dengan `feature` itu di halaman terkait (contoh: `SiswaPage.tsx`).
+
+Versi di `RELEASES` harus sama dengan versi yang dihasilkan PR rilis. Kalau lebih tinggi, tur fitur itu baru muncul saat versi app mencapai angka tersebut. Di dev server, e2e, dan vitest tur berjalan sebagai rilis terbaru di `RELEASES`, jadi fitur yang belum dirilis tetap bisa dicoba.
 
 ## Tooling repo
 
