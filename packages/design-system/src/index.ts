@@ -38,6 +38,7 @@ export * from "./components/Select";
 export * from "./components/Tabs";
 export * from "./components/Toast";
 export * from "./components/Tooltip";
+export * from "./components/Tour";
 export * from "./components/Layout";
 export * from "./components/Pagination";
 export * from "./components/Table";

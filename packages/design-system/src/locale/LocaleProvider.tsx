@@ -21,6 +21,14 @@ export type DsLocale = {
     selectRow: string;
     sort: (column: string) => string;
   };
+  tour: {
+    next: string;
+    previous: string;
+    skip: string;
+    skipGroup: string;
+    done: string;
+    progress: (current: number, total: number) => string;
+  };
 };
 
 export const defaultLocale: DsLocale = {
@@ -43,11 +51,20 @@ export const defaultLocale: DsLocale = {
     selectRow: "Pilih baris",
     sort: (column) => `Urutkan menurut ${column}`,
   },
+  tour: {
+    next: "Berikutnya",
+    previous: "Sebelumnya",
+    skip: "Lewati",
+    skipGroup: "Lewati fitur ini",
+    done: "Selesai",
+    progress: (current, total) => `Langkah ${current} dari ${total}`,
+  },
 };
 
-export type LocaleOverride = Partial<Omit<DsLocale, "pagination" | "dataTable">> & {
+export type LocaleOverride = Partial<Omit<DsLocale, "pagination" | "dataTable" | "tour">> & {
   pagination?: Partial<DsLocale["pagination"]>;
   dataTable?: Partial<DsLocale["dataTable"]>;
+  tour?: Partial<DsLocale["tour"]>;
 };
 
 const LocaleContext = createContext<DsLocale>(defaultLocale);
@@ -59,6 +76,7 @@ export function LocaleProvider({ value, children }: { value: LocaleOverride; chi
       ...value,
       pagination: { ...defaultLocale.pagination, ...value.pagination },
       dataTable: { ...defaultLocale.dataTable, ...value.dataTable },
+      tour: { ...defaultLocale.tour, ...value.tour },
     }),
     [value],
   );
