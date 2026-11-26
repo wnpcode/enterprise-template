@@ -82,4 +82,5 @@ Semua komponen mengekspor tipe props-nya. Impor hanya dari `@wnp_code/design-sys
 ## Catatan
 
 - Hanya ESM. Output CommonJS belum ada.
+- Next.js App Router: bundel diawali `"use client"`, jadi komponen bisa diimpor dari server component. Konsekuensinya, `cn`, `initials`, `defaultLocale`, `THEME_STORAGE_KEY`, dan `themeInitScript` hanya bisa dipakai sebagai nilai di client component. Skrip inline dari `themeInitScript` di `layout.tsx` (server component) karena itu harus disalin ke aplikasi.
 - Versi mengikuti SemVer; perubahan yang merusak API publik hanya pada versi mayor.
