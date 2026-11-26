@@ -276,7 +276,7 @@
   --ds-color-background: #eef0fb;
   --ds-color-surface: #f6f7fd;
   --ds-color-surface-elevated: #f6f7fd;
-  --ds-color-input: #f6f7fd;
+  --ds-color-input: #7c85bd;
   --ds-color-muted: #e3e6f6;
   --ds-color-border: #e1e4f4;
   --ds-radius-md: 14px;
@@ -294,7 +294,7 @@
   --ds-color-background: #1b1d2e;
   --ds-color-surface: #232640;
   --ds-color-surface-elevated: #232640;
-  --ds-color-input: #232640;
+  --ds-color-input: #6a71a8;
   --ds-color-muted: #2b2f4d;
   --ds-color-border: #2d3152;
   --ds-shadow-raised: 6px 6px 14px rgb(0 0 0 / 0.5), inset -4px -4px 8px rgb(0 0 0 / 0.3), inset 4px 4px 8px rgb(255 255 255 / 0.07);

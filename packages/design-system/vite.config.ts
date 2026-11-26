@@ -14,7 +14,11 @@ export default defineConfig({
   build: {
     lib: { entry: "src/index.ts", formats: ["es"], fileName: "index" },
     // semua import bare (dependency dan peer) diambil dari node_modules consumer, bukan dibundel
-    rollupOptions: { external: (id) => !/^[./]/.test(id) },
+    rollupOptions: {
+      external: (id) => !/^[./]/.test(id),
+      // agar komponennya bisa diimpor dari server component Next.js
+      output: { banner: '"use client";' },
+    },
   },
   test: {
     environment: "jsdom",
