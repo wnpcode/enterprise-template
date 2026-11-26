@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- 8787959: Komponen `Tour` untuk mengenalkan alur fitur baru: menyorot elemen satu per satu di halaman yang sama. Step bisa menyiapkan tampilannya lewat `before` (mis. membuka Sheet yang memuat target) dan Tour menunggu sampai target muncul. Satu tur bisa memuat beberapa fitur lewat `group`: label fitur, progres dan titik per fitur, "Lewati fitur ini", dan tombol tutup. Teks tombol bisa diganti lewat `LocaleProvider` (`tour`). `Dialog` dan `Sheet` tidak lagi menutup saat tombol Tour ditekan.
+
+### Patch Changes
+
+- 208b301: Bundel diawali `"use client"` agar komponen bisa diimpor dari server component Next.js, dan batas input di skin clay kini terlihat (kontras ≥ 3:1).
+
 ## 0.2.2
 
 ### Patch Changes
